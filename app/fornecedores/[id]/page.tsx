@@ -10,7 +10,7 @@ export default async function PerfilFornecedor({ params }: any) {
     .single()
 
   if (error || !f) {
-    return <p>Fornecedor não encontrado. ID: {id}</p>
+    return <p>Fornecedor não encontrado.</p>
   }
 
   return (
@@ -20,14 +20,29 @@ export default async function PerfilFornecedor({ params }: any) {
         <a href="/fornecedores" style={{ color: '#888', fontSize: '14px', textDecoration: 'none' }}>← Voltar para fornecedores</a>
       </header>
 
+      {/* Cabeçalho do perfil */}
       <div style={{ padding: '30px', border: '1px solid #eee', borderRadius: '16px', marginBottom: '20px', backgroundColor: '#f9f9f9' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '12px' }}>
           <div>
-            <h1 style={{ fontSize: '26px', color: '#1E3A5F', marginBottom: '8px' }}>{f['Nome']}</h1>
-            <p style={{ fontSize: '14px', color: '#888', marginBottom: '12px' }}>{f['Razão Social']}</p>
-            <span style={{ fontSize: '13px', backgroundColor: '#E6F1FB', color: '#0C447C', padding: '4px 12px', borderRadius: '20px' }}>
-              {f['Segmento']}
-            </span>
+            <h1 style={{ fontSize: '26px', color: '#1E3A5F', marginBottom: '6px' }}>{f.nome}</h1>
+            {f.razao_social && <p style={{ fontSize: '14px', color: '#888', marginBottom: '12px' }}>{f.razao_social}</p>}
+            <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+              {f.categoria_nome && (
+                <span style={{ fontSize: '13px', backgroundColor: '#E6F1FB', color: '#0C447C', padding: '4px 12px', borderRadius: '20px' }}>
+                  {f.categoria_nome}
+                </span>
+              )}
+              {f.subcategoria_nome && (
+                <span style={{ fontSize: '13px', backgroundColor: '#EEEDFE', color: '#3C3489', padding: '4px 12px', borderRadius: '20px' }}>
+                  {f.subcategoria_nome}
+                </span>
+              )}
+              {f.especializacao_nome && (
+                <span style={{ fontSize: '13px', backgroundColor: '#EAF3DE', color: '#27500A', padding: '4px 12px', borderRadius: '20px' }}>
+                  {f.especializacao_nome}
+                </span>
+              )}
+            </div>
           </div>
           <span style={{ fontSize: '12px', backgroundColor: '#EAF3DE', color: '#27500A', padding: '4px 12px', borderRadius: '20px' }}>
             ✓ Ativo
@@ -35,38 +50,59 @@ export default async function PerfilFornecedor({ params }: any) {
         </div>
       </div>
 
+      {/* Descrição */}
+      {f.descricao && (
+        <div style={{ padding: '24px', border: '1px solid #eee', borderRadius: '12px', marginBottom: '20px' }}>
+          <h2 style={{ fontSize: '16px', color: '#1E3A5F', marginBottom: '12px' }}>Sobre a empresa</h2>
+          <p style={{ fontSize: '14px', color: '#555', lineHeight: '1.6' }}>{f.descricao}</p>
+        </div>
+      )}
+
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '20px' }}>
+
         <div style={{ padding: '24px', border: '1px solid #eee', borderRadius: '12px' }}>
           <h2 style={{ fontSize: '16px', color: '#1E3A5F', marginBottom: '16px' }}>📍 Localização</h2>
-          <p style={{ fontSize: '14px', color: '#555', marginBottom: '8px' }}><strong>Cidade:</strong> {f['Cidade']}</p>
-          <p style={{ fontSize: '14px', color: '#555', marginBottom: '8px' }}><strong>Estado:</strong> {f['Estado']}</p>
-          <p style={{ fontSize: '14px', color: '#555', marginBottom: '8px' }}><strong>CEP:</strong> {f['CEP']}</p>
-          <p style={{ fontSize: '14px', color: '#555' }}><strong>Endereço:</strong> {f['Endereço']}</p>
+          <p style={{ fontSize: '14px', color: '#555', marginBottom: '8px' }}><strong>Cidade:</strong> {f.cidade}</p>
+          <p style={{ fontSize: '14px', color: '#555', marginBottom: '8px' }}><strong>Estado:</strong> {f.estado}</p>
+          {f.bairro && <p style={{ fontSize: '14px', color: '#555', marginBottom: '8px' }}><strong>Bairro:</strong> {f.bairro}</p>}
+          {f.endereco && <p style={{ fontSize: '14px', color: '#555', marginBottom: '8px' }}><strong>Endereço:</strong> {f.endereco}</p>}
+          {f.cep && <p style={{ fontSize: '14px', color: '#555' }}><strong>CEP:</strong> {f.cep}</p>}
         </div>
+
         <div style={{ padding: '24px', border: '1px solid #eee', borderRadius: '12px' }}>
           <h2 style={{ fontSize: '16px', color: '#1E3A5F', marginBottom: '16px' }}>📞 Contato</h2>
-          <p style={{ fontSize: '14px', color: '#555', marginBottom: '8px' }}><strong>Telefone:</strong> {f['Telefone']}</p>
-          <p style={{ fontSize: '14px', color: '#555', marginBottom: '8px' }}><strong>Celular:</strong> {f['Celular']}</p>
-          <p style={{ fontSize: '14px', color: '#555', marginBottom: '8px' }}><strong>E-mail:</strong> {f['E-mail']}</p>
-          <p style={{ fontSize: '14px', color: '#555' }}><strong>CNPJ:</strong> {f['CNPJ']}</p>
+          {f.telefone && <p style={{ fontSize: '14px', color: '#555', marginBottom: '8px' }}><strong>Telefone:</strong> {f.telefone}</p>}
+          {f.celular && <p style={{ fontSize: '14px', color: '#555', marginBottom: '8px' }}><strong>Celular:</strong> {f.celular}</p>}
+          {f.whatsapp && <p style={{ fontSize: '14px', color: '#555', marginBottom: '8px' }}><strong>WhatsApp:</strong> {f.whatsapp}</p>}
+          {f.email && <p style={{ fontSize: '14px', color: '#555', marginBottom: '8px' }}><strong>E-mail:</strong> {f.email}</p>}
+          {f.cnpj && <p style={{ fontSize: '14px', color: '#555' }}><strong>CNPJ:</strong> {f.cnpj}</p>}
         </div>
+
         <div style={{ padding: '24px', border: '1px solid #eee', borderRadius: '12px' }}>
-          <h2 style={{ fontSize: '16px', color: '#1E3A5F', marginBottom: '16px' }}>🏭 Produção</h2>
-          <p style={{ fontSize: '14px', color: '#555', marginBottom: '8px' }}><strong>MOQ mínimo:</strong> {f['MOQ (mín. peças)'] || 'A consultar'}</p>
-          <p style={{ fontSize: '14px', color: '#555' }}><strong>Lead time:</strong> {f['Lead time (dias)'] ? `${f['Lead time (dias)']} dias` : 'A consultar'}</p>
+          <h2 style={{ fontSize: '16px', color: '#1E3A5F', marginBottom: '16px' }}>🏭 Capacidade produtiva</h2>
+          <p style={{ fontSize: '14px', color: '#555', marginBottom: '8px' }}><strong>Capacidade:</strong> {f.capacidade_produtiva || 'A consultar'}</p>
+          <p style={{ fontSize: '14px', color: '#555', marginBottom: '8px' }}><strong>MOQ mínimo:</strong> {f.moq || 'A consultar'}</p>
+          <p style={{ fontSize: '14px', color: '#555' }}><strong>Prazo médio:</strong> {f.prazo_medio_dias ? `${f.prazo_medio_dias} dias` : 'A consultar'}</p>
         </div>
+
         <div style={{ padding: '24px', border: '1px solid #eee', borderRadius: '12px' }}>
-          <h2 style={{ fontSize: '16px', color: '#1E3A5F', marginBottom: '16px' }}>⭐ Especialidades</h2>
-          <p style={{ fontSize: '14px', color: '#555' }}>{f['Especialidades'] || 'Não informado'}</p>
+          <h2 style={{ fontSize: '16px', color: '#1E3A5F', marginBottom: '16px' }}>⭐ Certificações</h2>
+          <p style={{ fontSize: '14px', color: '#555' }}>{f.certificacoes || 'Não informado'}</p>
         </div>
+
       </div>
 
+      {/* CTA */}
       <div style={{ padding: '30px', backgroundColor: '#1E3A5F', borderRadius: '16px', textAlign: 'center' }}>
-        <h2 style={{ color: 'white', fontSize: '20px', marginBottom: '8px' }}>Quer fazer negócio com {f['Nome']}?</h2>
-        <p style={{ color: '#aac4e0', marginBottom: '20px', fontSize: '14px' }}>Envie uma solicitação de cotação agora</p>
-        <button style={{ padding: '14px 32px', backgroundColor: 'white', color: '#1E3A5F', border: 'none', borderRadius: '8px', fontSize: '16px', fontWeight: '500', cursor: 'pointer' }}>
+        <h2 style={{ color: 'white', fontSize: '20px', marginBottom: '8px' }}>
+          Quer fazer negócio com {f.nome}?
+        </h2>
+        <p style={{ color: '#aac4e0', marginBottom: '20px', fontSize: '14px' }}>
+          Envie uma solicitação de cotação agora
+        </p>
+        <a href="/matching" style={{ display: 'inline-block', padding: '14px 32px', backgroundColor: 'white', color: '#1E3A5F', borderRadius: '8px', fontSize: '16px', fontWeight: 500, textDecoration: 'none' }}>
           Solicitar cotação
-        </button>
+        </a>
       </div>
 
     </main>

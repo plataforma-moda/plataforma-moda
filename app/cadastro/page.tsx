@@ -1,111 +1,250 @@
-export default function Home() {
-  const categorias = [
-    { id: 1, nome: 'Matéria-prima', icone: '🌱', subcategorias: ['Algodão', 'Fibras sintéticas', 'Aviamentos'] },
-    { id: 2, nome: 'Indústria Têxtil', icone: '🏭', subcategorias: ['Fiação', 'Tecelagem', 'Malharia', 'Beneficiamento'] },
-    { id: 3, nome: 'Confecção', icone: '👕', subcategorias: ['Modelagem', 'Corte', 'Costura', 'Acabamento'] },
-    { id: 4, nome: 'Desenvolvimento', icone: '✏️', subcategorias: ['Design', 'Produto', 'Engenharia Têxtil'] },
-    { id: 5, nome: 'Distribuição', icone: '🚚', subcategorias: ['Logística', 'Representantes', 'Atacado'] },
-    { id: 6, nome: 'Comercialização', icone: '🛍️', subcategorias: ['Marcas', 'E-commerce', 'Varejo físico'] },
-    { id: 7, nome: 'Serviços de apoio', icone: '⚙️', subcategorias: ['Marketing', 'Branding', 'Tecnologia', 'ERP / PLM', 'Fotografia'] },
-    { id: 8, nome: 'Ecossistema', icone: '🌐', subcategorias: ['Associações', 'Eventos'] },
-  ]
+'use client'
+
+import { useState, useEffect } from 'react'
+import { supabase } from '../../lib/supabase'
+
+const estados = ['AC','AL','AM','AP','BA','CE','DF','ES','GO','MA','MG','MS','MT','PA','PB','PE','PI','PR','RJ','RN','RO','RR','RS','SC','SE','SP','TO']
+
+type Category = { id: number; name: string }
+type Subcategory = { id: number; name: string; category_id: number }
+type Specialization = { id: number; name: string; subcategory_id: number }
+
+export default function Cadastro() {
+  const [categorias, setCategorias] = useState<Category[]>([])
+  const [subcategorias, setSubcategorias] = useState<Subcategory[]>([])
+  const [especializacoes, setEspecializacoes] = useState<Specialization[]>([])
+  const [subcatsFiltradas, setSubcatsFiltradas] = useState<Subcategory[]>([])
+  const [especsFiltradas, setEspecsFiltradas] = useState<Specialization[]>([])
+
+  const [form, setForm] = useState({
+    nome: '', razao_social: '', cnpj: '',
+    telefone: '', celular: '', whatsapp: '', email: '',
+    cep: '', endereco: '', bairro: '', cidade: '', estado: '',
+    category_id: '', subcategory_id: '', specialization_id: '',
+    categoria_nome: '', subcategoria_nome: '', especializacao_nome: '',
+    capacidade_produtiva: '', moq: '', prazo_medio_dias: '',
+    certificacoes: '', descricao: '',
+  })
+
+  const [enviando, setEnviando] = useState(false)
+  const [sucesso, setSucesso] = useState(false)
+  const [erro, setErro] = useState('')
+
+  useEffect(() => {
+    async function loadCategorias() {
+      const { data } = await supabase.from('categories').select('*').order('id')
+      if (data) setCategorias(data)
+    }
+    async function loadSubcategorias() {
+      const { data } = await supabase.from('subcategories').select('*').order('id')
+      if (data) setSubcategorias(data)
+    }
+    async function loadEspecializacoes() {
+      const { data } = await supabase.from('specializations').select('*').order('id')
+      if (data) setEspecializacoes(data)
+    }
+    loadCategorias()
+    loadSubcategorias()
+    loadEspecializacoes()
+  }, [])
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
+    const { name, value } = e.target
+
+    if (name === 'category_id') {
+      const cat = categorias.find(c => c.id === Number(value))
+      setSubcatsFiltradas(subcategorias.filter(s => s.category_id === Number(value)))
+      setEspecsFiltradas([])
+      setForm(prev => ({ ...prev, category_id: value, categoria_nome: cat?.name || '', subcategory_id: '', subcategoria_nome: '', specialization_id: '', especializacao_nome: '' }))
+      return
+    }
+
+    if (name === 'subcategory_id') {
+      const sub = subcategorias.find(s => s.id === Number(value))
+      setEspecsFiltradas(especializacoes.filter(e => e.subcategory_id === Number(value)))
+      setForm(prev => ({ ...prev, subcategory_id: value, subcategoria_nome: sub?.name || '', specialization_id: '', especializacao_nome: '' }))
+      return
+    }
+
+    if (name === 'specialization_id') {
+      const esp = especializacoes.find(e => e.id === Number(value))
+      setForm(prev => ({ ...prev, specialization_id: value, especializacao_nome: esp?.name || '' }))
+      return
+    }
+
+    setForm(prev => ({ ...prev, [name]: value }))
+  }
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    setEnviando(true)
+    setErro('')
+
+    const { error } = await supabase.from('fornecedores').insert([{
+      nome: form.nome,
+      razao_social: form.razao_social,
+      cnpj: form.cnpj,
+      telefone: form.telefone,
+      celular: form.celular,
+      whatsapp: form.whatsapp,
+      email: form.email,
+      cep: form.cep,
+      endereco: form.endereco,
+      bairro: form.bairro,
+      cidade: form.cidade,
+      estado: form.estado,
+      category_id: Number(form.category_id),
+      subcategory_id: Number(form.subcategory_id),
+      specialization_id: Number(form.specialization_id) || null,
+      categoria_nome: form.categoria_nome,
+      subcategoria_nome: form.subcategoria_nome,
+      especializacao_nome: form.especializacao_nome,
+      capacidade_produtiva: form.capacidade_produtiva,
+      moq: form.moq,
+      prazo_medio_dias: form.prazo_medio_dias,
+      certificacoes: form.certificacoes,
+      descricao: form.descricao,
+    }])
+
+    setEnviando(false)
+    if (error) {
+      setErro('Erro ao enviar cadastro. Tente novamente.')
+      console.error(error)
+    } else {
+      setSucesso(true)
+    }
+  }
+
+  const inp: React.CSSProperties = { width: '100%', padding: '10px 14px', fontSize: '14px', border: '1px solid #ddd', borderRadius: '8px', outline: 'none', marginTop: '6px', boxSizing: 'border-box' }
+  const lbl: React.CSSProperties = { fontSize: '13px', fontWeight: 500, color: '#1E3A5F', display: 'block' }
+  const sec: React.CSSProperties = { marginBottom: '24px', padding: '24px', border: '1px solid #eee', borderRadius: '12px', backgroundColor: '#f9f9f9' }
+  const tit: React.CSSProperties = { fontSize: '16px', fontWeight: 600, color: '#1E3A5F', marginBottom: '16px', paddingBottom: '10px', borderBottom: '1px solid #eee' }
+
+  if (sucesso) return (
+    <main style={{ fontFamily: 'Arial, sans-serif', maxWidth: '600px', margin: '0 auto', padding: '60px 20px', textAlign: 'center' }}>
+      <div style={{ fontSize: '48px', marginBottom: '20px' }}>✅</div>
+      <h1 style={{ fontSize: '26px', color: '#1E3A5F', marginBottom: '12px' }}>Cadastro realizado!</h1>
+      <p style={{ color: '#666', marginBottom: '10px' }}>
+        <strong>{form.nome}</strong> foi cadastrado com sucesso na categoria <strong>{form.categoria_nome} → {form.subcategoria_nome}</strong>.
+      </p>
+      <p style={{ color: '#888', fontSize: '14px', marginBottom: '30px' }}>
+        Seu perfil já está disponível no diretório para compradores de todo o Brasil.
+      </p>
+      <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
+        <a href="/fornecedores" style={{ padding: '12px 24px', backgroundColor: '#1E3A5F', color: 'white', borderRadius: '8px', textDecoration: 'none', fontSize: '14px' }}>Ver diretório</a>
+        <a href="/" style={{ padding: '12px 24px', border: '1px solid #1E3A5F', color: '#1E3A5F', borderRadius: '8px', textDecoration: 'none', fontSize: '14px' }}>Voltar para home</a>
+      </div>
+    </main>
+  )
 
   return (
-    <main style={{ fontFamily: 'Arial, sans-serif', maxWidth: '1200px', margin: '0 auto', padding: '20px' }}>
-
-      {/* Cabeçalho */}
-      <header style={{ textAlign: 'center', padding: '40px 0', borderBottom: '1px solid #eee' }}>
-        <h1 style={{ fontSize: '32px', color: '#1E3A5F', marginBottom: '10px' }}>
-          Plataforma Moda BR
-        </h1>
-        <p style={{ fontSize: '16px', color: '#666' }}>
-          O maior diretório da cadeia produtiva da moda no Brasil
-        </p>
+    <main style={{ fontFamily: 'Arial, sans-serif', maxWidth: '700px', margin: '0 auto', padding: '20px' }}>
+      <header style={{ padding: '30px 0', borderBottom: '1px solid #eee', marginBottom: '30px' }}>
+        <a href="/" style={{ color: '#888', fontSize: '14px', textDecoration: 'none' }}>← Voltar</a>
+        <h1 style={{ fontSize: '28px', color: '#1E3A5F', marginTop: '10px' }}>Cadastre sua empresa</h1>
+        <p style={{ color: '#666', marginTop: '6px' }}>Apareça para compradores de todo o Brasil — preencha com atenção</p>
       </header>
 
-      {/* Busca */}
-      <section style={{ padding: '30px 0', textAlign: 'center' }}>
-        <input
-          type="text"
-          placeholder="Buscar fornecedor, segmento ou cidade..."
-          style={{ width: '60%', padding: '14px 20px', fontSize: '16px', border: '2px solid #1E3A5F', borderRadius: '8px', outline: 'none' }}
-        />
-        <button style={{ marginLeft: '10px', padding: '14px 28px', backgroundColor: '#1E3A5F', color: 'white', border: 'none', borderRadius: '8px', fontSize: '16px', cursor: 'pointer' }}>
-          Buscar
+      <form onSubmit={handleSubmit}>
+
+        <div style={sec}>
+          <h2 style={tit}>1. Identificação</h2>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
+            <div><label style={lbl}>Nome fantasia *</label><input name="nome" value={form.nome} onChange={handleChange} required placeholder="Ex: Tecidos Silva" style={inp} /></div>
+            <div><label style={lbl}>Razão social</label><input name="razao_social" value={form.razao_social} onChange={handleChange} placeholder="Ex: Tecidos Silva Ltda" style={inp} /></div>
+          </div>
+          <div><label style={lbl}>CNPJ *</label><input name="cnpj" value={form.cnpj} onChange={handleChange} required placeholder="00.000.000/0000-00" style={{ ...inp, maxWidth: '260px' }} /></div>
+        </div>
+
+        <div style={sec}>
+          <h2 style={tit}>2. Categoria na cadeia produtiva</h2>
+          <p style={{ fontSize: '13px', color: '#888', marginBottom: '14px' }}>Selecione onde sua empresa atua na cadeia da moda. Isso define como os compradores vão te encontrar.</p>
+          <div style={{ marginBottom: '16px' }}>
+            <label style={lbl}>Categoria *</label>
+            <select name="category_id" value={form.category_id} onChange={handleChange} required style={inp}>
+              <option value="">Selecione a categoria...</option>
+              {categorias.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
+            </select>
+          </div>
+          <div style={{ marginBottom: '16px' }}>
+            <label style={lbl}>Subcategoria *</label>
+            <select name="subcategory_id" value={form.subcategory_id} onChange={handleChange} required style={inp} disabled={!form.category_id}>
+              <option value="">Selecione a categoria primeiro</option>
+              {subcatsFiltradas.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
+            </select>
+          </div>
+          <div>
+            <label style={lbl}>Especialização</label>
+            <select name="specialization_id" value={form.specialization_id} onChange={handleChange} style={inp} disabled={!form.subcategory_id}>
+              <option value="">Selecione a subcategoria primeiro</option>
+              {especsFiltradas.map(e => <option key={e.id} value={e.id}>{e.name}</option>)}
+            </select>
+          </div>
+        </div>
+
+        <div style={sec}>
+          <h2 style={tit}>3. Localização</h2>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '16px', marginBottom: '16px' }}>
+            <div>
+              <label style={lbl}>Estado *</label>
+              <select name="estado" value={form.estado} onChange={handleChange} required style={inp}>
+                <option value="">UF</option>
+                {estados.map(uf => <option key={uf} value={uf}>{uf}</option>)}
+              </select>
+            </div>
+            <div><label style={lbl}>Cidade *</label><input name="cidade" value={form.cidade} onChange={handleChange} required placeholder="Ex: São Paulo" style={inp} /></div>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+            <div><label style={lbl}>CEP</label><input name="cep" value={form.cep} onChange={handleChange} placeholder="00000-000" style={inp} /></div>
+            <div><label style={lbl}>Bairro</label><input name="bairro" value={form.bairro} onChange={handleChange} placeholder="Ex: Bom Retiro" style={inp} /></div>
+          </div>
+          <div style={{ marginTop: '16px' }}><label style={lbl}>Endereço</label><input name="endereco" value={form.endereco} onChange={handleChange} placeholder="Rua, número" style={inp} /></div>
+        </div>
+
+        <div style={sec}>
+          <h2 style={tit}>4. Contato</h2>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px' }}>
+            <div><label style={lbl}>Telefone *</label><input name="telefone" value={form.telefone} onChange={handleChange} required placeholder="(11) 0000-0000" style={inp} /></div>
+            <div><label style={lbl}>Celular</label><input name="celular" value={form.celular} onChange={handleChange} placeholder="(11) 00000-0000" style={inp} /></div>
+            <div><label style={lbl}>WhatsApp</label><input name="whatsapp" value={form.whatsapp} onChange={handleChange} placeholder="(11) 00000-0000" style={inp} /></div>
+          </div>
+          <div style={{ marginTop: '16px' }}><label style={lbl}>E-mail *</label><input name="email" type="email" value={form.email} onChange={handleChange} required placeholder="contato@empresa.com.br" style={{ ...inp, maxWidth: '340px' }} /></div>
+        </div>
+
+        <div style={sec}>
+          <h2 style={tit}>5. Capacidade produtiva</h2>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px' }}>
+            <div><label style={lbl}>Capacidade mensal</label><input name="capacidade_produtiva" value={form.capacidade_produtiva} onChange={handleChange} placeholder="Ex: 5.000 peças/mês" style={inp} /></div>
+            <div><label style={lbl}>MOQ mínimo</label><input name="moq" value={form.moq} onChange={handleChange} placeholder="Ex: 100 peças" style={inp} /></div>
+            <div><label style={lbl}>Prazo médio (dias)</label><input name="prazo_medio_dias" value={form.prazo_medio_dias} onChange={handleChange} placeholder="Ex: 30" style={inp} /></div>
+          </div>
+        </div>
+
+        <div style={sec}>
+          <h2 style={tit}>6. Diferenciais</h2>
+          <div style={{ marginBottom: '16px' }}>
+            <label style={lbl}>Descrição da empresa</label>
+            <textarea name="descricao" value={form.descricao} onChange={handleChange}
+              placeholder="Conte sobre sua empresa, produtos, diferenciais..."
+              style={{ ...inp, height: '100px', resize: 'vertical' }} />
+          </div>
+          <div><label style={lbl}>Certificações</label><input name="certificacoes" value={form.certificacoes} onChange={handleChange} placeholder="Ex: OEKO-TEX, ABNT, GOTS, ISO 9001" style={inp} /></div>
+          <div style={{ marginTop: '16px' }}>
+            <label style={lbl}>Portfólio</label>
+            <div style={{ border: '2px dashed #ddd', borderRadius: '8px', padding: '24px', textAlign: 'center', marginTop: '6px', backgroundColor: 'white' }}>
+              <p style={{ color: '#888', fontSize: '14px', margin: 0 }}>Upload de fotos em breve</p>
+              <p style={{ color: '#aaa', fontSize: '12px', margin: '4px 0 0' }}>Envie fotos do seu trabalho por e-mail após o cadastro</p>
+            </div>
+          </div>
+        </div>
+
+        {erro && <div style={{ padding: '12px', backgroundColor: '#FCEBEB', border: '1px solid #F09595', borderRadius: '8px', marginBottom: '16px', color: '#791F1F', fontSize: '14px' }}>{erro}</div>}
+
+        <button type="submit" disabled={enviando} style={{ width: '100%', padding: '16px', backgroundColor: enviando ? '#888' : '#1E3A5F', color: 'white', border: 'none', borderRadius: '8px', fontSize: '16px', fontWeight: 500, cursor: enviando ? 'not-allowed' : 'pointer', marginBottom: '40px' }}>
+          {enviando ? 'Cadastrando...' : 'Cadastrar minha empresa'}
         </button>
-      </section>
 
-      {/* Categorias */}
-      <section style={{ marginBottom: '50px' }}>
-        <h2 style={{ fontSize: '22px', color: '#1E3A5F', marginBottom: '6px' }}>Cadeia produtiva da moda</h2>
-        <p style={{ color: '#888', fontSize: '14px', marginBottom: '24px' }}>Da fibra ao varejo — encontre fornecedores em cada elo da cadeia</p>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px' }}>
-          {categorias.map((cat) => (
-            <a key={cat.id} href="/fornecedores" style={{ textDecoration: 'none' }}>
-              <div style={{ padding: '20px', border: '1px solid #eee', borderRadius: '12px', backgroundColor: '#f9f9f9', cursor: 'pointer', height: '100%' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
-                  <span style={{ width: '24px', height: '24px', backgroundColor: '#1E3A5F', color: 'white', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', fontWeight: '600', flexShrink: 0 }}>
-                    {cat.id}
-                  </span>
-                  <span style={{ fontSize: '20px' }}>{cat.icone}</span>
-                </div>
-                <div style={{ fontWeight: '600', color: '#1E3A5F', fontSize: '15px', marginBottom: '10px' }}>{cat.nome}</div>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
-                  {cat.subcategorias.map((sub) => (
-                    <span key={sub} style={{ fontSize: '11px', backgroundColor: '#E6F1FB', color: '#0C447C', padding: '2px 8px', borderRadius: '20px' }}>
-                      {sub}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </a>
-          ))}
-        </div>
-      </section>
-
-      {/* CTA — Fornecedor e Comprador */}
-      <section style={{ textAlign: 'center', padding: '40px', backgroundColor: '#1E3A5F', borderRadius: '16px', marginBottom: '20px' }}>
-        <h2 style={{ color: 'white', fontSize: '24px', marginBottom: '10px' }}>
-          Faça parte da maior rede de moda B2B do Brasil
-        </h2>
-        <p style={{ color: '#aac4e0', marginBottom: '30px' }}>
-          Conectamos fornecedores e compradores de todo o país
-        </p>
-        <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <div style={{ textAlign: 'center' }}>
-            <p style={{ color: '#aac4e0', fontSize: '13px', marginBottom: '10px' }}>Vende para marcas e lojistas?</p>
-            <a href="/cadastro" style={{
-              display: 'inline-block',
-              padding: '14px 28px',
-              backgroundColor: 'white',
-              color: '#1E3A5F',
-              borderRadius: '8px',
-              fontSize: '15px',
-              fontWeight: 500,
-              textDecoration: 'none'
-            }}>
-              Sou fornecedor
-            </a>
-          </div>
-          <div style={{ textAlign: 'center' }}>
-            <p style={{ color: '#aac4e0', fontSize: '13px', marginBottom: '10px' }}>Busca fornecedores para seu negócio?</p>
-            <a href="/clientes" style={{
-              display: 'inline-block',
-              padding: '14px 28px',
-              backgroundColor: 'transparent',
-              color: 'white',
-              border: '2px solid white',
-              borderRadius: '8px',
-              fontSize: '15px',
-              fontWeight: 500,
-              textDecoration: 'none'
-            }}>
-              Sou comprador
-            </a>
-          </div>
-        </div>
-      </section>
-
+      </form>
     </main>
   )
 }
