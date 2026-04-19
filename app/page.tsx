@@ -40,9 +40,9 @@ export default async function Home() {
       <section style={{ padding: '30px 0', textAlign: 'center' }}>
         <input type="text" placeholder="Buscar fornecedor, segmento ou cidade..."
           style={{ width: '60%', padding: '14px 20px', fontSize: '16px', border: '2px solid #1E3A5F', borderRadius: '8px', outline: 'none' }} />
-        <button style={{ marginLeft: '10px', padding: '14px 28px', backgroundColor: '#1E3A5F', color: 'white', border: 'none', borderRadius: '8px', fontSize: '16px', cursor: 'pointer' }}>
+        <a href="/matching" style={{ marginLeft: '10px', padding: '14px 28px', backgroundColor: '#1E3A5F', color: 'white', border: 'none', borderRadius: '8px', fontSize: '16px', cursor: 'pointer', textDecoration: 'none', display: 'inline-block' }}>
           Buscar
-        </button>
+        </a>
       </section>
 
       <section style={{ marginBottom: '50px' }}>
