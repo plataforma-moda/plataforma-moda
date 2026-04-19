@@ -1,16 +1,69 @@
 export default function Home() {
+  const categorias = [
+    {
+      id: 1,
+      nome: 'Matéria-prima',
+      icone: '🌱',
+      subcategorias: ['Algodão', 'Fibras sintéticas', 'Aviamentos'],
+    },
+    {
+      id: 2,
+      nome: 'Indústria Têxtil',
+      icone: '🏭',
+      subcategorias: ['Fiação', 'Tecelagem', 'Malharia', 'Beneficiamento'],
+    },
+    {
+      id: 3,
+      nome: 'Confecção',
+      icone: '👕',
+      subcategorias: ['Modelagem', 'Corte', 'Costura', 'Acabamento'],
+    },
+    {
+      id: 4,
+      nome: 'Desenvolvimento',
+      icone: '✏️',
+      subcategorias: ['Design', 'Produto', 'Engenharia Têxtil'],
+    },
+    {
+      id: 5,
+      nome: 'Distribuição',
+      icone: '🚚',
+      subcategorias: ['Logística', 'Representantes', 'Atacado'],
+    },
+    {
+      id: 6,
+      nome: 'Comercialização',
+      icone: '🛍️',
+      subcategorias: ['Marcas', 'E-commerce', 'Varejo físico'],
+    },
+    {
+      id: 7,
+      nome: 'Serviços de apoio',
+      icone: '⚙️',
+      subcategorias: ['Marketing', 'Branding', 'Tecnologia', 'ERP / PLM', 'Fotografia'],
+    },
+    {
+      id: 8,
+      nome: 'Ecossistema',
+      icone: '🌐',
+      subcategorias: ['Associações', 'Eventos'],
+    },
+  ]
+
   return (
     <main style={{ fontFamily: 'Arial, sans-serif', maxWidth: '1200px', margin: '0 auto', padding: '20px' }}>
-      
+
+      {/* Cabeçalho */}
       <header style={{ textAlign: 'center', padding: '40px 0', borderBottom: '1px solid #eee' }}>
         <h1 style={{ fontSize: '32px', color: '#1E3A5F', marginBottom: '10px' }}>
           Plataforma Moda BR
         </h1>
         <p style={{ fontSize: '16px', color: '#666' }}>
-          O maior diretório de fornecedores da cadeia produtiva da moda no Brasil
+          O maior diretório da cadeia produtiva da moda no Brasil
         </p>
       </header>
 
+      {/* Busca */}
       <section style={{ padding: '30px 0', textAlign: 'center' }}>
         <input
           type="text"
@@ -38,40 +91,80 @@ export default function Home() {
         </button>
       </section>
 
-      <section>
-        <h2 style={{ fontSize: '22px', color: '#1E3A5F', marginBottom: '20px' }}>
-          Categorias
+      {/* Cadeia produtiva */}
+      <section style={{ marginBottom: '50px' }}>
+        <h2 style={{ fontSize: '22px', color: '#1E3A5F', marginBottom: '6px' }}>
+          Cadeia produtiva da moda
         </h2>
+        <p style={{ color: '#888', fontSize: '14px', marginBottom: '24px' }}>
+          Da fibra ao varejo — encontre fornecedores em cada elo da cadeia
+        </p>
+
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px' }}>
-          {[
-            { nome: 'Tecidos e Malhas', total: 36, icone: '🧶' },
-            { nome: 'Aviamentos', total: 18, icone: '🪡' },
-            { nome: 'Confecção', total: 15, icone: '👕' },
-            { nome: 'Estamparia', total: 5, icone: '🎨' },
-            { nome: 'Embalagens e Tags', total: 8, icone: '📦' },
-            { nome: 'Bordado e Aplicações', total: 3, icone: '🧵' },
-            { nome: 'Acessórios', total: 14, icone: '👜' },
-            { nome: 'Indústria Têxtil', total: 7, icone: '🏭' },
-          ].map((cat) => (
-            <a key={cat.nome} href="/fornecedores" style={{ textDecoration: 'none' }}>
+          {categorias.map((cat) => (
+            <a key={cat.id} href="/fornecedores" style={{ textDecoration: 'none' }}>
               <div style={{
                 padding: '20px',
                 border: '1px solid #eee',
                 borderRadius: '12px',
-                textAlign: 'center',
+                backgroundColor: '#f9f9f9',
                 cursor: 'pointer',
-                backgroundColor: '#f9f9f9'
+                transition: 'all 0.2s',
+                height: '100%'
               }}>
-                <div style={{ fontSize: '28px', marginBottom: '8px' }}>{cat.icone}</div>
-                <div style={{ fontWeight: '500', color: '#1E3A5F', marginBottom: '4px' }}>{cat.nome}</div>
-                <div style={{ fontSize: '13px', color: '#888' }}>{cat.total} fornecedores</div>
+                {/* Número e ícone */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
+                  <span style={{
+                    width: '24px',
+                    height: '24px',
+                    backgroundColor: '#1E3A5F',
+                    color: 'white',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '12px',
+                    fontWeight: '600',
+                    flexShrink: 0
+                  }}>
+                    {cat.id}
+                  </span>
+                  <span style={{ fontSize: '20px' }}>{cat.icone}</span>
+                </div>
+
+                {/* Nome */}
+                <div style={{ fontWeight: '600', color: '#1E3A5F', fontSize: '15px', marginBottom: '10px' }}>
+                  {cat.nome}
+                </div>
+
+                {/* Subcategorias */}
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
+                  {cat.subcategorias.map((sub) => (
+                    <span key={sub} style={{
+                      fontSize: '11px',
+                      backgroundColor: '#E6F1FB',
+                      color: '#0C447C',
+                      padding: '2px 8px',
+                      borderRadius: '20px'
+                    }}>
+                      {sub}
+                    </span>
+                  ))}
+                </div>
               </div>
             </a>
           ))}
         </div>
       </section>
 
-      <section style={{ textAlign: 'center', marginTop: '50px', padding: '40px', backgroundColor: '#1E3A5F', borderRadius: '16px' }}>
+      {/* CTA fornecedor */}
+      <section style={{
+        textAlign: 'center',
+        padding: '40px',
+        backgroundColor: '#1E3A5F',
+        borderRadius: '16px',
+        marginBottom: '20px'
+      }}>
         <h2 style={{ color: 'white', fontSize: '24px', marginBottom: '10px' }}>
           É fornecedor? Cadastre sua empresa
         </h2>
