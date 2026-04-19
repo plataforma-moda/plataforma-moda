@@ -20,7 +20,6 @@ export default async function PerfilFornecedor({ params }: any) {
         <a href="/fornecedores" style={{ color: '#888', fontSize: '14px', textDecoration: 'none' }}>← Voltar para fornecedores</a>
       </header>
 
-      {/* Cabeçalho do perfil */}
       <div style={{ padding: '30px', border: '1px solid #eee', borderRadius: '16px', marginBottom: '20px', backgroundColor: '#f9f9f9' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '12px' }}>
           <div>
@@ -50,7 +49,6 @@ export default async function PerfilFornecedor({ params }: any) {
         </div>
       </div>
 
-      {/* Descrição */}
       {f.descricao && (
         <div style={{ padding: '24px', border: '1px solid #eee', borderRadius: '12px', marginBottom: '20px' }}>
           <h2 style={{ fontSize: '16px', color: '#1E3A5F', marginBottom: '12px' }}>Sobre a empresa</h2>
@@ -62,8 +60,8 @@ export default async function PerfilFornecedor({ params }: any) {
 
         <div style={{ padding: '24px', border: '1px solid #eee', borderRadius: '12px' }}>
           <h2 style={{ fontSize: '16px', color: '#1E3A5F', marginBottom: '16px' }}>📍 Localização</h2>
-          <p style={{ fontSize: '14px', color: '#555', marginBottom: '8px' }}><strong>Cidade:</strong> {f.cidade}</p>
-          <p style={{ fontSize: '14px', color: '#555', marginBottom: '8px' }}><strong>Estado:</strong> {f.estado}</p>
+          {f.cidade && <p style={{ fontSize: '14px', color: '#555', marginBottom: '8px' }}><strong>Cidade:</strong> {f.cidade}</p>}
+          {f.estado && <p style={{ fontSize: '14px', color: '#555', marginBottom: '8px' }}><strong>Estado:</strong> {f.estado}</p>}
           {f.bairro && <p style={{ fontSize: '14px', color: '#555', marginBottom: '8px' }}><strong>Bairro:</strong> {f.bairro}</p>}
           {f.endereco && <p style={{ fontSize: '14px', color: '#555', marginBottom: '8px' }}><strong>Endereço:</strong> {f.endereco}</p>}
           {f.cep && <p style={{ fontSize: '14px', color: '#555' }}><strong>CEP:</strong> {f.cep}</p>}
@@ -81,27 +79,26 @@ export default async function PerfilFornecedor({ params }: any) {
         <div style={{ padding: '24px', border: '1px solid #eee', borderRadius: '12px' }}>
           <h2 style={{ fontSize: '16px', color: '#1E3A5F', marginBottom: '16px' }}>🏭 Capacidade produtiva</h2>
           <p style={{ fontSize: '14px', color: '#555', marginBottom: '8px' }}><strong>Capacidade:</strong> {f.capacidade_produtiva || 'A consultar'}</p>
-          <p style={{ fontSize: '14px', color: '#555', marginBottom: '8px' }}><strong>MOQ mínimo:</strong> {f.moq || 'A consultar'}</p>
-          <p style={{ fontSize: '14px', color: '#555' }}><strong>Prazo médio:</strong> {f.prazo_medio_dias ? `${f.prazo_medio_dias} dias` : 'A consultar'}</p>
+          <p style={{ fontSize: '14px', color: '#555', marginBottom: '8px' }}><strong>MOQ minimo:</strong> {f.moq || 'A consultar'}</p>
+          <p style={{ fontSize: '14px', color: '#555' }}><strong>Prazo medio:</strong> {f.prazo_medio_dias ? `${f.prazo_medio_dias} dias` : 'A consultar'}</p>
         </div>
 
         <div style={{ padding: '24px', border: '1px solid #eee', borderRadius: '12px' }}>
-          <h2 style={{ fontSize: '16px', color: '#1E3A5F', marginBottom: '16px' }}>⭐ Certificações</h2>
-          <p style={{ fontSize: '14px', color: '#555' }}>{f.certificacoes || 'Não informado'}</p>
+          <h2 style={{ fontSize: '16px', color: '#1E3A5F', marginBottom: '16px' }}>⭐ Certificacoes</h2>
+          <p style={{ fontSize: '14px', color: '#555' }}>{f.certificacoes || 'Nao informado'}</p>
         </div>
 
       </div>
 
-      {/* CTA */}
       <div style={{ padding: '30px', backgroundColor: '#1E3A5F', borderRadius: '16px', textAlign: 'center' }}>
         <h2 style={{ color: 'white', fontSize: '20px', marginBottom: '8px' }}>
-          Quer fazer negócio com {f.nome}?
+          Quer fazer negocio com {f.nome}?
         </h2>
         <p style={{ color: '#aac4e0', marginBottom: '20px', fontSize: '14px' }}>
-          Envie uma solicitação de cotação agora
+          Envie uma solicitacao de cotacao agora
         </p>
         <a href="/matching" style={{ display: 'inline-block', padding: '14px 32px', backgroundColor: 'white', color: '#1E3A5F', borderRadius: '8px', fontSize: '16px', fontWeight: 500, textDecoration: 'none' }}>
-          Solicitar cotação
+          Solicitar cotacao
         </a>
       </div>
 
