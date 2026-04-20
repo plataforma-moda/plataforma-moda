@@ -70,10 +70,7 @@ export default async function Home() {
 
       <section style={{ backgroundColor: '#2C5282', padding: '24px 40px' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', justifyContent: 'center', gap: '60px', flexWrap: 'wrap' }}>
-          <div style={{ textAlign: 'center' }}>
-            <div style={{ fontSize: '32px', fontWeight: 700, color: 'white' }}>{totalFornecedores || 0}</div>
-            <div style={{ fontSize: '13px', color: '#93C5FD' }}>Fornecedores cadastrados</div>
-          </div>
+          
           <div style={{ textAlign: 'center' }}>
             <div style={{ fontSize: '32px', fontWeight: 700, color: 'white' }}>15</div>
             <div style={{ fontSize: '13px', color: '#93C5FD' }}>Elos da cadeia produtiva</div>
@@ -123,7 +120,7 @@ export default async function Home() {
       </section>
 
       <section style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px 40px' }}>
-        <div style={{ backgroundColor: 'white', border: '1px solid #E2E8F0', borderRadius: '16px', padding: '48px 40px', textAlign: 'center' }}>
+        <div style={{ backgroundColor: 'white', border: '1px solid #E2E8F0', borderRadius: '16px', padding: '6px 40px', textAlign: 'center' }}>
           <div style={{ maxWidth: '640px', margin: '0 auto' }}>
             <div style={{ display: 'inline-block', backgroundColor: '#EFF6FF', color: '#1E40AF', padding: '6px 16px', borderRadius: '20px', fontSize: '12px', fontWeight: 500, marginBottom: '24px' }}>
               Infraestrutura de Dados da Cadeia Produtiva da Moda Brasileira
