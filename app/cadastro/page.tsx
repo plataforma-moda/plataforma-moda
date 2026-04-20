@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState, useEffect } from 'react'
 import { supabase } from '../../lib/supabase'
@@ -27,30 +27,22 @@ export default function Cadastro() {
   })
 
   const [enviando, setEnviando] = useState(false)
-  const [sucesso, setSucesso] = useState(false)
   const [erro, setErro] = useState('')
 
   useEffect(() => {
-    async function loadCategorias() {
-      const { data } = await supabase.from('categories').select('*').order('id')
-      if (data) setCategorias(data)
+    async function load() {
+      const { data: cats } = await supabase.from('categories').select('*').order('id')
+      const { data: subs } = await supabase.from('subcategories').select('*').order('id')
+      const { data: esps } = await supabase.from('specializations').select('*').order('id')
+      if (cats) setCategorias(cats)
+      if (subs) setSubcategorias(subs)
+      if (esps) setEspecializacoes(esps)
     }
-    async function loadSubcategorias() {
-      const { data } = await supabase.from('subcategories').select('*').order('id')
-      if (data) setSubcategorias(data)
-    }
-    async function loadEspecializacoes() {
-      const { data } = await supabase.from('specializations').select('*').order('id')
-      if (data) setEspecializacoes(data)
-    }
-    loadCategorias()
-    loadSubcategorias()
-    loadEspecializacoes()
+    load()
   }, [])
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
     const { name, value } = e.target
-
     if (name === 'category_id') {
       const cat = categorias.find(c => c.id === Number(value))
       setSubcatsFiltradas(subcategorias.filter(s => s.category_id === Number(value)))
@@ -58,20 +50,17 @@ export default function Cadastro() {
       setForm(prev => ({ ...prev, category_id: value, categoria_nome: cat?.name || '', subcategory_id: '', subcategoria_nome: '', specialization_id: '', especializacao_nome: '' }))
       return
     }
-
     if (name === 'subcategory_id') {
       const sub = subcategorias.find(s => s.id === Number(value))
       setEspecsFiltradas(especializacoes.filter(e => e.subcategory_id === Number(value)))
       setForm(prev => ({ ...prev, subcategory_id: value, subcategoria_nome: sub?.name || '', specialization_id: '', especializacao_nome: '' }))
       return
     }
-
     if (name === 'specialization_id') {
       const esp = especializacoes.find(e => e.id === Number(value))
       setForm(prev => ({ ...prev, specialization_id: value, especializacao_nome: esp?.name || '' }))
       return
     }
-
     setForm(prev => ({ ...prev, [name]: value }))
   }
 
@@ -80,7 +69,7 @@ export default function Cadastro() {
     setEnviando(true)
     setErro('')
 
-    const { error } = await supabase.from('fornecedores').insert([{
+    const { data, error } = await supabase.from('fornecedores').insert([{
       nome: form.nome,
       razao_social: form.razao_social,
       cnpj: form.cnpj,
@@ -104,14 +93,15 @@ export default function Cadastro() {
       prazo_medio_dias: form.prazo_medio_dias,
       certificacoes: form.certificacoes,
       descricao: form.descricao,
-    }])
+      status: 'ativo',
+    }]).select()
 
     setEnviando(false)
     if (error) {
       setErro('Erro ao enviar cadastro. Tente novamente.')
       console.error(error)
-    } else {
-      setSucesso(true)
+    } else if (data && data[0]) {
+      window.location.href = `/planos?id=${data[0].id}`
     }
   }
 
@@ -120,45 +110,28 @@ export default function Cadastro() {
   const sec: React.CSSProperties = { marginBottom: '24px', padding: '24px', border: '1px solid #eee', borderRadius: '12px', backgroundColor: '#f9f9f9' }
   const tit: React.CSSProperties = { fontSize: '16px', fontWeight: 600, color: '#1E3A5F', marginBottom: '16px', paddingBottom: '10px', borderBottom: '1px solid #eee' }
 
-  if (sucesso) return (
-    <main style={{ fontFamily: 'Arial, sans-serif', maxWidth: '600px', margin: '0 auto', padding: '60px 20px', textAlign: 'center' }}>
-      <div style={{ fontSize: '48px', marginBottom: '20px' }}>✅</div>
-      <h1 style={{ fontSize: '26px', color: '#1E3A5F', marginBottom: '12px' }}>Cadastro realizado!</h1>
-      <p style={{ color: '#666', marginBottom: '10px' }}>
-        <strong>{form.nome}</strong> foi cadastrado com sucesso na categoria <strong>{form.categoria_nome} → {form.subcategoria_nome}</strong>.
-      </p>
-      <p style={{ color: '#888', fontSize: '14px', marginBottom: '30px' }}>
-        Seu perfil já está disponível no diretório para compradores de todo o Brasil.
-      </p>
-      <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
-        <a href="/fornecedores" style={{ padding: '12px 24px', backgroundColor: '#1E3A5F', color: 'white', borderRadius: '8px', textDecoration: 'none', fontSize: '14px' }}>Ver diretório</a>
-        <a href="/" style={{ padding: '12px 24px', border: '1px solid #1E3A5F', color: '#1E3A5F', borderRadius: '8px', textDecoration: 'none', fontSize: '14px' }}>Voltar para home</a>
-      </div>
-    </main>
-  )
-
   return (
     <main style={{ fontFamily: 'Arial, sans-serif', maxWidth: '700px', margin: '0 auto', padding: '20px' }}>
       <header style={{ padding: '30px 0', borderBottom: '1px solid #eee', marginBottom: '30px' }}>
-        <a href="/" style={{ color: '#888', fontSize: '14px', textDecoration: 'none' }}>← Voltar</a>
+        <a href="/" style={{ color: '#888', fontSize: '14px', textDecoration: 'none' }}>Voltar</a>
         <h1 style={{ fontSize: '28px', color: '#1E3A5F', marginTop: '10px' }}>Cadastre sua empresa</h1>
-        <p style={{ color: '#666', marginTop: '6px' }}>Apareça para compradores de todo o Brasil — preencha com atenção</p>
+        <p style={{ color: '#666', marginTop: '6px' }}>Apareca para compradores de todo o Brasil</p>
       </header>
 
       <form onSubmit={handleSubmit}>
 
         <div style={sec}>
-          <h2 style={tit}>1. Identificação</h2>
+          <h2 style={tit}>1. Identificacao</h2>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
             <div><label style={lbl}>Nome fantasia *</label><input name="nome" value={form.nome} onChange={handleChange} required placeholder="Ex: Tecidos Silva" style={inp} /></div>
-            <div><label style={lbl}>Razão social</label><input name="razao_social" value={form.razao_social} onChange={handleChange} placeholder="Ex: Tecidos Silva Ltda" style={inp} /></div>
+            <div><label style={lbl}>Razao social</label><input name="razao_social" value={form.razao_social} onChange={handleChange} placeholder="Ex: Tecidos Silva Ltda" style={inp} /></div>
           </div>
           <div><label style={lbl}>CNPJ *</label><input name="cnpj" value={form.cnpj} onChange={handleChange} required placeholder="00.000.000/0000-00" style={{ ...inp, maxWidth: '260px' }} /></div>
         </div>
 
         <div style={sec}>
           <h2 style={tit}>2. Categoria na cadeia produtiva</h2>
-          <p style={{ fontSize: '13px', color: '#888', marginBottom: '14px' }}>Selecione onde sua empresa atua na cadeia da moda. Isso define como os compradores vão te encontrar.</p>
+          <p style={{ fontSize: '13px', color: '#888', marginBottom: '14px' }}>Selecione onde sua empresa atua na cadeia da moda.</p>
           <div style={{ marginBottom: '16px' }}>
             <label style={lbl}>Categoria *</label>
             <select name="category_id" value={form.category_id} onChange={handleChange} required style={inp}>
@@ -174,7 +147,7 @@ export default function Cadastro() {
             </select>
           </div>
           <div>
-            <label style={lbl}>Especialização</label>
+            <label style={lbl}>Especializacao</label>
             <select name="specialization_id" value={form.specialization_id} onChange={handleChange} style={inp} disabled={!form.subcategory_id}>
               <option value="">Selecione a subcategoria primeiro</option>
               {especsFiltradas.map(e => <option key={e.id} value={e.id}>{e.name}</option>)}
@@ -183,7 +156,7 @@ export default function Cadastro() {
         </div>
 
         <div style={sec}>
-          <h2 style={tit}>3. Localização</h2>
+          <h2 style={tit}>3. Localizacao</h2>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '16px', marginBottom: '16px' }}>
             <div>
               <label style={lbl}>Estado *</label>
@@ -192,13 +165,13 @@ export default function Cadastro() {
                 {estados.map(uf => <option key={uf} value={uf}>{uf}</option>)}
               </select>
             </div>
-            <div><label style={lbl}>Cidade *</label><input name="cidade" value={form.cidade} onChange={handleChange} required placeholder="Ex: São Paulo" style={inp} /></div>
+            <div><label style={lbl}>Cidade *</label><input name="cidade" value={form.cidade} onChange={handleChange} required placeholder="Ex: Sao Paulo" style={inp} /></div>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
             <div><label style={lbl}>CEP</label><input name="cep" value={form.cep} onChange={handleChange} placeholder="00000-000" style={inp} /></div>
             <div><label style={lbl}>Bairro</label><input name="bairro" value={form.bairro} onChange={handleChange} placeholder="Ex: Bom Retiro" style={inp} /></div>
           </div>
-          <div style={{ marginTop: '16px' }}><label style={lbl}>Endereço</label><input name="endereco" value={form.endereco} onChange={handleChange} placeholder="Rua, número" style={inp} /></div>
+          <div style={{ marginTop: '16px' }}><label style={lbl}>Endereco</label><input name="endereco" value={form.endereco} onChange={handleChange} placeholder="Rua, numero" style={inp} /></div>
         </div>
 
         <div style={sec}>
@@ -214,26 +187,26 @@ export default function Cadastro() {
         <div style={sec}>
           <h2 style={tit}>5. Capacidade produtiva</h2>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px' }}>
-            <div><label style={lbl}>Capacidade mensal</label><input name="capacidade_produtiva" value={form.capacidade_produtiva} onChange={handleChange} placeholder="Ex: 5.000 peças/mês" style={inp} /></div>
-            <div><label style={lbl}>MOQ mínimo</label><input name="moq" value={form.moq} onChange={handleChange} placeholder="Ex: 100 peças" style={inp} /></div>
-            <div><label style={lbl}>Prazo médio (dias)</label><input name="prazo_medio_dias" value={form.prazo_medio_dias} onChange={handleChange} placeholder="Ex: 30" style={inp} /></div>
+            <div><label style={lbl}>Capacidade mensal</label><input name="capacidade_produtiva" value={form.capacidade_produtiva} onChange={handleChange} placeholder="Ex: 5.000 pecas/mes" style={inp} /></div>
+            <div><label style={lbl}>MOQ minimo</label><input name="moq" value={form.moq} onChange={handleChange} placeholder="Ex: 100 pecas" style={inp} /></div>
+            <div><label style={lbl}>Prazo medio (dias)</label><input name="prazo_medio_dias" value={form.prazo_medio_dias} onChange={handleChange} placeholder="Ex: 30" style={inp} /></div>
           </div>
         </div>
 
         <div style={sec}>
           <h2 style={tit}>6. Diferenciais</h2>
           <div style={{ marginBottom: '16px' }}>
-            <label style={lbl}>Descrição da empresa</label>
+            <label style={lbl}>Descricao da empresa</label>
             <textarea name="descricao" value={form.descricao} onChange={handleChange}
               placeholder="Conte sobre sua empresa, produtos, diferenciais..."
               style={{ ...inp, height: '100px', resize: 'vertical' }} />
           </div>
-          <div><label style={lbl}>Certificações</label><input name="certificacoes" value={form.certificacoes} onChange={handleChange} placeholder="Ex: OEKO-TEX, ABNT, GOTS, ISO 9001" style={inp} /></div>
+          <div><label style={lbl}>Certificacoes</label><input name="certificacoes" value={form.certificacoes} onChange={handleChange} placeholder="Ex: OEKO-TEX, ABNT, GOTS, ISO 9001" style={inp} /></div>
           <div style={{ marginTop: '16px' }}>
-            <label style={lbl}>Portfólio</label>
+            <label style={lbl}>Portfolio</label>
             <div style={{ border: '2px dashed #ddd', borderRadius: '8px', padding: '24px', textAlign: 'center', marginTop: '6px', backgroundColor: 'white' }}>
               <p style={{ color: '#888', fontSize: '14px', margin: 0 }}>Upload de fotos em breve</p>
-              <p style={{ color: '#aaa', fontSize: '12px', margin: '4px 0 0' }}>Envie fotos do seu trabalho por e-mail após o cadastro</p>
+              <p style={{ color: '#aaa', fontSize: '12px', margin: '4px 0 0' }}>Envie fotos do seu trabalho por e-mail apos o cadastro</p>
             </div>
           </div>
         </div>
