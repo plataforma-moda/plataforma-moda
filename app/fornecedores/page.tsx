@@ -6,101 +6,124 @@ export default async function Fornecedores() {
     .select('*')
     .order('nome', { ascending: true })
 
-  if (error) {
-    console.error(error)
-    return <p>Erro ao carregar fornecedores.</p>
-  }
+  const { data: categorias } = await supabase
+    .from('categories')
+    .select('*')
+    .order('id')
 
   return (
-    <main style={{ fontFamily: 'Arial, sans-serif', maxWidth: '1200px', margin: '0 auto', padding: '20px' }}>
+    <main style={{ fontFamily: 'Arial, sans-serif', backgroundColor: '#F8FAFC', minHeight: '100vh' }}>
 
-      <header style={{ padding: '30px 0', borderBottom: '1px solid #eee', marginBottom: '30px' }}>
-        <a href="/" style={{ color: '#888', fontSize: '14px', textDecoration: 'none' }}>← Voltar</a>
-        <h1 style={{ fontSize: '28px', color: '#1E3A5F', marginTop: '10px' }}>Fornecedores</h1>
-        <p style={{ color: '#666' }}>{fornecedores?.length} fornecedores cadastrados</p>
-      </header>
+      {/* Navbar */}
+      <nav style={{ backgroundColor: '#1E3A5F', padding: '0 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '64px' }}>
+        <a href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
+          <div style={{ width: '32px', height: '32px', backgroundColor: '#3B82F6', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, color: 'white', fontSize: '14px' }}>S</div>
+          <div>
+            <div style={{ color: 'white', fontWeight: 700, fontSize: '15px', lineHeight: 1 }}>SNM</div>
+            <div style={{ color: '#93C5FD', fontSize: '10px', lineHeight: 1 }}>Sistema Nacional da Moda</div>
+          </div>
+        </a>
+        <a href="/matching" style={{ backgroundColor: '#3B82F6', color: 'white', padding: '8px 18px', borderRadius: '6px', fontSize: '13px', fontWeight: 500, textDecoration: 'none' }}>
+          Buscar fornecedor
+        </a>
+      </nav>
 
-      <div style={{ display: 'flex', gap: '12px', marginBottom: '30px', flexWrap: 'wrap' }}>
-        <select style={{ padding: '10px 16px', border: '1px solid #ddd', borderRadius: '8px', fontSize: '14px' }}>
-          <option>Todas as categorias</option>
-          <option>Materia-prima</option>
-          <option>Industria Textil</option>
-          <option>Confeccao</option>
-          <option>Desenvolvimento</option>
-          <option>Distribuicao</option>
-          <option>Comercializacao</option>
-          <option>Servicos de apoio</option>
-          <option>Ecossistema</option>
-        </select>
-        <select style={{ padding: '10px 16px', border: '1px solid #ddd', borderRadius: '8px', fontSize: '14px' }}>
-          <option>Todos os estados</option>
-          <option>SP</option>
-          <option>SC</option>
-          <option>PR</option>
-          <option>MG</option>
-          <option>RS</option>
-          <option>RJ</option>
-        </select>
-      </div>
+      {/* Header */}
+      <section style={{ backgroundColor: '#1E3A5F', padding: '40px', textAlign: 'center' }}>
+        <h1 style={{ fontSize: '32px', fontWeight: 700, color: 'white', marginBottom: '8px' }}>Diretorio de Fornecedores</h1>
+        <p style={{ color: '#93C5FD', fontSize: '15px' }}>{fornecedores?.length || 0} empresas cadastradas na cadeia produtiva</p>
+      </section>
 
-      <div style={{ display: 'grid', gap: '16px' }}>
-        {fornecedores?.length === 0 && (
-          <div style={{ textAlign: 'center', padding: '60px', color: '#888' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '40px' }}>
+
+        {/* Filtros */}
+        <div style={{ backgroundColor: 'white', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '20px', marginBottom: '24px', display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
+          <span style={{ fontSize: '13px', fontWeight: 600, color: '#1E3A5F', marginRight: '4px' }}>Filtrar por:</span>
+          <select style={{ padding: '8px 14px', border: '1px solid #E2E8F0', borderRadius: '8px', fontSize: '13px', color: '#1A202C', backgroundColor: '#F8FAFC' }}>
+            <option>Todas as categorias</option>
+            {categorias?.map((c: any) => <option key={c.id}>{c.name}</option>)}
+          </select>
+          <select style={{ padding: '8px 14px', border: '1px solid #E2E8F0', borderRadius: '8px', fontSize: '13px', color: '#1A202C', backgroundColor: '#F8FAFC' }}>
+            <option>Todos os estados</option>
+            {['SP','SC','PR','MG','RS','RJ','CE','BA','GO','ES'].map(uf => <option key={uf}>{uf}</option>)}
+          </select>
+          <input type="text" placeholder="Buscar por nome..." style={{ padding: '8px 14px', border: '1px solid #E2E8F0', borderRadius: '8px', fontSize: '13px', flex: 1, minWidth: '200px', outline: 'none' }} />
+        </div>
+
+        {/* Lista */}
+        {fornecedores?.length === 0 ? (
+          <div style={{ textAlign: 'center', padding: '80px', backgroundColor: 'white', borderRadius: '12px', border: '1px solid #E2E8F0' }}>
             <div style={{ fontSize: '48px', marginBottom: '16px' }}>🏭</div>
-            <p style={{ fontSize: '16px' }}>Nenhum fornecedor cadastrado ainda.</p>
-            <a href="/cadastro" style={{ display: 'inline-block', marginTop: '16px', padding: '12px 24px', backgroundColor: '#1E3A5F', color: 'white', borderRadius: '8px', textDecoration: 'none' }}>
-              Seja o primeiro a se cadastrar
+            <h3 style={{ color: '#1E3A5F', marginBottom: '8px' }}>Nenhum fornecedor ainda</h3>
+            <p style={{ color: '#64748B', marginBottom: '20px' }}>Seja o primeiro a se cadastrar no SNM</p>
+            <a href="/cadastro" style={{ padding: '12px 24px', backgroundColor: '#1E3A5F', color: 'white', borderRadius: '8px', textDecoration: 'none', fontSize: '14px' }}>
+              Cadastrar empresa
             </a>
           </div>
-        )}
-        {fornecedores?.map((f) => (
-          <div key={f.id} style={{
-            padding: '20px',
-            border: '1px solid #eee',
-            borderRadius: '12px',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            backgroundColor: '#fff',
-            boxShadow: '0 1px 4px rgba(0,0,0,0.06)'
-          }}>
-            <div>
-              <h3 style={{ fontSize: '16px', color: '#1E3A5F', marginBottom: '6px' }}>{f.nome}</h3>
-              <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginBottom: '6px' }}>
-                {f.categoria_nome && (
-                  <span style={{ fontSize: '12px', backgroundColor: '#E6F1FB', color: '#0C447C', padding: '3px 10px', borderRadius: '20px' }}>
-                    {f.categoria_nome}
-                  </span>
-                )}
-                {f.subcategoria_nome && (
-                  <span style={{ fontSize: '12px', backgroundColor: '#EEEDFE', color: '#3C3489', padding: '3px 10px', borderRadius: '20px' }}>
-                    {f.subcategoria_nome}
-                  </span>
-                )}
-                {f.especializacao_nome && (
-                  <span style={{ fontSize: '12px', backgroundColor: '#EAF3DE', color: '#27500A', padding: '3px 10px', borderRadius: '20px' }}>
-                    {f.especializacao_nome}
-                  </span>
-                )}
+        ) : (
+          <div style={{ display: 'grid', gap: '16px' }}>
+            {fornecedores?.map((f: any) => (
+              <div key={f.id} style={{ backgroundColor: 'white', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '20px' }}>
+                <div style={{ display: 'flex', gap: '16px', alignItems: 'center', flex: 1 }}>
+                  {/* Avatar */}
+                  <div style={{ width: '56px', height: '56px', backgroundColor: '#EFF6FF', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px', flexShrink: 0 }}>
+                    🏭
+                  </div>
+                  <div style={{ flex: 1 }}>
+                    <h3 style={{ fontSize: '16px', fontWeight: 600, color: '#1E3A5F', marginBottom: '6px' }}>{f.nome}</h3>
+                    <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginBottom: '8px' }}>
+                      {f.categoria_nome && (
+                        <span style={{ fontSize: '12px', backgroundColor: '#EFF6FF', color: '#1E40AF', padding: '3px 10px', borderRadius: '20px', fontWeight: 500 }}>
+                          {f.categoria_nome}
+                        </span>
+                      )}
+                      {f.subcategoria_nome && (
+                        <span style={{ fontSize: '12px', backgroundColor: '#F5F3FF', color: '#5B21B6', padding: '3px 10px', borderRadius: '20px' }}>
+                          {f.subcategoria_nome}
+                        </span>
+                      )}
+                      {f.especializacao_nome && (
+                        <span style={{ fontSize: '12px', backgroundColor: '#F0FDF4', color: '#166534', padding: '3px 10px', borderRadius: '20px' }}>
+                          {f.especializacao_nome}
+                        </span>
+                      )}
+                    </div>
+                    <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
+                      {f.cidade && (
+                        <span style={{ fontSize: '13px', color: '#64748B' }}>
+                          📍 {f.cidade}{f.estado ? ` — ${f.estado}` : ''}
+                        </span>
+                      )}
+                      {f.moq && (
+                        <span style={{ fontSize: '13px', color: '#64748B' }}>
+                          📦 MOQ: {f.moq}
+                        </span>
+                      )}
+                      {f.prazo_medio_dias && (
+                        <span style={{ fontSize: '13px', color: '#64748B' }}>
+                          ⏱ {f.prazo_medio_dias} dias
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                </div>
+                <div style={{ textAlign: 'right', flexShrink: 0 }}>
+                  <a href={`/fornecedores/${f.id}`} style={{ display: 'inline-block', padding: '10px 20px', backgroundColor: '#1E3A5F', color: 'white', borderRadius: '8px', textDecoration: 'none', fontSize: '13px', fontWeight: 500 }}>
+                    Ver perfil
+                  </a>
+                </div>
               </div>
-              <span style={{ fontSize: '13px', color: '#888' }}>📍 {f.cidade} – {f.estado}</span>
-            </div>
-            <div style={{ textAlign: 'right' }}>
-              <div style={{ fontSize: '13px', color: '#666', marginBottom: '8px' }}>{f.telefone || f.celular}</div>
-              <a href={`/fornecedores/${f.id}`} style={{
-                padding: '8px 16px',
-                backgroundColor: '#1E3A5F',
-                color: 'white',
-                borderRadius: '8px',
-                textDecoration: 'none',
-                fontSize: '13px'
-              }}>
-                Ver perfil
-              </a>
-            </div>
+            ))}
           </div>
-        ))}
+        )}
       </div>
+
+      {/* Footer */}
+      <footer style={{ backgroundColor: '#0F2238', padding: '24px 40px', textAlign: 'center', marginTop: '60px' }}>
+        <div style={{ color: '#64748B', fontSize: '13px' }}>
+          SNM - Sistema Nacional da Moda © 2025
+        </div>
+      </footer>
 
     </main>
   )

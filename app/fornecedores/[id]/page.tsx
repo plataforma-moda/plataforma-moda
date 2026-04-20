@@ -10,97 +10,149 @@ export default async function PerfilFornecedor({ params }: any) {
     .single()
 
   if (error || !f) {
-    return <p>Fornecedor não encontrado.</p>
+    return (
+      <main style={{ fontFamily: 'Arial, sans-serif', textAlign: 'center', padding: '80px' }}>
+        <h2 style={{ color: '#1E3A5F' }}>Fornecedor nao encontrado</h2>
+        <a href="/fornecedores" style={{ color: '#3B82F6' }}>Voltar ao diretorio</a>
+      </main>
+    )
   }
 
   return (
-    <main style={{ fontFamily: 'Arial, sans-serif', maxWidth: '900px', margin: '0 auto', padding: '20px' }}>
+    <main style={{ fontFamily: 'Arial, sans-serif', backgroundColor: '#F8FAFC', minHeight: '100vh' }}>
 
-      <header style={{ padding: '30px 0', borderBottom: '1px solid #eee', marginBottom: '30px' }}>
-        <a href="/fornecedores" style={{ color: '#888', fontSize: '14px', textDecoration: 'none' }}>← Voltar para fornecedores</a>
-      </header>
-
-      <div style={{ padding: '30px', border: '1px solid #eee', borderRadius: '16px', marginBottom: '20px', backgroundColor: '#f9f9f9' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '12px' }}>
+      {/* Navbar */}
+      <nav style={{ backgroundColor: '#1E3A5F', padding: '0 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '64px' }}>
+        <a href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
+          <div style={{ width: '32px', height: '32px', backgroundColor: '#3B82F6', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, color: 'white', fontSize: '14px' }}>S</div>
           <div>
-            <h1 style={{ fontSize: '26px', color: '#1E3A5F', marginBottom: '6px' }}>{f.nome}</h1>
-            {f.razao_social && <p style={{ fontSize: '14px', color: '#888', marginBottom: '12px' }}>{f.razao_social}</p>}
-            <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
-              {f.categoria_nome && (
-                <span style={{ fontSize: '13px', backgroundColor: '#E6F1FB', color: '#0C447C', padding: '4px 12px', borderRadius: '20px' }}>
-                  {f.categoria_nome}
-                </span>
-              )}
-              {f.subcategoria_nome && (
-                <span style={{ fontSize: '13px', backgroundColor: '#EEEDFE', color: '#3C3489', padding: '4px 12px', borderRadius: '20px' }}>
-                  {f.subcategoria_nome}
-                </span>
-              )}
-              {f.especializacao_nome && (
-                <span style={{ fontSize: '13px', backgroundColor: '#EAF3DE', color: '#27500A', padding: '4px 12px', borderRadius: '20px' }}>
-                  {f.especializacao_nome}
-                </span>
-              )}
-            </div>
+            <div style={{ color: 'white', fontWeight: 700, fontSize: '15px', lineHeight: 1 }}>SNM</div>
+            <div style={{ color: '#93C5FD', fontSize: '10px', lineHeight: 1 }}>Sistema Nacional da Moda</div>
           </div>
-          <span style={{ fontSize: '12px', backgroundColor: '#EAF3DE', color: '#27500A', padding: '4px 12px', borderRadius: '20px' }}>
-            ✓ Ativo
-          </span>
-        </div>
-      </div>
-
-      {f.descricao && (
-        <div style={{ padding: '24px', border: '1px solid #eee', borderRadius: '12px', marginBottom: '20px' }}>
-          <h2 style={{ fontSize: '16px', color: '#1E3A5F', marginBottom: '12px' }}>Sobre a empresa</h2>
-          <p style={{ fontSize: '14px', color: '#555', lineHeight: '1.6' }}>{f.descricao}</p>
-        </div>
-      )}
-
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '20px' }}>
-
-        <div style={{ padding: '24px', border: '1px solid #eee', borderRadius: '12px' }}>
-          <h2 style={{ fontSize: '16px', color: '#1E3A5F', marginBottom: '16px' }}>📍 Localização</h2>
-          {f.cidade && <p style={{ fontSize: '14px', color: '#555', marginBottom: '8px' }}><strong>Cidade:</strong> {f.cidade}</p>}
-          {f.estado && <p style={{ fontSize: '14px', color: '#555', marginBottom: '8px' }}><strong>Estado:</strong> {f.estado}</p>}
-          {f.bairro && <p style={{ fontSize: '14px', color: '#555', marginBottom: '8px' }}><strong>Bairro:</strong> {f.bairro}</p>}
-          {f.endereco && <p style={{ fontSize: '14px', color: '#555', marginBottom: '8px' }}><strong>Endereço:</strong> {f.endereco}</p>}
-          {f.cep && <p style={{ fontSize: '14px', color: '#555' }}><strong>CEP:</strong> {f.cep}</p>}
-        </div>
-
-        <div style={{ padding: '24px', border: '1px solid #eee', borderRadius: '12px' }}>
-          <h2 style={{ fontSize: '16px', color: '#1E3A5F', marginBottom: '16px' }}>📞 Contato</h2>
-          {f.telefone && <p style={{ fontSize: '14px', color: '#555', marginBottom: '8px' }}><strong>Telefone:</strong> {f.telefone}</p>}
-          {f.celular && <p style={{ fontSize: '14px', color: '#555', marginBottom: '8px' }}><strong>Celular:</strong> {f.celular}</p>}
-          {f.whatsapp && <p style={{ fontSize: '14px', color: '#555', marginBottom: '8px' }}><strong>WhatsApp:</strong> {f.whatsapp}</p>}
-          {f.email && <p style={{ fontSize: '14px', color: '#555', marginBottom: '8px' }}><strong>E-mail:</strong> {f.email}</p>}
-          {f.cnpj && <p style={{ fontSize: '14px', color: '#555' }}><strong>CNPJ:</strong> {f.cnpj}</p>}
-        </div>
-
-        <div style={{ padding: '24px', border: '1px solid #eee', borderRadius: '12px' }}>
-          <h2 style={{ fontSize: '16px', color: '#1E3A5F', marginBottom: '16px' }}>🏭 Capacidade produtiva</h2>
-          <p style={{ fontSize: '14px', color: '#555', marginBottom: '8px' }}><strong>Capacidade:</strong> {f.capacidade_produtiva || 'A consultar'}</p>
-          <p style={{ fontSize: '14px', color: '#555', marginBottom: '8px' }}><strong>MOQ minimo:</strong> {f.moq || 'A consultar'}</p>
-          <p style={{ fontSize: '14px', color: '#555' }}><strong>Prazo medio:</strong> {f.prazo_medio_dias ? `${f.prazo_medio_dias} dias` : 'A consultar'}</p>
-        </div>
-
-        <div style={{ padding: '24px', border: '1px solid #eee', borderRadius: '12px' }}>
-          <h2 style={{ fontSize: '16px', color: '#1E3A5F', marginBottom: '16px' }}>⭐ Certificacoes</h2>
-          <p style={{ fontSize: '14px', color: '#555' }}>{f.certificacoes || 'Nao informado'}</p>
-        </div>
-
-      </div>
-
-      <div style={{ padding: '30px', backgroundColor: '#1E3A5F', borderRadius: '16px', textAlign: 'center' }}>
-        <h2 style={{ color: 'white', fontSize: '20px', marginBottom: '8px' }}>
-          Quer fazer negocio com {f.nome}?
-        </h2>
-        <p style={{ color: '#aac4e0', marginBottom: '20px', fontSize: '14px' }}>
-          Envie uma solicitacao de cotacao agora
-        </p>
-        <a href="/matching" style={{ display: 'inline-block', padding: '14px 32px', backgroundColor: 'white', color: '#1E3A5F', borderRadius: '8px', fontSize: '16px', fontWeight: 500, textDecoration: 'none' }}>
-          Solicitar cotacao
         </a>
+        <a href="/matching" style={{ backgroundColor: '#3B82F6', color: 'white', padding: '8px 18px', borderRadius: '6px', fontSize: '13px', fontWeight: 500, textDecoration: 'none' }}>
+          Buscar fornecedor
+        </a>
+      </nav>
+
+      <div style={{ maxWidth: '900px', margin: '0 auto', padding: '40px' }}>
+
+        {/* Breadcrumb */}
+        <div style={{ marginBottom: '24px', fontSize: '13px', color: '#64748B' }}>
+          <a href="/" style={{ color: '#3B82F6', textDecoration: 'none' }}>Home</a>
+          <span style={{ margin: '0 8px' }}>›</span>
+          <a href="/fornecedores" style={{ color: '#3B82F6', textDecoration: 'none' }}>Fornecedores</a>
+          <span style={{ margin: '0 8px' }}>›</span>
+          <span>{f.nome}</span>
+        </div>
+
+        {/* Header do perfil */}
+        <div style={{ backgroundColor: 'white', border: '1px solid #E2E8F0', borderRadius: '16px', padding: '32px', marginBottom: '20px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '16px' }}>
+            <div style={{ display: 'flex', gap: '20px', alignItems: 'flex-start' }}>
+              <div style={{ width: '72px', height: '72px', backgroundColor: '#EFF6FF', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '32px', flexShrink: 0 }}>
+                🏭
+              </div>
+              <div>
+                <h1 style={{ fontSize: '26px', fontWeight: 700, color: '#1E3A5F', marginBottom: '4px' }}>{f.nome}</h1>
+                {f.razao_social && <p style={{ fontSize: '14px', color: '#64748B', marginBottom: '12px' }}>{f.razao_social}</p>}
+                <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+                  {f.categoria_nome && (
+                    <span style={{ fontSize: '12px', backgroundColor: '#EFF6FF', color: '#1E40AF', padding: '4px 12px', borderRadius: '20px', fontWeight: 500 }}>
+                      {f.categoria_nome}
+                    </span>
+                  )}
+                  {f.subcategoria_nome && (
+                    <span style={{ fontSize: '12px', backgroundColor: '#F5F3FF', color: '#5B21B6', padding: '4px 12px', borderRadius: '20px' }}>
+                      {f.subcategoria_nome}
+                    </span>
+                  )}
+                  {f.especializacao_nome && (
+                    <span style={{ fontSize: '12px', backgroundColor: '#F0FDF4', color: '#166534', padding: '4px 12px', borderRadius: '20px' }}>
+                      {f.especializacao_nome}
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
+            <span style={{ fontSize: '12px', backgroundColor: '#F0FDF4', color: '#166534', padding: '6px 14px', borderRadius: '20px', fontWeight: 500, border: '1px solid #BBF7D0' }}>
+              Ativo
+            </span>
+          </div>
+        </div>
+
+        {/* Descricao */}
+        {f.descricao && (
+          <div style={{ backgroundColor: 'white', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '24px', marginBottom: '20px' }}>
+            <h2 style={{ fontSize: '16px', fontWeight: 600, color: '#1E3A5F', marginBottom: '12px' }}>Sobre a empresa</h2>
+            <p style={{ fontSize: '14px', color: '#475569', lineHeight: 1.7 }}>{f.descricao}</p>
+          </div>
+        )}
+
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '20px' }}>
+
+          {/* Localizacao */}
+          <div style={{ backgroundColor: 'white', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '24px' }}>
+            <h2 style={{ fontSize: '15px', fontWeight: 600, color: '#1E3A5F', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              📍 Localizacao
+            </h2>
+            {f.cidade && <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: '1px solid #F1F5F9', fontSize: '13px' }}><span style={{ color: '#64748B' }}>Cidade</span><span style={{ color: '#1A202C', fontWeight: 500 }}>{f.cidade}</span></div>}
+            {f.estado && <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: '1px solid #F1F5F9', fontSize: '13px' }}><span style={{ color: '#64748B' }}>Estado</span><span style={{ color: '#1A202C', fontWeight: 500 }}>{f.estado}</span></div>}
+            {f.bairro && <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: '1px solid #F1F5F9', fontSize: '13px' }}><span style={{ color: '#64748B' }}>Bairro</span><span style={{ color: '#1A202C', fontWeight: 500 }}>{f.bairro}</span></div>}
+            {f.cep && <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', fontSize: '13px' }}><span style={{ color: '#64748B' }}>CEP</span><span style={{ color: '#1A202C', fontWeight: 500 }}>{f.cep}</span></div>}
+          </div>
+
+          {/* Contato */}
+          <div style={{ backgroundColor: 'white', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '24px' }}>
+            <h2 style={{ fontSize: '15px', fontWeight: 600, color: '#1E3A5F', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              📞 Contato
+            </h2>
+            {f.telefone && <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: '1px solid #F1F5F9', fontSize: '13px' }}><span style={{ color: '#64748B' }}>Telefone</span><span style={{ color: '#1A202C', fontWeight: 500 }}>{f.telefone}</span></div>}
+            {f.celular && <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: '1px solid #F1F5F9', fontSize: '13px' }}><span style={{ color: '#64748B' }}>Celular</span><span style={{ color: '#1A202C', fontWeight: 500 }}>{f.celular}</span></div>}
+            {f.whatsapp && <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: '1px solid #F1F5F9', fontSize: '13px' }}><span style={{ color: '#64748B' }}>WhatsApp</span><span style={{ color: '#1A202C', fontWeight: 500 }}>{f.whatsapp}</span></div>}
+            {f.email && <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: '1px solid #F1F5F9', fontSize: '13px' }}><span style={{ color: '#64748B' }}>E-mail</span><span style={{ color: '#1A202C', fontWeight: 500 }}>{f.email}</span></div>}
+            {f.cnpj && <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', fontSize: '13px' }}><span style={{ color: '#64748B' }}>CNPJ</span><span style={{ color: '#1A202C', fontWeight: 500 }}>{f.cnpj}</span></div>}
+          </div>
+
+          {/* Capacidade */}
+          <div style={{ backgroundColor: 'white', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '24px' }}>
+            <h2 style={{ fontSize: '15px', fontWeight: 600, color: '#1E3A5F', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              🏭 Capacidade produtiva
+            </h2>
+            <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: '1px solid #F1F5F9', fontSize: '13px' }}><span style={{ color: '#64748B' }}>Capacidade mensal</span><span style={{ color: '#1A202C', fontWeight: 500 }}>{f.capacidade_produtiva || 'A consultar'}</span></div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: '1px solid #F1F5F9', fontSize: '13px' }}><span style={{ color: '#64748B' }}>MOQ minimo</span><span style={{ color: '#1A202C', fontWeight: 500 }}>{f.moq || 'A consultar'}</span></div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', fontSize: '13px' }}><span style={{ color: '#64748B' }}>Prazo medio</span><span style={{ color: '#1A202C', fontWeight: 500 }}>{f.prazo_medio_dias ? `${f.prazo_medio_dias} dias` : 'A consultar'}</span></div>
+          </div>
+
+          {/* Certificacoes */}
+          <div style={{ backgroundColor: 'white', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '24px' }}>
+            <h2 style={{ fontSize: '15px', fontWeight: 600, color: '#1E3A5F', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              Certificacoes
+            </h2>
+            <p style={{ fontSize: '14px', color: '#475569', lineHeight: 1.6 }}>{f.certificacoes || 'Nao informado'}</p>
+          </div>
+
+        </div>
+
+        {/* CTA */}
+        <div style={{ backgroundColor: '#1E3A5F', borderRadius: '16px', padding: '32px', textAlign: 'center' }}>
+          <h2 style={{ color: 'white', fontSize: '22px', fontWeight: 600, marginBottom: '8px' }}>
+            Quer fazer negocio com {f.nome}?
+          </h2>
+          <p style={{ color: '#93C5FD', marginBottom: '24px', fontSize: '14px' }}>
+            Envie uma solicitacao de cotacao agora mesmo
+          </p>
+          <a href={`/cotacao/${f.id}`} style={{ display: 'inline-block', padding: '14px 32px', backgroundColor: '#3B82F6', color: 'white', borderRadius: '8px', fontSize: '15px', fontWeight: 600, textDecoration: 'none' }}>
+            Solicitar cotacao
+          </a>
+        </div>
+
       </div>
+
+      {/* Footer */}
+      <footer style={{ backgroundColor: '#0F2238', padding: '24px 40px', textAlign: 'center', marginTop: '40px' }}>
+        <div style={{ color: '#64748B', fontSize: '13px' }}>SNM - Sistema Nacional da Moda 2025</div>
+      </footer>
 
     </main>
   )
