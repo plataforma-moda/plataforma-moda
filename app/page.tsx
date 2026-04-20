@@ -1,4 +1,4 @@
-import { supabase } from '../lib/supabase'
+﻿import { supabase } from '../lib/supabase'
 
 export default async function Home() {
   const { data: categorias } = await supabase
@@ -32,21 +32,20 @@ export default async function Home() {
   return (
     <main style={{ fontFamily: 'Arial, sans-serif', backgroundColor: '#F8FAFC', minHeight: '100vh' }}>
 
-      {/* Navbar */}
       <nav style={{ backgroundColor: '#1E3A5F', padding: '0 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '64px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+        <a href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
           <div style={{ width: '32px', height: '32px', backgroundColor: '#3B82F6', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, color: 'white', fontSize: '14px' }}>S</div>
           <div>
             <div style={{ color: 'white', fontWeight: 700, fontSize: '15px', lineHeight: 1 }}>SNM</div>
             <div style={{ color: '#93C5FD', fontSize: '10px', lineHeight: 1 }}>Sistema Nacional da Moda</div>
           </div>
-        </div>
+        </a>
         <div style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
+          <a href="/sobre" style={{ color: '#93C5FD', fontSize: '13px', textDecoration: 'none' }}>Sobre o SNM</a>
           <a href="/matching" style={{ backgroundColor: '#3B82F6', color: 'white', padding: '8px 18px', borderRadius: '6px', fontSize: '13px', fontWeight: 500, textDecoration: 'none' }}>Buscar fornecedor</a>
         </div>
       </nav>
 
-      {/* Hero */}
       <section style={{ backgroundColor: '#1E3A5F', padding: '80px 40px', textAlign: 'center' }}>
         <div style={{ maxWidth: '800px', margin: '0 auto' }}>
           <div style={{ display: 'inline-block', backgroundColor: '#2C5282', color: '#93C5FD', padding: '6px 16px', borderRadius: '20px', fontSize: '13px', fontWeight: 500, marginBottom: '24px' }}>
@@ -69,7 +68,6 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Stats */}
       <section style={{ backgroundColor: '#2C5282', padding: '24px 40px' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', justifyContent: 'center', gap: '60px', flexWrap: 'wrap' }}>
           <div style={{ textAlign: 'center' }}>
@@ -77,7 +75,7 @@ export default async function Home() {
             <div style={{ fontSize: '13px', color: '#93C5FD' }}>Fornecedores cadastrados</div>
           </div>
           <div style={{ textAlign: 'center' }}>
-            <div style={{ fontSize: '32px', fontWeight: 700, color: 'white' }}>8</div>
+            <div style={{ fontSize: '32px', fontWeight: 700, color: 'white' }}>15</div>
             <div style={{ fontSize: '13px', color: '#93C5FD' }}>Elos da cadeia produtiva</div>
           </div>
           <div style={{ textAlign: 'center' }}>
@@ -91,17 +89,15 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Categorias */}
       <section style={{ maxWidth: '1200px', margin: '0 auto', padding: '60px 40px' }}>
         <div style={{ textAlign: 'center', marginBottom: '40px' }}>
           <h2 style={{ fontSize: '32px', fontWeight: 700, color: '#1E3A5F', marginBottom: '12px' }}>Cadeia produtiva completa</h2>
-          <p style={{ fontSize: '16px', color: '#64748B' }}>Da fibra ao varejo — encontre fornecedores em cada elo</p>
+          <p style={{ fontSize: '16px', color: '#64748B' }}>Da fibra ao varejo - encontre fornecedores em cada elo</p>
         </div>
-
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px' }}>
           {categorias?.map((cat: any) => (
             <a key={cat.id} href={`/fornecedores?categoria=${cat.id}`} style={{ textDecoration: 'none' }}>
-              <div style={{ backgroundColor: 'white', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '24px', cursor: 'pointer', transition: 'all 0.2s', height: '100%' }}>
+              <div style={{ backgroundColor: 'white', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '24px', cursor: 'pointer', height: '100%' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '14px' }}>
                   <div style={{ width: '40px', height: '40px', backgroundColor: '#EFF6FF', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px', flexShrink: 0 }}>
                     {getIcone(cat.name)}
@@ -126,7 +122,28 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* CTA */}
+      <section style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px 40px' }}>
+        <div style={{ backgroundColor: 'white', border: '1px solid #E2E8F0', borderRadius: '16px', padding: '48px 40px', textAlign: 'center' }}>
+          <div style={{ maxWidth: '640px', margin: '0 auto' }}>
+            <div style={{ display: 'inline-block', backgroundColor: '#EFF6FF', color: '#1E40AF', padding: '6px 16px', borderRadius: '20px', fontSize: '12px', fontWeight: 500, marginBottom: '24px' }}>
+              Infraestrutura de Dados da Cadeia Produtiva da Moda Brasileira
+            </div>
+            <p style={{ fontSize: '18px', color: '#374151', lineHeight: 1.8, marginBottom: '8px' }}>
+              O setor textil brasileiro opera de forma fragmentada.
+            </p>
+            <p style={{ fontSize: '18px', color: '#374151', lineHeight: 1.8, marginBottom: '8px' }}>
+              Fornecedores invisiveis. Compradores sem referencia. Dados dispersos.
+            </p>
+            <p style={{ fontSize: '20px', fontWeight: 700, color: '#1E3A5F', lineHeight: 1.6, marginBottom: '28px' }}>
+              O SNM nasce para mudar isso.
+            </p>
+            <a href="/sobre" style={{ display: 'inline-block', padding: '12px 28px', backgroundColor: '#1E3A5F', color: 'white', borderRadius: '8px', fontSize: '14px', fontWeight: 600, textDecoration: 'none' }}>
+              Conheca nossa missao
+            </a>
+          </div>
+        </div>
+      </section>
+
       <section style={{ backgroundColor: '#1E3A5F', padding: '60px 40px', textAlign: 'center' }}>
         <div style={{ maxWidth: '700px', margin: '0 auto' }}>
           <h2 style={{ fontSize: '32px', fontWeight: 700, color: 'white', marginBottom: '12px' }}>
@@ -152,10 +169,9 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Footer */}
       <footer style={{ backgroundColor: '#0F2238', padding: '24px 40px', textAlign: 'center' }}>
         <div style={{ color: '#64748B', fontSize: '13px' }}>
-          SNM - Sistema Nacional da Moda © 2025 — Conectando a cadeia produtiva do Brasil
+          SNM - Sistema Nacional da Moda 2025 - Conectando a cadeia produtiva do Brasil
         </div>
       </footer>
 
