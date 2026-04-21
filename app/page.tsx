@@ -93,7 +93,7 @@ export default async function Home() {
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px' }}>
           {categorias?.map((cat: any) => (
-            <a key={cat.id} href={`/fornecedores?categoria=${cat.id}`} style={{ textDecoration: 'none' }}>
+            <a key={cat.id} href={`/categoria/${cat.id}`} style={{ textDecoration: 'none' }}>
               <div style={{ backgroundColor: 'white', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '24px', cursor: 'pointer', height: '100%' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '14px' }}>
                   <div style={{ width: '40px', height: '40px', backgroundColor: '#EFF6FF', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px', flexShrink: 0 }}>
