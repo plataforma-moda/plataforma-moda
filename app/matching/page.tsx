@@ -174,7 +174,7 @@ export default function Matching() {
 
       <footer style={{ backgroundColor: '#060F1E', padding: '40px', textAlign: 'center', marginTop: '60px' }}>
         <div style={{ fontSize: '13px', color: '#64748B' }}>
-          2025 Sistema Nacional da Moda — Infraestrutura de dados da cadeia produtiva
+          2026 Sistema Nacional da Moda — Infraestrutura de dados da cadeia produtiva
         </div>
       </footer>
 

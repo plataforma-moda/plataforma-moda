@@ -87,7 +87,7 @@ export default function CadastroCliente() {
 
       <section style={{ backgroundColor: '#0B1F3B', padding: '32px 40px', textAlign: 'center' }}>
         <h1 style={{ fontSize: '28px', fontWeight: 700, color: 'white', marginBottom: '8px' }}>Crie sua conta de comprador</h1>
-        <p style={{ color: '#93C5FD', fontSize: '14px' }}>Acesse o maior diretorio B2B da moda brasileira — gratuito</p>
+        <p style={{ color: '#93C5FD', fontSize: '14px' }}>Acesse o maior diretorio B2B da moda brasileira ï¿½ gratuito</p>
       </section>
 
       <div style={{ maxWidth: '680px', margin: '0 auto', padding: '40px 20px' }}>
@@ -145,7 +145,7 @@ export default function CadastroCliente() {
       </div>
 
       <footer style={{ backgroundColor: '#0F2238', padding: '24px 40px', textAlign: 'center' }}>
-        <div style={{ color: '#64748B', fontSize: '13px' }}>SNM - Sistema Nacional da Moda 2025</div>
+        <div style={{ color: '#64748B', fontSize: '13px' }}>SNM - Sistema Nacional da Moda 2026</div>
       </footer>
 
     </main>

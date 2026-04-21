@@ -311,7 +311,7 @@ export default function Cadastro() {
       </div>
 
       <footer style={{ backgroundColor: '#060F1E', padding: '24px 40px', textAlign: 'center' }}>
-        <div style={{ color: '#64748B', fontSize: '13px' }}>SNM - Sistema Nacional da Moda 2025</div>
+        <div style={{ color: '#64748B', fontSize: '13px' }}>SNM - Sistema Nacional da Moda 2026</div>
       </footer>
 
     </main>

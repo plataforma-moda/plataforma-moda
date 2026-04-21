@@ -127,7 +127,7 @@ export default async function Polos() {
 
       <footer style={{ backgroundColor: '#060F1E', padding: '40px', textAlign: 'center' }}>
         <div style={{ fontSize: '13px', color: '#64748B' }}>
-          2025 Sistema Nacional da Moda — Infraestrutura de dados da cadeia produtiva
+          2026 Sistema Nacional da Moda — Infraestrutura de dados da cadeia produtiva
         </div>
       </footer>
 
