@@ -50,7 +50,7 @@ export default async function Home() {
         <p style={{ fontSize: '18px', color: '#93C5FD', maxWidth: '600px', margin: '0 auto 40px', lineHeight: 1.7 }}>
           
         </p>Encontre fornecedores, ganhe visibilidade e tome decisões com base em dados — da matéria-prima ao varejo.
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap', marginTop: '48px' }}>
           <a href="/cadastro" style={{ backgroundColor: '#3B82F6', color: 'white', padding: '16px 32px', borderRadius: '12px', fontWeight: 600, fontSize: '15px', textDecoration: 'none' }}>
             Cadastrar empresa
           </a>
