@@ -26,6 +26,8 @@ export default function Cadastro() {
     certificacoes: '', descricao: '',
   })
 
+  const [polos, setPolos] = useState<{id: number; nome: string; estado: string}[]>([])
+  const [poloId, setPoloId] = useState('')
   const [enviando, setEnviando] = useState(false)
   const [erro, setErro] = useState('')
 
@@ -34,9 +36,11 @@ export default function Cadastro() {
       const { data: cats } = await supabase.from('categories').select('*').order('id')
       const { data: subs } = await supabase.from('subcategories').select('*').order('id')
       const { data: esps } = await supabase.from('specializations').select('*').order('id')
+      const { data: pols } = await supabase.from('polos_texteis').select('id, nome, estado').order('nome')
       if (cats) setCategorias(cats)
       if (subs) setSubcategorias(subs)
       if (esps) setEspecializacoes(esps)
+      if (pols) setPolos(pols)
     }
     load()
   }, [])
@@ -92,6 +96,8 @@ export default function Cadastro() {
       moq: form.moq, prazo_medio_dias: form.prazo_medio_dias,
       certificacoes: form.certificacoes, descricao: form.descricao,
       status: 'ativo',
+      polo_id: poloId ? Number(poloId) : null,
+      polo_textil: polos.find(p => p.id === Number(poloId))?.nome || '',
     }]).select()
 
     if (error || !data || !data[0]) {
@@ -254,6 +260,15 @@ export default function Cadastro() {
               <div><label style={lbl}>Bairro</label><input name="bairro" value={form.bairro} onChange={handleChange} placeholder="Ex: Bom Retiro" style={inp} /></div>
             </div>
             <div><label style={lbl}>Endereco</label><input name="endereco" value={form.endereco} onChange={handleChange} placeholder="Rua, numero" style={inp} /></div>
+
+            <div style={{ marginTop: '16px' }}>
+              <label style={lbl}>Polo textil (opcional)</label>
+              <select value={poloId} onChange={e => setPoloId(e.target.value)} style={inp}>
+                <option value="">Nao faz parte de um polo textil</option>
+                {polos.map(p => <option key={p.id} value={p.id}>{p.nome} — {p.estado}</option>)}
+              </select>
+              <p style={{ fontSize: '12px', color: '#64748B', marginTop: '6px' }}>Se sua empresa faz parte de um polo produtivo conhecido, selecione acima</p>
+            </div>
           </div>
 
           <div style={sec}>

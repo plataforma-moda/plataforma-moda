@@ -34,6 +34,7 @@ export default async function Home() {
         <nav style={{ display: 'flex', gap: '32px', alignItems: 'center' }}>
           <a href="/matching" style={{ fontSize: '14px', color: '#93C5FD', textDecoration: 'none' }}>Explorar</a>
           <a href="/cadastro" style={{ fontSize: '14px', color: '#93C5FD', textDecoration: 'none' }}>Cadastrar empresa</a>
+          <a href="/polos" style={{ fontSize: '14px', color: '#93C5FD', textDecoration: 'none' }}>Polos Texteis</a>
           <a href="/sobre" style={{ fontSize: '14px', color: '#93C5FD', textDecoration: 'none' }}>Sobre</a>
         </nav>
       </header>
