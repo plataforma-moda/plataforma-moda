@@ -48,8 +48,8 @@ export default async function Home() {
           A infraestrutura de dados da cadeia produtiva da moda no Brasil.
         </h1>
         <p style={{ fontSize: '18px', color: '#93C5FD', maxWidth: '600px', margin: '0 auto 40px', lineHeight: 1.7 }}>
-          Encontre fornecedores, ganhe visibilidade e tome decisoes com base em dados — da materia-prima ao varejo.
-        </p>
+          
+        </p>Encontre fornecedores, ganhe visibilidade e tome decisões com base em dados — da matéria-prima ao varejo.
         <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>
           <a href="/cadastro" style={{ backgroundColor: '#3B82F6', color: 'white', padding: '16px 32px', borderRadius: '12px', fontWeight: 600, fontSize: '15px', textDecoration: 'none' }}>
             Cadastrar empresa
@@ -64,17 +64,17 @@ export default async function Home() {
       <section style={{ backgroundColor: '#0F2844', padding: '80px 40px' }}>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
           <h2 style={{ fontSize: '32px', fontWeight: 700, color: 'white', marginBottom: '20px' }}>
-            O setor e grande. Mas ainda opera de forma fragmentada.
+            O setor é grande. Mas ainda opera de forma fragmentada.
           </h2>
           <p style={{ color: '#93C5FD', marginBottom: '40px', lineHeight: 1.8, fontSize: '16px' }}>
-            O setor textil e de confeccao brasileiro e um dos mais complexos do mundo. Sao dezenas de elos interdependentes distribuidos por todo o territorio nacional.
+            O setor têxtil e de confecção brasileiro é um dos mais complexos do mundo. São dezenas de elos interdependentes distribuídos por todo o território nacional.
           </p>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
             {[
               'Fornecedores com pouca visibilidade',
-              'Compradores sem referencia confiavel',
+              'Compradores sem referência confiável',
               'Dados dispersos e despadronizados',
-              'Decisoes baseadas em contatos informais',
+              'Decisões baseadas em contatos informais',
             ].map((item, i) => (
               <div key={i} style={{ backgroundColor: '#0B1F3B', padding: '24px', borderRadius: '12px', border: '1px solid #1a3a5c', fontSize: '15px', color: '#CBD5E1' }}>
                 {item}
@@ -91,7 +91,7 @@ export default async function Home() {
             Uma nova infraestrutura para a moda brasileira
           </h2>
           <p style={{ color: '#93C5FD', lineHeight: 1.8, fontSize: '16px' }}>
-            O Sistema Nacional da Moda organiza e conecta fornecedores, industrias e marcas por meio de dados estruturados, padronizados e verificaveis.
+            O Sistema Nacional da Moda organiza e conecta fornecedores, indústrias e marcas por meio de dados estruturados, padronizados e verificáveis.
           </p>
         </div>
       </section>
@@ -100,8 +100,8 @@ export default async function Home() {
       <section style={{ backgroundColor: '#0F2844', padding: '80px 40px' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '32px', textAlign: 'center' }}>
           {[
-            { titulo: 'Mapeamento', texto: 'Empresas com dados tecnicos padronizados' },
-            { titulo: 'Estruturacao', texto: 'Organizacao por categoria e localizacao' },
+            { titulo: 'Mapeamento', texto: 'Empresas com dados técnicos padronizados' },
+            { titulo: 'Estruturacao', texto: 'Organização por categoria e localização' },
             { titulo: 'Conexao', texto: 'Busca eficiente entre compradores e fornecedores' },
             { titulo: 'Escala', texto: 'A rede cresce e gera mais valor' },
           ].map((item, i) => (
@@ -120,7 +120,7 @@ export default async function Home() {
             <h2 style={{ fontSize: '32px', fontWeight: 700, color: 'white', marginBottom: '12px' }}>
               Cadeia produtiva completa
             </h2>
-            <p style={{ fontSize: '16px', color: '#93C5FD' }}>Da fibra ao varejo — 15 categorias, 60 subcategorias, 322 especializacoes</p>
+            <p style={{ fontSize: '16px', color: '#93C5FD' }}>Da fibra ao varejo — 15 categorias, 60 subcategorias, 322 especializações</p>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px' }}>
             {categorias?.map((cat: any) => (
@@ -154,9 +154,9 @@ export default async function Home() {
         <div style={{ maxWidth: '1000px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '40px' }}>
           {[
             { titulo: 'Mais visibilidade', texto: 'Seja encontrado em todo o Brasil' },
-            { titulo: 'Melhores decisoes', texto: 'Baseadas em dados confiaveis' },
-            { titulo: 'Reducao de risco', texto: 'Mais clareza sobre parceiros' },
-            { titulo: 'Eficiencia operacional', texto: 'Menos tempo buscando, mais tempo produzindo' },
+            { titulo: 'Melhores decisões', texto: 'Baseadas em dados confiáveis' },
+            { titulo: 'Redução de risco', texto: 'Mais clareza sobre parceiros' },
+            { titulo: 'Eficiência operacional', texto: 'Menos tempo buscando, mais tempo produzindo' },
           ].map((item, i) => (
             <div key={i}>
               <h3 style={{ fontSize: '18px', fontWeight: 600, color: 'white', marginBottom: '8px' }}>{item.titulo}</h3>
@@ -170,10 +170,10 @@ export default async function Home() {
       <section style={{ padding: '80px 40px', textAlign: 'center', backgroundColor: '#0B1F3B' }}>
         <div style={{ maxWidth: '700px', margin: '0 auto' }}>
           <h2 style={{ fontSize: '32px', fontWeight: 700, color: 'white', marginBottom: '20px' }}>
-            Nao e um diretorio. E uma base estruturada.
+            Não é um diretório. É uma base estruturada.
           </h2>
           <p style={{ color: '#93C5FD', fontSize: '16px', lineHeight: 1.8 }}>
-            Dados organizados com criterios tecnicos para apoiar decisoes reais na cadeia produtiva da moda.
+            Dados organizados com critérios técnicos para apoiar decisões reais na cadeia produtiva da moda.
           </p>
         </div>
       </section>
@@ -185,7 +185,7 @@ export default async function Home() {
             Acesso aberto. Visibilidade ampliada.
           </h2>
           <p style={{ color: '#93C5FD', fontSize: '15px', lineHeight: 1.8 }}>
-            O cadastro e aberto a todos. Empresas com planos pagos terao maior destaque, com criterios claros e publicos.
+            O cadastro é aberto a todos. Empresas com planos pagos terão maior destaque, com critérios claros e públicos.
           </p>
         </div>
       </section>
@@ -193,7 +193,7 @@ export default async function Home() {
       {/* CTA FINAL */}
       <section style={{ padding: '100px 40px', textAlign: 'center', backgroundColor: '#0B1F3B' }}>
         <h2 style={{ fontSize: '40px', fontWeight: 700, color: 'white', maxWidth: '700px', margin: '0 auto 40px', lineHeight: 1.2 }}>
-          A cadeia da moda ja existe. Falta voce estar nela.
+          A cadeia da moda já existe. Falta você estar nela.
         </h2>
         <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>
           <a href="/cadastro" style={{ backgroundColor: '#3B82F6', color: 'white', padding: '16px 32px', borderRadius: '12px', fontWeight: 600, fontSize: '15px', textDecoration: 'none' }}>
