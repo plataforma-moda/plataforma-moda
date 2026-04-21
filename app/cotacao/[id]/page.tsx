@@ -82,8 +82,8 @@ export default function Cotacao({ params }: any) {
       <Navbar />
       <div style={{ maxWidth: '600px', margin: '0 auto', padding: '80px 20px', textAlign: 'center' }}>
         <div style={{ width: '72px', height: '72px', backgroundColor: '#F0FDF4', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 24px', fontSize: '32px' }}>OK</div>
-        <h1 style={{ fontSize: '26px', fontWeight: 700, color: '#1E3A5F', marginBottom: '12px' }}>Cotacao enviada!</h1>
-        <p style={{ color: '#64748B', marginBottom: '8px' }}>Sua solicitacao foi enviada para <strong>{fornecedor.nome}</strong>.</p>
+        <h1 style={{ fontSize: '26px', fontWeight: 700, color: '#1E3A5F', marginBottom: '12px' }}>Cotação enviada!</h1>
+        <p style={{ color: '#64748B', marginBottom: '8px' }}>Sua solicitação foi enviada para <strong>{fornecedor.nome}</strong>.</p>
         <p style={{ color: '#64748B', marginBottom: '32px' }}>Aguarde o contato da empresa em breve.</p>
         <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
           <a href={`/fornecedores/${fornecedor.id}`} style={{ padding: '12px 24px', backgroundColor: '#1E3A5F', color: 'white', borderRadius: '8px', textDecoration: 'none', fontSize: '14px', fontWeight: 500 }}>
@@ -108,7 +108,7 @@ export default function Cotacao({ params }: any) {
             🏭
           </div>
           <div>
-            <div style={{ fontSize: '11px', color: '#3B82F6', fontWeight: 600, marginBottom: '2px' }}>SOLICITACAO DE COTACAO PARA</div>
+            <div style={{ fontSize: '11px', color: '#3B82F6', fontWeight: 600, marginBottom: '2px' }}>SOLICITAÇÃO DE COTACAO PARA</div>
             <div style={{ fontSize: '18px', fontWeight: 700, color: '#1E3A5F' }}>{fornecedor.nome}</div>
             {fornecedor.categoria_nome && (
               <div style={{ fontSize: '13px', color: '#64748B' }}>{fornecedor.categoria_nome} — {fornecedor.cidade}/{fornecedor.estado}</div>
@@ -133,17 +133,17 @@ export default function Cotacao({ params }: any) {
           <div style={sec}>
             <h2 style={tit}>2. O que voce precisa</h2>
             <div style={{ marginBottom: '16px' }}>
-              <label style={lbl}>Produto ou servico desejado *</label>
+              <label style={lbl}>Produto ou serviço desejado *</label>
               <input name="produto" value={form.produto} onChange={handleChange} required placeholder="Ex: 500 camisetas polo brancas bordadas" style={inp} />
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
-              <div><label style={lbl}>Quantidade</label><input name="quantidade" value={form.quantidade} onChange={handleChange} placeholder="Ex: 500 pecas" style={inp} /></div>
+              <div><label style={lbl}>Quantidade</label><input name="quantidade" value={form.quantidade} onChange={handleChange} placeholder="Ex: 500 peças" style={inp} /></div>
               <div><label style={lbl}>Prazo desejado</label><input name="prazo" value={form.prazo} onChange={handleChange} placeholder="Ex: 30 dias" style={inp} /></div>
             </div>
             <div>
               <label style={lbl}>Detalhes adicionais</label>
               <textarea name="descricao" value={form.descricao} onChange={handleChange}
-                placeholder="Descreva especificacoes tecnicas, cores, materiais..."
+                placeholder="Descreva especificações técnicas, cores, materiais..."
                 style={{ ...inp, height: '100px', resize: 'vertical' }} />
             </div>
           </div>
@@ -151,7 +151,7 @@ export default function Cotacao({ params }: any) {
           {erro && <div style={{ padding: '12px', backgroundColor: '#FEF2F2', border: '1px solid #FECACA', borderRadius: '8px', marginBottom: '16px', color: '#DC2626', fontSize: '14px' }}>{erro}</div>}
 
           <button type="submit" disabled={enviando} style={{ width: '100%', padding: '16px', backgroundColor: enviando ? '#94A3B8' : '#1E3A5F', color: 'white', border: 'none', borderRadius: '8px', fontSize: '16px', fontWeight: 600, cursor: enviando ? 'not-allowed' : 'pointer', marginBottom: '40px' }}>
-            {enviando ? 'Enviando...' : 'Enviar solicitacao de cotacao'}
+            {enviando ? 'Enviando...' : 'Enviar solicitação de cotação'}
           </button>
 
         </form>

@@ -30,7 +30,7 @@ export default async function Fornecedores() {
 
       {/* Header */}
       <section style={{ backgroundColor: '#0B1F3B', padding: '40px', textAlign: 'center' }}>
-        <h1 style={{ fontSize: '32px', fontWeight: 700, color: 'white', marginBottom: '8px' }}>Diretorio de Fornecedores</h1>
+        <h1 style={{ fontSize: '32px', fontWeight: 700, color: 'white', marginBottom: '8px' }}>Diretório de Fornecedores</h1>
         <p style={{ color: '#93C5FD', fontSize: '15px' }}>{fornecedores?.length || 0} empresas cadastradas na cadeia produtiva</p>
       </section>
 
@@ -121,7 +121,7 @@ export default async function Fornecedores() {
       {/* Footer */}
       <footer style={{ backgroundColor: '#0F2238', padding: '24px 40px', textAlign: 'center', marginTop: '60px' }}>
         <div style={{ color: '#64748B', fontSize: '13px' }}>
-          SNM - Sistema Nacional da Moda © 2025
+          SNM - Sistema Nacional da Moda © 2026
         </div>
       </footer>
 

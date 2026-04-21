@@ -12,8 +12,8 @@ export default async function PerfilFornecedor({ params }: any) {
   if (error || !f) {
     return (
       <main style={{ fontFamily: 'Arial, sans-serif', textAlign: 'center', padding: '80px' }}>
-        <h2 style={{ color: '#1E3A5F' }}>Fornecedor nao encontrado</h2>
-        <a href="/fornecedores" style={{ color: '#3B82F6' }}>Voltar ao diretorio</a>
+        <h2 style={{ color: '#1E3A5F' }}>Fornecedor não encontrado</h2>
+        <a href="/fornecedores" style={{ color: '#3B82F6' }}>Voltar ao diretório</a>
       </main>
     )
   }
@@ -91,10 +91,10 @@ export default async function PerfilFornecedor({ params }: any) {
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '20px' }}>
 
-          {/* Localizacao */}
+          {/* Localização */}
           <div style={{ backgroundColor: 'white', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '24px' }}>
             <h2 style={{ fontSize: '15px', fontWeight: 600, color: '#1E3A5F', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-              📍 Localizacao
+              📍 Localização
             </h2>
             {f.cidade && <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: '1px solid #F1F5F9', fontSize: '13px' }}><span style={{ color: '#64748B' }}>Cidade</span><span style={{ color: '#1A202C', fontWeight: 500 }}>{f.cidade}</span></div>}
             {f.estado && <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: '1px solid #F1F5F9', fontSize: '13px' }}><span style={{ color: '#64748B' }}>Estado</span><span style={{ color: '#1A202C', fontWeight: 500 }}>{f.estado}</span></div>}
@@ -120,14 +120,14 @@ export default async function PerfilFornecedor({ params }: any) {
               🏭 Capacidade produtiva
             </h2>
             <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: '1px solid #F1F5F9', fontSize: '13px' }}><span style={{ color: '#64748B' }}>Capacidade mensal</span><span style={{ color: '#1A202C', fontWeight: 500 }}>{f.capacidade_produtiva || 'A consultar'}</span></div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: '1px solid #F1F5F9', fontSize: '13px' }}><span style={{ color: '#64748B' }}>MOQ minimo</span><span style={{ color: '#1A202C', fontWeight: 500 }}>{f.moq || 'A consultar'}</span></div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', fontSize: '13px' }}><span style={{ color: '#64748B' }}>Prazo medio</span><span style={{ color: '#1A202C', fontWeight: 500 }}>{f.prazo_medio_dias ? `${f.prazo_medio_dias} dias` : 'A consultar'}</span></div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: '1px solid #F1F5F9', fontSize: '13px' }}><span style={{ color: '#64748B' }}>MOQ mínimo</span><span style={{ color: '#1A202C', fontWeight: 500 }}>{f.moq || 'A consultar'}</span></div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', fontSize: '13px' }}><span style={{ color: '#64748B' }}>Prazo médio</span><span style={{ color: '#1A202C', fontWeight: 500 }}>{f.prazo_medio_dias ? `${f.prazo_medio_dias} dias` : 'A consultar'}</span></div>
           </div>
 
-          {/* Certificacoes */}
+          {/* Certificações */}
           <div style={{ backgroundColor: 'white', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '24px' }}>
             <h2 style={{ fontSize: '15px', fontWeight: 600, color: '#1E3A5F', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-              Certificacoes
+              Certificações
             </h2>
             <p style={{ fontSize: '14px', color: '#475569', lineHeight: 1.6 }}>{f.certificacoes || 'Nao informado'}</p>
           </div>

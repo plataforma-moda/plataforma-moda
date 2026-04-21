@@ -60,7 +60,7 @@ export default function CadastroCliente() {
         <div style={{ width: '72px', height: '72px', backgroundColor: '#EFF6FF', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 24px', fontSize: '32px' }}>OK</div>
         <h1 style={{ fontSize: '26px', fontWeight: 700, color: '#0B1F3B', marginBottom: '12px' }}>Conta criada!</h1>
         <p style={{ color: '#64748B', marginBottom: '32px' }}>
-          Bem-vindo ao SNM, <strong>{form.nome}</strong>! Agora voce pode buscar fornecedores em toda a cadeia produtiva.
+          Bem-vindo ao SNM, <strong>{form.nome}</strong>! Agora você pode buscar fornecedores em toda a cadeia produtiva.
         </p>
         <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
           <a href="/matching" style={{ padding: '12px 24px', backgroundColor: '#0B1F3B', color: 'white', borderRadius: '8px', textDecoration: 'none', fontSize: '14px', fontWeight: 500 }}>
@@ -87,7 +87,7 @@ export default function CadastroCliente() {
 
       <section style={{ backgroundColor: '#0B1F3B', padding: '32px 40px', textAlign: 'center' }}>
         <h1 style={{ fontSize: '28px', fontWeight: 700, color: 'white', marginBottom: '8px' }}>Crie sua conta de comprador</h1>
-        <p style={{ color: '#93C5FD', fontSize: '14px' }}>Acesse o maior diretorio B2B da moda brasileira � gratuito</p>
+        <p style={{ color: '#93C5FD', fontSize: '14px' }}>Acesse o maior diretorio B2B da moda brasileira - gratuito</p>
       </section>
 
       <div style={{ maxWidth: '680px', margin: '0 auto', padding: '40px 20px' }}>
@@ -125,7 +125,7 @@ export default function CadastroCliente() {
           </div>
 
           <div style={sec}>
-            <h2 style={tit}>3. O que voce busca</h2>
+            <h2 style={tit}>3. O que você busca</h2>
             <div>
               <label style={lbl}>Principal segmento de interesse</label>
               <select name="segmento_interesse" value={form.segmento_interesse} onChange={handleChange} style={inp}>

@@ -168,7 +168,7 @@ export default function Cadastro() {
 
       <section style={{ backgroundColor: '#0B1F3B', padding: '32px 40px', textAlign: 'center' }}>
         <h1 style={{ fontSize: '28px', fontWeight: 700, color: 'white', marginBottom: '8px' }}>Cadastre sua empresa no SNM</h1>
-        <p style={{ color: '#93C5FD', fontSize: '14px' }}>Apareca para compradores de todo o Brasil — cadastro gratuito</p>
+        <p style={{ color: '#93C5FD', fontSize: '14px' }}>Apareça para compradores de todo o Brasil — cadastro gratuito</p>
       </section>
 
       <div style={{ maxWidth: '720px', margin: '0 auto', padding: '40px 20px' }}>
@@ -244,7 +244,7 @@ export default function Cadastro() {
           </div>
 
           <div style={sec}>
-            <h2 style={tit}>3. Localizacao</h2>
+            <h2 style={tit}>3. Localização</h2>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '16px', marginBottom: '16px' }}>
               <div>
                 <label style={lbl}>Estado *</label>
@@ -259,12 +259,12 @@ export default function Cadastro() {
               <div><label style={lbl}>CEP</label><input name="cep" value={form.cep} onChange={handleChange} placeholder="00000-000" style={inp} /></div>
               <div><label style={lbl}>Bairro</label><input name="bairro" value={form.bairro} onChange={handleChange} placeholder="Ex: Bom Retiro" style={inp} /></div>
             </div>
-            <div><label style={lbl}>Endereco</label><input name="endereco" value={form.endereco} onChange={handleChange} placeholder="Rua, numero" style={inp} /></div>
+            <div><label style={lbl}>Endereco</label><input name="endereço" value={form.endereco} onChange={handleChange} placeholder="Rua, numero" style={inp} /></div>
 
             <div style={{ marginTop: '16px' }}>
-              <label style={lbl}>Polo textil (opcional)</label>
+              <label style={lbl}>Polo têxtil (opcional)</label>
               <select value={poloId} onChange={e => setPoloId(e.target.value)} style={inp}>
-                <option value="">Nao faz parte de um polo textil</option>
+                <option value="">Não faz parte de um polo têxtil</option>
                 {polos.map(p => <option key={p.id} value={p.id}>{p.nome} — {p.estado}</option>)}
               </select>
               <p style={{ fontSize: '12px', color: '#64748B', marginTop: '6px' }}>Se sua empresa faz parte de um polo produtivo conhecido, selecione acima</p>
@@ -286,19 +286,19 @@ export default function Cadastro() {
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px' }}>
               <div><label style={lbl}>Capacidade mensal</label><input name="capacidade_produtiva" value={form.capacidade_produtiva} onChange={handleChange} placeholder="Ex: 5.000 pecas/mes" style={inp} /></div>
               <div><label style={lbl}>MOQ minimo</label><input name="moq" value={form.moq} onChange={handleChange} placeholder="Ex: 100 pecas" style={inp} /></div>
-              <div><label style={lbl}>Prazo medio (dias)</label><input name="prazo_medio_dias" value={form.prazo_medio_dias} onChange={handleChange} placeholder="Ex: 30" style={inp} /></div>
+              <div><label style={lbl}>Prazo médio (dias)</label><input name="prazo_medio_dias" value={form.prazo_medio_dias} onChange={handleChange} placeholder="Ex: 30" style={inp} /></div>
             </div>
           </div>
 
           <div style={sec}>
             <h2 style={tit}>6. Diferenciais</h2>
             <div style={{ marginBottom: '16px' }}>
-              <label style={lbl}>Descricao da empresa</label>
+              <label style={lbl}>Descrição da empresa</label>
               <textarea name="descricao" value={form.descricao} onChange={handleChange}
                 placeholder="Conte sobre sua empresa, produtos e diferenciais..."
                 style={{ ...inp, height: '100px', resize: 'vertical' }} />
             </div>
-            <div><label style={lbl}>Certificacoes</label><input name="certificacoes" value={form.certificacoes} onChange={handleChange} placeholder="Ex: OEKO-TEX, ABNT, GOTS, ISO 9001" style={inp} /></div>
+            <div><label style={lbl}>Certificações</label><input name="certificacoes" value={form.certificacoes} onChange={handleChange} placeholder="Ex: OEKO-TEX, ABNT, GOTS, ISO 9001" style={inp} /></div>
           </div>
 
           {erro && <div style={{ padding: '12px', backgroundColor: '#FEF2F2', border: '1px solid #FECACA', borderRadius: '8px', marginBottom: '16px', color: '#DC2626', fontSize: '14px' }}>{erro}</div>}

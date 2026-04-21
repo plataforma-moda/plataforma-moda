@@ -67,7 +67,7 @@ export default function Matching() {
       <header style={{ borderBottom: '1px solid #1a3a5c', padding: '0 40px', height: '64px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'sticky', top: 0, backgroundColor: '#0B1F3B', zIndex: 100 }}>
         <a href="/" style={{ fontWeight: 700, fontSize: '18px', color: 'white', textDecoration: 'none' }}>SNM</a>
         <nav style={{ display: 'flex', gap: '32px', alignItems: 'center' }}>
-          <a href="/polos" style={{ fontSize: '14px', color: '#93C5FD', textDecoration: 'none' }}>Polos Texteis</a>
+          <a href="/polos" style={{ fontSize: '14px', color: '#93C5FD', textDecoration: 'none' }}>Polos Têxteis</a>
           <a href="/cadastro" style={{ fontSize: '14px', color: '#93C5FD', textDecoration: 'none' }}>Cadastrar empresa</a>
           <a href="/sobre" style={{ fontSize: '14px', color: '#93C5FD', textDecoration: 'none' }}>Sobre</a>
         </nav>
@@ -76,7 +76,7 @@ export default function Matching() {
       <section style={{ backgroundColor: '#0B1F3B', padding: '60px 40px', textAlign: 'center' }}>
         <h1 style={{ fontSize: '36px', fontWeight: 700, color: 'white', marginBottom: '8px' }}>Encontre o fornecedor ideal</h1>
         <p style={{ color: '#93C5FD', fontSize: '15px', marginBottom: '40px' }}>
-          Busque por produto, material, servico ou polo textil
+          Busque por produto, material, serviço ou polo têxtil
         </p>
 
         <form onSubmit={handleSubmit} style={{ maxWidth: '800px', margin: '0 auto' }}>
@@ -102,7 +102,7 @@ export default function Matching() {
             <span style={{ fontSize: '13px', color: '#64748B' }}>ou buscar por polo:</span>
             <select value={poloId} onChange={e => setPoloId(e.target.value)}
               style={{ ...inp, minWidth: '200px', fontSize: '13px' }}>
-              <option value="">Selecione um polo textil</option>
+              <option value="">Selecione um polo têxtil</option>
               {polos.map(p => <option key={p.id} value={p.id}>{p.nome} — {p.estado}</option>)}
             </select>
             {poloId && (
@@ -120,7 +120,7 @@ export default function Matching() {
         {!buscou && (
           <div style={{ textAlign: 'center', padding: '60px', color: '#64748B' }}>
             <div style={{ fontSize: '48px', marginBottom: '16px' }}>🔍</div>
-            <p style={{ fontSize: '16px' }}>Digite o que precisa ou selecione um polo textil</p>
+            <p style={{ fontSize: '16px' }}>Digite o que precisa ou selecione um polo têxtil</p>
           </div>
         )}
 
@@ -163,7 +163,7 @@ export default function Matching() {
                   </div>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', flexShrink: 0 }}>
                     <a href={`/fornecedores/${f.id}`} style={{ padding: '8px 16px', border: '1px solid #1a3a5c', color: 'white', borderRadius: '8px', textDecoration: 'none', fontSize: '13px', fontWeight: 500, textAlign: 'center' }}>Ver perfil</a>
-                    <a href={`/cotacao/${f.id}`} style={{ padding: '8px 16px', backgroundColor: '#3B82F6', color: 'white', borderRadius: '8px', textDecoration: 'none', fontSize: '13px', fontWeight: 500, textAlign: 'center' }}>Solicitar cotacao</a>
+                    <a href={`/cotação/${f.id}`} style={{ padding: '8px 16px', backgroundColor: '#3B82F6', color: 'white', borderRadius: '8px', textDecoration: 'none', fontSize: '13px', fontWeight: 500, textAlign: 'center' }}>Solicitar cotacao</a>
                   </div>
                 </div>
               ))}

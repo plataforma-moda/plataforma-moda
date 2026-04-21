@@ -12,7 +12,7 @@ type Polo = {
 
 export default async function Polos() {
   const { data: polos } = await supabase
-    .from('polos_texteis')
+    .from('polos_têxteis')
     .select('*')
     .order('regiao, nome')
 
@@ -42,10 +42,10 @@ export default async function Polos() {
           Mapa produtivo
         </p>
         <h1 style={{ fontSize: '40px', fontWeight: 700, color: 'white', marginBottom: '16px', lineHeight: 1.2 }}>
-          Polos Texteis do Brasil
+          Polos Têxteis do Brasil
         </h1>
         <p style={{ fontSize: '16px', color: '#93C5FD', maxWidth: '600px', margin: '0 auto' }}>
-          Os principais centros produtivos da moda brasileira — da fibra ao varejo, distribuidos por todo o territorio nacional.
+          Os principais centros produtivos da moda brasileira — da fibra ao varejo, distribuídos por todo o territorio nacional.
         </p>
       </section>
 
