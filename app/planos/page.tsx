@@ -33,7 +33,7 @@ export default function Planos() {
   }
 
   const Navbar = () => (
-    <nav style={{ backgroundColor: '#1E3A5F', padding: '0 40px', display: 'flex', alignItems: 'center', height: '64px' }}>
+    <nav style={{ backgroundColor: '#0B1F3B', padding: '0 40px', display: 'flex', alignItems: 'center', height: '64px' }}>
       <a href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
         <div style={{ width: '32px', height: '32px', backgroundColor: '#3B82F6', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, color: 'white', fontSize: '14px' }}>S</div>
         <div>
@@ -51,7 +51,7 @@ export default function Planos() {
         <div style={{ width: '80px', height: '80px', backgroundColor: '#F0FDF4', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 24px', fontSize: '36px', border: '2px solid #BBF7D0' }}>
           OK
         </div>
-        <h1 style={{ fontSize: '28px', fontWeight: 700, color: '#1E3A5F', marginBottom: '12px' }}>Cadastro concluido!</h1>
+        <h1 style={{ fontSize: '28px', fontWeight: 700, color: '#0B1F3B', marginBottom: '12px' }}>Cadastro concluido!</h1>
         <p style={{ color: '#64748B', marginBottom: '8px', fontSize: '15px' }}>
           Sua empresa ja esta visivel no diretorio do SNM.
         </p>
@@ -59,10 +59,10 @@ export default function Planos() {
           Compradores de todo o Brasil podem encontrar voce agora.
         </p>
         <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <a href={`/fornecedores/${fornecedorId}`} style={{ padding: '12px 28px', backgroundColor: '#1E3A5F', color: 'white', borderRadius: '8px', textDecoration: 'none', fontSize: '14px', fontWeight: 600 }}>
+          <a href={`/fornecedores/${fornecedorId}`} style={{ padding: '12px 28px', backgroundColor: '#0B1F3B', color: 'white', borderRadius: '8px', textDecoration: 'none', fontSize: '14px', fontWeight: 600 }}>
             Ver meu perfil
           </a>
-          <a href="/" style={{ padding: '12px 28px', border: '1px solid #E2E8F0', color: '#1E3A5F', borderRadius: '8px', textDecoration: 'none', fontSize: '14px' }}>
+          <a href="/" style={{ padding: '12px 28px', border: '1px solid #E2E8F0', color: '#0B1F3B', borderRadius: '8px', textDecoration: 'none', fontSize: '14px' }}>
             Voltar para home
           </a>
         </div>
@@ -74,7 +74,7 @@ export default function Planos() {
     <main style={{ fontFamily: 'Arial, sans-serif', backgroundColor: '#F8FAFC', minHeight: '100vh' }}>
       <Navbar />
 
-      <section style={{ backgroundColor: '#1E3A5F', padding: '40px', textAlign: 'center' }}>
+      <section style={{ backgroundColor: '#0B1F3B', padding: '40px', textAlign: 'center' }}>
         <div style={{ display: 'inline-block', backgroundColor: '#2C5282', color: '#93C5FD', padding: '6px 16px', borderRadius: '20px', fontSize: '12px', fontWeight: 500, marginBottom: '16px' }}>
           Cadastro quase concluido
         </div>
@@ -90,7 +90,7 @@ export default function Planos() {
           <div style={{ backgroundColor: 'white', border: `2px solid ${selecionado === 1 ? '#3B82F6' : '#E2E8F0'}`, borderRadius: '16px', padding: '28px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
             <div>
               <div style={{ fontSize: '12px', fontWeight: 600, color: '#64748B', letterSpacing: '0.05em', marginBottom: '8px' }}>GRATUITO</div>
-              <div style={{ fontSize: '36px', fontWeight: 700, color: '#1E3A5F', marginBottom: '4px' }}>R$ 0</div>
+              <div style={{ fontSize: '36px', fontWeight: 700, color: '#0B1F3B', marginBottom: '4px' }}>R$ 0</div>
               <div style={{ fontSize: '13px', color: '#94A3B8' }}>para sempre</div>
             </div>
             <p style={{ fontSize: '13px', color: '#64748B', lineHeight: 1.5 }}>Ideal para comecar e testar a plataforma</p>
@@ -103,7 +103,7 @@ export default function Planos() {
               ))}
             </ul>
             <button onClick={() => escolherPlano(1)} disabled={salvando && selecionado === 1}
-              style={{ marginTop: 'auto', padding: '12px', backgroundColor: selecionado === 1 ? '#1E3A5F' : 'white', color: selecionado === 1 ? 'white' : '#1E3A5F', border: '2px solid #1E3A5F', borderRadius: '8px', fontSize: '14px', fontWeight: 600, cursor: 'pointer' }}>
+              style={{ marginTop: 'auto', padding: '12px', backgroundColor: selecionado === 1 ? '#0B1F3B' : 'white', color: selecionado === 1 ? 'white' : '#0B1F3B', border: '2px solid #0B1F3B', borderRadius: '8px', fontSize: '14px', fontWeight: 600, cursor: 'pointer' }}>
               {salvando && selecionado === 1 ? 'Salvando...' : 'Comecar gratuitamente'}
             </button>
           </div>
@@ -115,7 +115,7 @@ export default function Planos() {
             </div>
             <div>
               <div style={{ fontSize: '12px', fontWeight: 600, color: '#3B82F6', letterSpacing: '0.05em', marginBottom: '8px' }}>BASIC</div>
-              <div style={{ fontSize: '36px', fontWeight: 700, color: '#1E3A5F', marginBottom: '4px' }}>Em breve</div>
+              <div style={{ fontSize: '36px', fontWeight: 700, color: '#0B1F3B', marginBottom: '4px' }}>Em breve</div>
               <div style={{ fontSize: '13px', color: '#94A3B8' }}>por mes</div>
             </div>
             <p style={{ fontSize: '13px', color: '#64748B', lineHeight: 1.5 }}>Para fornecedores que querem crescer</p>
@@ -136,7 +136,7 @@ export default function Planos() {
           <div style={{ backgroundColor: 'white', border: `2px solid ${selecionado === 3 ? '#3B82F6' : '#E2E8F0'}`, borderRadius: '16px', padding: '28px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
             <div>
               <div style={{ fontSize: '12px', fontWeight: 600, color: '#64748B', letterSpacing: '0.05em', marginBottom: '8px' }}>PRO</div>
-              <div style={{ fontSize: '36px', fontWeight: 700, color: '#1E3A5F', marginBottom: '4px' }}>Em breve</div>
+              <div style={{ fontSize: '36px', fontWeight: 700, color: '#0B1F3B', marginBottom: '4px' }}>Em breve</div>
               <div style={{ fontSize: '13px', color: '#94A3B8' }}>por mes</div>
             </div>
             <p style={{ fontSize: '13px', color: '#64748B', lineHeight: 1.5 }}>Maximo alcance e prioridade total</p>

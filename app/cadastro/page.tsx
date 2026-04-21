@@ -144,12 +144,12 @@ export default function Cadastro() {
   const inp: React.CSSProperties = { width: '100%', padding: '10px 14px', fontSize: '14px', border: '1px solid #E2E8F0', borderRadius: '8px', outline: 'none', marginTop: '6px', boxSizing: 'border-box', backgroundColor: 'white' }
   const lbl: React.CSSProperties = { fontSize: '13px', fontWeight: 500, color: '#374151', display: 'block' }
   const sec: React.CSSProperties = { backgroundColor: 'white', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '24px', marginBottom: '20px' }
-  const tit: React.CSSProperties = { fontSize: '15px', fontWeight: 600, color: '#1E3A5F', marginBottom: '16px', paddingBottom: '10px', borderBottom: '1px solid #F1F5F9' }
+  const tit: React.CSSProperties = { fontSize: '15px', fontWeight: 600, color: '#0B1F3B', marginBottom: '16px', paddingBottom: '10px', borderBottom: '1px solid #F1F5F9' }
 
   return (
     <main style={{ fontFamily: 'Arial, sans-serif', backgroundColor: '#F8FAFC', minHeight: '100vh' }}>
 
-      <nav style={{ backgroundColor: '#1E3A5F', padding: '0 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '64px' }}>
+      <nav style={{ backgroundColor: '#0B1F3B', padding: '0 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '64px' }}>
         <a href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
           <div style={{ width: '32px', height: '32px', backgroundColor: '#3B82F6', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, color: 'white', fontSize: '14px' }}>S</div>
           <div>
@@ -160,7 +160,7 @@ export default function Cadastro() {
         <a href="/matching" style={{ color: '#93C5FD', fontSize: '13px', textDecoration: 'none' }}>Buscar fornecedor</a>
       </nav>
 
-      <section style={{ backgroundColor: '#1E3A5F', padding: '32px 40px', textAlign: 'center' }}>
+      <section style={{ backgroundColor: '#0B1F3B', padding: '32px 40px', textAlign: 'center' }}>
         <h1 style={{ fontSize: '28px', fontWeight: 700, color: 'white', marginBottom: '8px' }}>Cadastre sua empresa no SNM</h1>
         <p style={{ color: '#93C5FD', fontSize: '14px' }}>Apareca para compradores de todo o Brasil — cadastro gratuito</p>
       </section>
@@ -194,14 +194,14 @@ export default function Cadastro() {
 
             {subsDisponiveis.length > 0 && (
               <div style={{ marginBottom: '16px' }}>
-                <div style={{ fontSize: '13px', fontWeight: 600, color: '#1E3A5F', marginBottom: '10px' }}>
+                <div style={{ fontSize: '13px', fontWeight: 600, color: '#0B1F3B', marginBottom: '10px' }}>
                   Subcategorias — marque todas que se aplicam:
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
                   {subsDisponiveis.map(s => (
                     <label key={s.id} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '10px 12px', border: `1px solid ${subcsSelecionadas.includes(s.id) ? '#BFDBFE' : '#E2E8F0'}`, borderRadius: '8px', cursor: 'pointer', backgroundColor: subcsSelecionadas.includes(s.id) ? '#EFF6FF' : 'white', fontSize: '13px', color: subcsSelecionadas.includes(s.id) ? '#1E40AF' : '#374151', fontWeight: subcsSelecionadas.includes(s.id) ? 600 : 400 }}>
                       <input type="checkbox" checked={subcsSelecionadas.includes(s.id)} onChange={() => toggleSub(s.id)}
-                        style={{ width: '16px', height: '16px', accentColor: '#1E3A5F', flexShrink: 0 }} />
+                        style={{ width: '16px', height: '16px', accentColor: '#0B1F3B', flexShrink: 0 }} />
                       {s.name}
                     </label>
                   ))}
@@ -211,7 +211,7 @@ export default function Cadastro() {
 
             {espsDisponiveis.length > 0 && (
               <div>
-                <div style={{ fontSize: '13px', fontWeight: 600, color: '#1E3A5F', marginBottom: '10px' }}>
+                <div style={{ fontSize: '13px', fontWeight: 600, color: '#0B1F3B', marginBottom: '10px' }}>
                   Especializacoes — marque as que se aplicam:
                 </div>
                 {subcsSelecionadas.map(subId => {
@@ -225,7 +225,7 @@ export default function Cadastro() {
                         {espsDoSub.map(e => (
                           <label key={e.id} style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 10px', border: `1px solid ${espsSelecionadas.includes(e.id) ? '#BFDBFE' : '#E2E8F0'}`, borderRadius: '6px', cursor: 'pointer', backgroundColor: espsSelecionadas.includes(e.id) ? '#EFF6FF' : 'white', fontSize: '12px', color: espsSelecionadas.includes(e.id) ? '#1E40AF' : '#374151' }}>
                             <input type="checkbox" checked={espsSelecionadas.includes(e.id)} onChange={() => toggleEsp(e.id)}
-                              style={{ width: '14px', height: '14px', accentColor: '#1E3A5F', flexShrink: 0 }} />
+                              style={{ width: '14px', height: '14px', accentColor: '#0B1F3B', flexShrink: 0 }} />
                             {e.name}
                           </label>
                         ))}
@@ -288,14 +288,14 @@ export default function Cadastro() {
 
           {erro && <div style={{ padding: '12px', backgroundColor: '#FEF2F2', border: '1px solid #FECACA', borderRadius: '8px', marginBottom: '16px', color: '#DC2626', fontSize: '14px' }}>{erro}</div>}
 
-          <button type="submit" disabled={enviando} style={{ width: '100%', padding: '16px', backgroundColor: enviando ? '#94A3B8' : '#1E3A5F', color: 'white', border: 'none', borderRadius: '8px', fontSize: '16px', fontWeight: 600, cursor: enviando ? 'not-allowed' : 'pointer', marginBottom: '40px' }}>
+          <button type="submit" disabled={enviando} style={{ width: '100%', padding: '16px', backgroundColor: enviando ? '#94A3B8' : '#0B1F3B', color: 'white', border: 'none', borderRadius: '8px', fontSize: '16px', fontWeight: 600, cursor: enviando ? 'not-allowed' : 'pointer', marginBottom: '40px' }}>
             {enviando ? 'Cadastrando...' : 'Cadastrar minha empresa no SNM'}
           </button>
 
         </form>
       </div>
 
-      <footer style={{ backgroundColor: '#0F2238', padding: '24px 40px', textAlign: 'center' }}>
+      <footer style={{ backgroundColor: '#060F1E', padding: '24px 40px', textAlign: 'center' }}>
         <div style={{ color: '#64748B', fontSize: '13px' }}>SNM - Sistema Nacional da Moda 2025</div>
       </footer>
 

@@ -2,7 +2,7 @@ export default function Sobre() {
   return (
     <main style={{ fontFamily: 'Arial, sans-serif', backgroundColor: '#F8FAFC', minHeight: '100vh' }}>
 
-      <nav style={{ backgroundColor: '#1E3A5F', padding: '0 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '64px' }}>
+      <nav style={{ backgroundColor: '#0B1F3B', padding: '0 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '64px' }}>
         <a href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
           <div style={{ width: '32px', height: '32px', backgroundColor: '#3B82F6', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, color: 'white', fontSize: '14px' }}>S</div>
           <div>
@@ -16,7 +16,7 @@ export default function Sobre() {
         </div>
       </nav>
 
-      <section style={{ backgroundColor: '#1E3A5F', padding: '60px 40px', textAlign: 'center' }}>
+      <section style={{ backgroundColor: '#0B1F3B', padding: '60px 40px', textAlign: 'center' }}>
         <div style={{ display: 'inline-block', backgroundColor: '#2C5282', color: '#93C5FD', padding: '6px 16px', borderRadius: '20px', fontSize: '12px', fontWeight: 500, marginBottom: '20px' }}>
           Infraestrutura de Dados da Cadeia Produtiva da Moda Brasileira
         </div>
@@ -32,8 +32,8 @@ export default function Sobre() {
 
         <div style={{ backgroundColor: 'white', border: '1px solid #E2E8F0', borderRadius: '16px', padding: '40px', marginBottom: '24px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
-            <div style={{ width: '4px', height: '40px', backgroundColor: '#1E3A5F', borderRadius: '2px' }}></div>
-            <h2 style={{ fontSize: '22px', fontWeight: 700, color: '#1E3A5F' }}>Apresentacao</h2>
+            <div style={{ width: '4px', height: '40px', backgroundColor: '#0B1F3B', borderRadius: '2px' }}></div>
+            <h2 style={{ fontSize: '22px', fontWeight: 700, color: '#0B1F3B' }}>Apresentacao</h2>
           </div>
           <p style={{ fontSize: '16px', color: '#374151', lineHeight: 1.8, marginBottom: '16px' }}>
             O setor textil e de confeccao brasileiro e um dos mais complexos do mundo — da fibra ao varejo, sao dezenas de elos interdependentes, distribuidos por todo o territorio nacional.
@@ -41,7 +41,7 @@ export default function Sobre() {
           <p style={{ fontSize: '16px', color: '#374151', lineHeight: 1.8, marginBottom: '16px' }}>
             No entanto, essa cadeia opera de forma fragmentada. Fornecedores invisiveis. Compradores sem referencia. Dados dispersos. Conexoes que dependem de relacionamentos pessoais e feiras anuais.
           </p>
-          <p style={{ fontSize: '18px', fontWeight: 600, color: '#1E3A5F', lineHeight: 1.6 }}>
+          <p style={{ fontSize: '18px', fontWeight: 600, color: '#0B1F3B', lineHeight: 1.6 }}>
             O Sistema Nacional da Moda nasce para mudar isso.
           </p>
         </div>
@@ -52,7 +52,7 @@ export default function Sobre() {
             <div style={{ width: '44px', height: '44px', backgroundColor: '#EFF6FF', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px', marginBottom: '16px' }}>
               🎯
             </div>
-            <h2 style={{ fontSize: '18px', fontWeight: 700, color: '#1E3A5F', marginBottom: '12px' }}>Missao</h2>
+            <h2 style={{ fontSize: '18px', fontWeight: 700, color: '#0B1F3B', marginBottom: '12px' }}>Missao</h2>
             <p style={{ fontSize: '14px', color: '#374151', lineHeight: 1.8 }}>
               Organizar, mapear e estruturar a cadeia produtiva da moda brasileira por meio de uma infraestrutura de dados tecnica, confiavel e acessivel a todos os elos do setor.
             </p>
@@ -62,7 +62,7 @@ export default function Sobre() {
             <div style={{ width: '44px', height: '44px', backgroundColor: '#EFF6FF', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px', marginBottom: '16px' }}>
               💡
             </div>
-            <h2 style={{ fontSize: '18px', fontWeight: 700, color: '#1E3A5F', marginBottom: '12px' }}>Proposito</h2>
+            <h2 style={{ fontSize: '18px', fontWeight: 700, color: '#0B1F3B', marginBottom: '12px' }}>Proposito</h2>
             <p style={{ fontSize: '14px', color: '#374151', lineHeight: 1.8 }}>
               Reduzir a fragmentacao do setor textil e de confeccao, ampliar a visibilidade de fornecedores, fabricantes e profissionais, e estabelecer uma base de dados industriais padronizada que sirva de referencia para empresas, investidores e politicas publicas.
             </p>
@@ -72,13 +72,13 @@ export default function Sobre() {
             <div style={{ width: '44px', height: '44px', backgroundColor: '#EFF6FF', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px', marginBottom: '16px' }}>
               🔭
             </div>
-            <h2 style={{ fontSize: '18px', fontWeight: 700, color: '#1E3A5F', marginBottom: '12px' }}>Visao</h2>
+            <h2 style={{ fontSize: '18px', fontWeight: 700, color: '#0B1F3B', marginBottom: '12px' }}>Visao</h2>
             <p style={{ fontSize: '14px', color: '#374151', lineHeight: 1.8 }}>
               Tornar-se a principal infraestrutura de dados da cadeia produtiva da moda brasileira — a fonte tecnica de referencia nacional para quem produz, compra, investe ou regula o setor.
             </p>
           </div>
 
-          <div style={{ backgroundColor: '#1E3A5F', border: '1px solid #1E3A5F', borderRadius: '16px', padding: '32px' }}>
+          <div style={{ backgroundColor: '#0B1F3B', border: '1px solid #0B1F3B', borderRadius: '16px', padding: '32px' }}>
             <div style={{ width: '44px', height: '44px', backgroundColor: '#2C5282', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px', marginBottom: '16px' }}>
               🏛️
             </div>
@@ -92,8 +92,8 @@ export default function Sobre() {
 
         <div style={{ backgroundColor: 'white', border: '1px solid #E2E8F0', borderRadius: '16px', padding: '40px', marginBottom: '24px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '28px' }}>
-            <div style={{ width: '4px', height: '40px', backgroundColor: '#1E3A5F', borderRadius: '2px' }}></div>
-            <h2 style={{ fontSize: '22px', fontWeight: 700, color: '#1E3A5F' }}>Valores</h2>
+            <div style={{ width: '4px', height: '40px', backgroundColor: '#0B1F3B', borderRadius: '2px' }}></div>
+            <h2 style={{ fontSize: '22px', fontWeight: 700, color: '#0B1F3B' }}>Valores</h2>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
             {[
@@ -107,7 +107,7 @@ export default function Sobre() {
               <div key={i} style={{ display: 'flex', gap: '14px', padding: '16px', backgroundColor: '#F8FAFC', borderRadius: '10px', border: '1px solid #E2E8F0' }}>
                 <div style={{ fontSize: '22px', flexShrink: 0, marginTop: '2px' }}>{v.icone}</div>
                 <div>
-                  <div style={{ fontSize: '14px', fontWeight: 600, color: '#1E3A5F', marginBottom: '4px' }}>{v.titulo}</div>
+                  <div style={{ fontSize: '14px', fontWeight: 600, color: '#0B1F3B', marginBottom: '4px' }}>{v.titulo}</div>
                   <div style={{ fontSize: '13px', color: '#64748B', lineHeight: 1.6 }}>{v.texto}</div>
                 </div>
               </div>
@@ -115,7 +115,7 @@ export default function Sobre() {
           </div>
         </div>
 
-        <div style={{ backgroundColor: '#1E3A5F', borderRadius: '16px', padding: '40px', textAlign: 'center' }}>
+        <div style={{ backgroundColor: '#0B1F3B', borderRadius: '16px', padding: '40px', textAlign: 'center' }}>
           <h2 style={{ color: 'white', fontSize: '24px', fontWeight: 700, marginBottom: '12px' }}>
             Faca parte da infraestrutura
           </h2>

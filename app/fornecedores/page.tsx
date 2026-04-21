@@ -15,7 +15,7 @@ export default async function Fornecedores() {
     <main style={{ fontFamily: 'Arial, sans-serif', backgroundColor: '#F8FAFC', minHeight: '100vh' }}>
 
       {/* Navbar */}
-      <nav style={{ backgroundColor: '#1E3A5F', padding: '0 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '64px' }}>
+      <nav style={{ backgroundColor: '#0B1F3B', padding: '0 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '64px' }}>
         <a href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
           <div style={{ width: '32px', height: '32px', backgroundColor: '#3B82F6', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, color: 'white', fontSize: '14px' }}>S</div>
           <div>
@@ -29,7 +29,7 @@ export default async function Fornecedores() {
       </nav>
 
       {/* Header */}
-      <section style={{ backgroundColor: '#1E3A5F', padding: '40px', textAlign: 'center' }}>
+      <section style={{ backgroundColor: '#0B1F3B', padding: '40px', textAlign: 'center' }}>
         <h1 style={{ fontSize: '32px', fontWeight: 700, color: 'white', marginBottom: '8px' }}>Diretorio de Fornecedores</h1>
         <p style={{ color: '#93C5FD', fontSize: '15px' }}>{fornecedores?.length || 0} empresas cadastradas na cadeia produtiva</p>
       </section>
@@ -38,7 +38,7 @@ export default async function Fornecedores() {
 
         {/* Filtros */}
         <div style={{ backgroundColor: 'white', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '20px', marginBottom: '24px', display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
-          <span style={{ fontSize: '13px', fontWeight: 600, color: '#1E3A5F', marginRight: '4px' }}>Filtrar por:</span>
+          <span style={{ fontSize: '13px', fontWeight: 600, color: '#0B1F3B', marginRight: '4px' }}>Filtrar por:</span>
           <select style={{ padding: '8px 14px', border: '1px solid #E2E8F0', borderRadius: '8px', fontSize: '13px', color: '#1A202C', backgroundColor: '#F8FAFC' }}>
             <option>Todas as categorias</option>
             {categorias?.map((c: any) => <option key={c.id}>{c.name}</option>)}
@@ -54,9 +54,9 @@ export default async function Fornecedores() {
         {fornecedores?.length === 0 ? (
           <div style={{ textAlign: 'center', padding: '80px', backgroundColor: 'white', borderRadius: '12px', border: '1px solid #E2E8F0' }}>
             <div style={{ fontSize: '48px', marginBottom: '16px' }}>🏭</div>
-            <h3 style={{ color: '#1E3A5F', marginBottom: '8px' }}>Nenhum fornecedor ainda</h3>
+            <h3 style={{ color: '#0B1F3B', marginBottom: '8px' }}>Nenhum fornecedor ainda</h3>
             <p style={{ color: '#64748B', marginBottom: '20px' }}>Seja o primeiro a se cadastrar no SNM</p>
-            <a href="/cadastro" style={{ padding: '12px 24px', backgroundColor: '#1E3A5F', color: 'white', borderRadius: '8px', textDecoration: 'none', fontSize: '14px' }}>
+            <a href="/cadastro" style={{ padding: '12px 24px', backgroundColor: '#0B1F3B', color: 'white', borderRadius: '8px', textDecoration: 'none', fontSize: '14px' }}>
               Cadastrar empresa
             </a>
           </div>
@@ -70,7 +70,7 @@ export default async function Fornecedores() {
                     🏭
                   </div>
                   <div style={{ flex: 1 }}>
-                    <h3 style={{ fontSize: '16px', fontWeight: 600, color: '#1E3A5F', marginBottom: '6px' }}>{f.nome}</h3>
+                    <h3 style={{ fontSize: '16px', fontWeight: 600, color: '#0B1F3B', marginBottom: '6px' }}>{f.nome}</h3>
                     <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginBottom: '8px' }}>
                       {f.categoria_nome && (
                         <span style={{ fontSize: '12px', backgroundColor: '#EFF6FF', color: '#1E40AF', padding: '3px 10px', borderRadius: '20px', fontWeight: 500 }}>
@@ -108,7 +108,7 @@ export default async function Fornecedores() {
                   </div>
                 </div>
                 <div style={{ textAlign: 'right', flexShrink: 0 }}>
-                  <a href={`/fornecedores/${f.id}`} style={{ display: 'inline-block', padding: '10px 20px', backgroundColor: '#1E3A5F', color: 'white', borderRadius: '8px', textDecoration: 'none', fontSize: '13px', fontWeight: 500 }}>
+                  <a href={`/fornecedores/${f.id}`} style={{ display: 'inline-block', padding: '10px 20px', backgroundColor: '#0B1F3B', color: 'white', borderRadius: '8px', textDecoration: 'none', fontSize: '13px', fontWeight: 500 }}>
                     Ver perfil
                   </a>
                 </div>

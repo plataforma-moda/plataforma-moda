@@ -1,4 +1,4 @@
-﻿import { supabase } from '../lib/supabase'
+import { supabase } from '../lib/supabase'
 
 export default async function Home() {
   const { data: categorias } = await supabase
@@ -11,28 +11,28 @@ export default async function Home() {
     .select('*', { count: 'exact', head: true })
 
   const getIcone = (name: string) => {
-    if (name.includes('prima')) return '🌱'
-    if (name.includes('xtil')) return '🏭'
-    if (name.includes('enef')) return '🎨'
-    if (name.includes('viamento')) return '🧵'
-    if (name.includes('fec')) return '👕'
-    if (name.includes('rivate')) return '🏷️'
-    if (name.includes('esign')) return '✏️'
-    if (name.includes('ogist')) return '🚚'
-    if (name.includes('strib')) return '📦'
-    if (name.includes('arejo')) return '🛍️'
-    if (name.includes('arketing')) return '📣'
-    if (name.includes('ecnolog')) return '💻'
-    if (name.includes('stent')) return '♻️'
-    if (name.includes('ducac')) return '🎓'
-    if (name.includes('ervic')) return '⚙️'
-    return '🏷️'
+    if (name.includes('prima')) return '??'
+    if (name.includes('xtil')) return '??'
+    if (name.includes('enef')) return '??'
+    if (name.includes('viamento')) return '??'
+    if (name.includes('fec')) return '??'
+    if (name.includes('rivate')) return '???'
+    if (name.includes('esign')) return '??'
+    if (name.includes('ogist')) return '??'
+    if (name.includes('strib')) return '??'
+    if (name.includes('arejo')) return '???'
+    if (name.includes('arketing')) return '??'
+    if (name.includes('ecnolog')) return '??'
+    if (name.includes('stent')) return '??'
+    if (name.includes('ducac')) return '??'
+    if (name.includes('ervic')) return '??'
+    return '???'
   }
 
   return (
     <main style={{ fontFamily: 'Arial, sans-serif', backgroundColor: '#F8FAFC', minHeight: '100vh' }}>
 
-      <nav style={{ backgroundColor: '#1E3A5F', padding: '0 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '64px' }}>
+      <nav style={{ backgroundColor: '#0B1F3B', padding: '0 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '64px' }}>
         <a href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
           <div style={{ width: '32px', height: '32px', backgroundColor: '#3B82F6', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, color: 'white', fontSize: '14px' }}>S</div>
           <div>
@@ -46,7 +46,7 @@ export default async function Home() {
         </div>
       </nav>
 
-      <section style={{ backgroundColor: '#1E3A5F', padding: '80px 40px', textAlign: 'center' }}>
+      <section style={{ backgroundColor: '#0B1F3B', padding: '80px 40px', textAlign: 'center' }}>
         <div style={{ maxWidth: '800px', margin: '0 auto' }}>
           <div style={{ display: 'inline-block', backgroundColor: '#2C5282', color: '#93C5FD', padding: '6px 16px', borderRadius: '20px', fontSize: '13px', fontWeight: 500, marginBottom: '24px' }}>
             O maior diretorio B2B da moda brasileira
@@ -88,7 +88,7 @@ export default async function Home() {
 
       <section style={{ maxWidth: '1200px', margin: '0 auto', padding: '60px 40px' }}>
         <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-          <h2 style={{ fontSize: '32px', fontWeight: 700, color: '#1E3A5F', marginBottom: '12px' }}>Cadeia produtiva completa</h2>
+          <h2 style={{ fontSize: '32px', fontWeight: 700, color: '#0B1F3B', marginBottom: '12px' }}>Cadeia produtiva completa</h2>
           <p style={{ fontSize: '16px', color: '#64748B' }}>Da fibra ao varejo - encontre fornecedores em cada elo</p>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px' }}>
@@ -99,7 +99,7 @@ export default async function Home() {
                   <div style={{ width: '40px', height: '40px', backgroundColor: '#EFF6FF', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px', flexShrink: 0 }}>
                     {getIcone(cat.name)}
                   </div>
-                  <div style={{ fontWeight: 600, color: '#1E3A5F', fontSize: '15px' }}>{cat.name}</div>
+                  <div style={{ fontWeight: 600, color: '#0B1F3B', fontSize: '15px' }}>{cat.name}</div>
                 </div>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
                   {cat.subcategories?.slice(0, 3).map((sub: any) => (
@@ -131,17 +131,17 @@ export default async function Home() {
             <p style={{ fontSize: '18px', color: '#374151', lineHeight: 1.8, marginBottom: '8px' }}>
               Fornecedores invisiveis. Compradores sem referencia. Dados dispersos.
             </p>
-            <p style={{ fontSize: '20px', fontWeight: 700, color: '#1E3A5F', lineHeight: 1.6, marginBottom: '28px' }}>
+            <p style={{ fontSize: '20px', fontWeight: 700, color: '#0B1F3B', lineHeight: 1.6, marginBottom: '28px' }}>
               O SNM nasce para mudar isso.
             </p>
-            <a href="/sobre" style={{ display: 'inline-block', padding: '12px 28px', backgroundColor: '#1E3A5F', color: 'white', borderRadius: '8px', fontSize: '14px', fontWeight: 600, textDecoration: 'none' }}>
+            <a href="/sobre" style={{ display: 'inline-block', padding: '12px 28px', backgroundColor: '#0B1F3B', color: 'white', borderRadius: '8px', fontSize: '14px', fontWeight: 600, textDecoration: 'none' }}>
               Conheca nossa missao
             </a>
           </div>
         </div>
       </section>
 
-      <section style={{ backgroundColor: '#1E3A5F', padding: '60px 40px', textAlign: 'center' }}>
+      <section style={{ backgroundColor: '#0B1F3B', padding: '60px 40px', textAlign: 'center' }}>
         <div style={{ maxWidth: '700px', margin: '0 auto' }}>
           <h2 style={{ fontSize: '32px', fontWeight: 700, color: 'white', marginBottom: '12px' }}>
             Faca parte do SNM

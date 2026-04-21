@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 
 import { useState } from 'react'
 import { supabase } from '../../lib/supabase'
@@ -46,11 +46,11 @@ export default function CadastroCliente() {
   const inp: React.CSSProperties = { width: '100%', padding: '10px 14px', fontSize: '14px', border: '1px solid #E2E8F0', borderRadius: '8px', outline: 'none', marginTop: '6px', boxSizing: 'border-box', backgroundColor: 'white' }
   const lbl: React.CSSProperties = { fontSize: '13px', fontWeight: 500, color: '#374151', display: 'block' }
   const sec: React.CSSProperties = { backgroundColor: 'white', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '24px', marginBottom: '20px' }
-  const tit: React.CSSProperties = { fontSize: '15px', fontWeight: 600, color: '#1E3A5F', marginBottom: '16px', paddingBottom: '10px', borderBottom: '1px solid #F1F5F9' }
+  const tit: React.CSSProperties = { fontSize: '15px', fontWeight: 600, color: '#0B1F3B', marginBottom: '16px', paddingBottom: '10px', borderBottom: '1px solid #F1F5F9' }
 
   if (sucesso) return (
     <main style={{ fontFamily: 'Arial, sans-serif', backgroundColor: '#F8FAFC', minHeight: '100vh' }}>
-      <nav style={{ backgroundColor: '#1E3A5F', padding: '0 40px', display: 'flex', alignItems: 'center', height: '64px' }}>
+      <nav style={{ backgroundColor: '#0B1F3B', padding: '0 40px', display: 'flex', alignItems: 'center', height: '64px' }}>
         <a href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
           <div style={{ width: '32px', height: '32px', backgroundColor: '#3B82F6', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, color: 'white', fontSize: '14px' }}>S</div>
           <div><div style={{ color: 'white', fontWeight: 700, fontSize: '15px', lineHeight: 1 }}>SNM</div><div style={{ color: '#93C5FD', fontSize: '10px', lineHeight: 1 }}>Sistema Nacional da Moda</div></div>
@@ -58,15 +58,15 @@ export default function CadastroCliente() {
       </nav>
       <div style={{ maxWidth: '600px', margin: '0 auto', padding: '80px 20px', textAlign: 'center' }}>
         <div style={{ width: '72px', height: '72px', backgroundColor: '#EFF6FF', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 24px', fontSize: '32px' }}>OK</div>
-        <h1 style={{ fontSize: '26px', fontWeight: 700, color: '#1E3A5F', marginBottom: '12px' }}>Conta criada!</h1>
+        <h1 style={{ fontSize: '26px', fontWeight: 700, color: '#0B1F3B', marginBottom: '12px' }}>Conta criada!</h1>
         <p style={{ color: '#64748B', marginBottom: '32px' }}>
           Bem-vindo ao SNM, <strong>{form.nome}</strong>! Agora voce pode buscar fornecedores em toda a cadeia produtiva.
         </p>
         <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <a href="/matching" style={{ padding: '12px 24px', backgroundColor: '#1E3A5F', color: 'white', borderRadius: '8px', textDecoration: 'none', fontSize: '14px', fontWeight: 500 }}>
+          <a href="/matching" style={{ padding: '12px 24px', backgroundColor: '#0B1F3B', color: 'white', borderRadius: '8px', textDecoration: 'none', fontSize: '14px', fontWeight: 500 }}>
             Buscar fornecedores
           </a>
-          <a href="/" style={{ padding: '12px 24px', border: '1px solid #E2E8F0', color: '#1E3A5F', borderRadius: '8px', textDecoration: 'none', fontSize: '14px' }}>
+          <a href="/" style={{ padding: '12px 24px', border: '1px solid #E2E8F0', color: '#0B1F3B', borderRadius: '8px', textDecoration: 'none', fontSize: '14px' }}>
             Voltar para home
           </a>
         </div>
@@ -77,7 +77,7 @@ export default function CadastroCliente() {
   return (
     <main style={{ fontFamily: 'Arial, sans-serif', backgroundColor: '#F8FAFC', minHeight: '100vh' }}>
 
-      <nav style={{ backgroundColor: '#1E3A5F', padding: '0 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '64px' }}>
+      <nav style={{ backgroundColor: '#0B1F3B', padding: '0 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '64px' }}>
         <a href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
           <div style={{ width: '32px', height: '32px', backgroundColor: '#3B82F6', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, color: 'white', fontSize: '14px' }}>S</div>
           <div><div style={{ color: 'white', fontWeight: 700, fontSize: '15px', lineHeight: 1 }}>SNM</div><div style={{ color: '#93C5FD', fontSize: '10px', lineHeight: 1 }}>Sistema Nacional da Moda</div></div>
@@ -85,9 +85,9 @@ export default function CadastroCliente() {
         <a href="/cadastro" style={{ color: '#93C5FD', fontSize: '13px', textDecoration: 'none' }}>Sou fornecedor</a>
       </nav>
 
-      <section style={{ backgroundColor: '#1E3A5F', padding: '32px 40px', textAlign: 'center' }}>
+      <section style={{ backgroundColor: '#0B1F3B', padding: '32px 40px', textAlign: 'center' }}>
         <h1 style={{ fontSize: '28px', fontWeight: 700, color: 'white', marginBottom: '8px' }}>Crie sua conta de comprador</h1>
-        <p style={{ color: '#93C5FD', fontSize: '14px' }}>Acesse o maior diretorio B2B da moda brasileira — gratuito</p>
+        <p style={{ color: '#93C5FD', fontSize: '14px' }}>Acesse o maior diretorio B2B da moda brasileira � gratuito</p>
       </section>
 
       <div style={{ maxWidth: '680px', margin: '0 auto', padding: '40px 20px' }}>
@@ -137,7 +137,7 @@ export default function CadastroCliente() {
 
           {erro && <div style={{ padding: '12px', backgroundColor: '#FEF2F2', border: '1px solid #FECACA', borderRadius: '8px', marginBottom: '16px', color: '#DC2626', fontSize: '14px' }}>{erro}</div>}
 
-          <button type="submit" disabled={enviando} style={{ width: '100%', padding: '16px', backgroundColor: enviando ? '#94A3B8' : '#1E3A5F', color: 'white', border: 'none', borderRadius: '8px', fontSize: '16px', fontWeight: 600, cursor: enviando ? 'not-allowed' : 'pointer', marginBottom: '40px' }}>
+          <button type="submit" disabled={enviando} style={{ width: '100%', padding: '16px', backgroundColor: enviando ? '#94A3B8' : '#0B1F3B', color: 'white', border: 'none', borderRadius: '8px', fontSize: '16px', fontWeight: 600, cursor: enviando ? 'not-allowed' : 'pointer', marginBottom: '40px' }}>
             {enviando ? 'Criando conta...' : 'Criar minha conta no SNM'}
           </button>
 
