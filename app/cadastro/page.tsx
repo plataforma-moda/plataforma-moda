@@ -138,7 +138,7 @@ export default function Cadastro() {
     }
 
     setEnviando(false)
-    window.location.href = `/planos?id=${fornecedorId}`
+    window.location.href = `/fornecedores/${fornecedorId}`
   }
 
   const inp: React.CSSProperties = { width: '100%', padding: '10px 14px', fontSize: '14px', border: '1px solid #E2E8F0', borderRadius: '8px', outline: 'none', marginTop: '6px', boxSizing: 'border-box', backgroundColor: 'white' }

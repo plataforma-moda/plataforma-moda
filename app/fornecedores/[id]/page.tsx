@@ -134,18 +134,7 @@ export default async function PerfilFornecedor({ params }: any) {
 
         </div>
 
-        {/* CTA */}
-        <div style={{ backgroundColor: '#1E3A5F', borderRadius: '16px', padding: '32px', textAlign: 'center' }}>
-          <h2 style={{ color: 'white', fontSize: '22px', fontWeight: 600, marginBottom: '8px' }}>
-            Quer fazer negocio com {f.nome}?
-          </h2>
-          <p style={{ color: '#93C5FD', marginBottom: '24px', fontSize: '14px' }}>
-            Envie uma solicitacao de cotacao agora mesmo
-          </p>
-          <a href={`/cotacao/${f.id}`} style={{ display: 'inline-block', padding: '14px 32px', backgroundColor: '#3B82F6', color: 'white', borderRadius: '8px', fontSize: '15px', fontWeight: 600, textDecoration: 'none' }}>
-            Solicitar cotacao
-          </a>
-        </div>
+        
 
       </div>
 
