@@ -63,6 +63,7 @@ export default function Editar({ params }: any) {
         setPoloId(f.polo_id?.toString() || '')
         setForm({
           nome: f.nome || '',
+          telefone: f.telefone || '',
           celular: f.celular || '',
           whatsapp: f.whatsapp || '',
           email: f.email || '',
@@ -268,7 +269,7 @@ export default function Editar({ params }: any) {
       <div style={{ maxWidth: '720px', margin: '0 auto', padding: '40px 20px' }}>
 
         
-        
+
 
         <form onSubmit={handleSubmit}>
 
