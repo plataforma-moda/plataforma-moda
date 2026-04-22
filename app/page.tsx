@@ -101,8 +101,8 @@ export default async function Home() {
         <div style={{ maxWidth: '1100px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '32px', textAlign: 'center' }}>
           {[
             { titulo: 'Mapeamento', texto: 'Empresas com dados técnicos padronizados' },
-            { titulo: 'Estruturacao', texto: 'Organização por categoria e localização' },
-            { titulo: 'Conexao', texto: 'Busca eficiente entre compradores e fornecedores' },
+            { titulo: 'Estruturação', texto: 'Organização por categoria e localização' },
+            { titulo: 'Conexão', texto: 'Busca eficiente entre compradores e fornecedores' },
             { titulo: 'Escala', texto: 'A rede cresce e gera mais valor' },
           ].map((item, i) => (
             <div key={i}>

@@ -258,7 +258,7 @@ export default function Cadastro() {
         <form onSubmit={handleSubmit}>
 
           <div style={sec}>
-            <h2 style={tit}>1. Identificacao da empresa</h2>
+            <h2 style={tit}>1. Identificação da empresa</h2>
             <div style={{ marginBottom: '16px' }}>
               <label style={lbl}>CNPJ *</label>
               <input
@@ -287,14 +287,14 @@ export default function Cadastro() {
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
               <div><label style={lbl}>Nome fantasia *</label><input name="nome" value={form.nome} onChange={handleChange} required placeholder="Ex: Tecidos Silva" style={inp} /></div>
-              <div><label style={lbl}>Razao social</label><input name="razao_social" value={form.razao_social} onChange={handleChange} placeholder="Ex: Tecidos Silva Ltda" style={inp} /></div>
+              <div><label style={lbl}>Razão social</label><input name="razao_social" value={form.razao_social} onChange={handleChange} placeholder="Ex: Tecidos Silva Ltda" style={inp} /></div>
             </div>
           </div>
 
           <div style={sec}>
             <h2 style={tit}>2. Onde sua empresa atua</h2>
             <p style={{ fontSize: '13px', color: '#64748B', marginBottom: '16px' }}>
-              Escolha a categoria e marque todas as subcategorias e especializacoes que se aplicam.
+              Escolha a categoria e marque todas as subcategorias e especializações que se aplicam.
             </p>
 
             <div style={{ marginBottom: '20px' }}>
@@ -324,7 +324,7 @@ export default function Cadastro() {
             {espsDisponiveis.length > 0 && (
               <div>
                 <div style={{ fontSize: '13px', fontWeight: 600, color: '#0B1F3B', marginBottom: '10px' }}>
-                  Especializacoes — marque as que se aplicam:
+                  Especializações — marque as que se aplicam:
                 </div>
                 {subcsSelecionadas.map(subId => {
                   const sub = subcategorias.find(s => s.id === subId)
@@ -349,7 +349,7 @@ export default function Cadastro() {
           </div>
 
           <div style={sec}>
-            <h2 style={tit}>3. Localizacao</h2>
+            <h2 style={tit}>3. Localização</h2>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
               <div>
                 <label style={lbl}>CEP</label>
@@ -368,11 +368,11 @@ export default function Cadastro() {
               <input name="cidade" value={form.cidade} onChange={handleChange} required placeholder="Ex: Sao Paulo" style={inp} />
             </div>
             <div style={{ marginBottom: '16px' }}>
-              <label style={lbl}>Endereco</label>
+              <label style={lbl}>Endereço</label>
               <input name="endereço" value={form.endereço} onChange={handleChange} placeholder="Ex: Rua das Flores" style={inp} />
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '16px', marginBottom: '16px' }}>
-              <div><label style={lbl}>Numero</label><input name="numero" value={form.numero} onChange={handleChange} placeholder="Ex: 123" style={inp} /></div>
+              <div><label style={lbl}>Número</label><input name="numero" value={form.numero} onChange={handleChange} placeholder="Ex: 123" style={inp} /></div>
               <div><label style={lbl}>Complemento</label><input name="complemento" value={form.complemento} onChange={handleChange} placeholder="Ex: Apto 42, Bloco B" style={inp} /></div>
             </div>
             <div>
@@ -380,9 +380,9 @@ export default function Cadastro() {
               <input name="bairro" value={form.bairro} onChange={handleChange} placeholder="Ex: Bom Retiro" style={inp} />
             </div>
             <div style={{ marginTop: '16px' }}>
-              <label style={lbl}>Polo textil (opcional)</label>
+              <label style={lbl}>Polo têxtil (opcional)</label>
               <select value={poloId} onChange={e => setPoloId(e.target.value)} style={inp}>
-                <option value="">Nao faz parte de um polo textil</option>
+                <option value="">Não faz parte de um polo têxtil</option>
                 {polos.map(p => <option key={p.id} value={p.id}>{p.nome} — {p.estado}</option>)}
               </select>
               <p style={{ fontSize: '12px', color: '#64748B', marginTop: '6px' }}>Se sua empresa faz parte de um polo produtivo conhecido, selecione acima</p>
@@ -403,20 +403,20 @@ export default function Cadastro() {
             <h2 style={tit}>5. Capacidade produtiva</h2>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px' }}>
               <div><label style={lbl}>Capacidade mensal</label><input name="capacidade_produtiva" value={form.capacidade_produtiva} onChange={handleChange} placeholder="Ex: 5.000 pecas/mes" style={inp} /></div>
-              <div><label style={lbl}>MOQ minimo</label><input name="moq" value={form.moq} onChange={handleChange} placeholder="Ex: 100 pecas" style={inp} /></div>
-              <div><label style={lbl}>Prazo medio (dias)</label><input name="prazo_medio_dias" value={form.prazo_medio_dias} onChange={handleChange} placeholder="Ex: 30" style={inp} /></div>
+              <div><label style={lbl}>MOQ mínimo</label><input name="moq" value={form.moq} onChange={handleChange} placeholder="Ex: 100 pecas" style={inp} /></div>
+              <div><label style={lbl}>Prazo médio (dias)</label><input name="prazo_medio_dias" value={form.prazo_medio_dias} onChange={handleChange} placeholder="Ex: 30" style={inp} /></div>
             </div>
           </div>
 
           <div style={sec}>
             <h2 style={tit}>6. Diferenciais</h2>
             <div style={{ marginBottom: '16px' }}>
-              <label style={lbl}>Descricao da empresa</label>
+              <label style={lbl}>Descrição da empresa</label>
               <textarea name="descricao" value={form.descricao} onChange={handleChange}
                 placeholder="Conte sobre sua empresa, produtos e diferenciais..."
                 style={{ ...inp, height: '100px', resize: 'vertical' }} />
             </div>
-            <div><label style={lbl}>Certificacoes</label><input name="certificacoes" value={form.certificacoes} onChange={handleChange} placeholder="Ex: OEKO-TEX, ABNT, GOTS, ISO 9001" style={inp} /></div>
+            <div><label style={lbl}>Certificações</label><input name="certificacoes" value={form.certificacoes} onChange={handleChange} placeholder="Ex: OEKO-TEX, ABNT, GOTS, ISO 9001" style={inp} /></div>
           </div>
 
           {erro && <div style={{ padding: '12px', backgroundColor: '#FEF2F2', border: '1px solid #FECACA', borderRadius: '8px', marginBottom: '16px', color: '#DC2626', fontSize: '14px' }}>{erro}</div>}
