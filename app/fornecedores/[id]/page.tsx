@@ -75,9 +75,14 @@ export default async function PerfilFornecedor({ params }: any) {
                 </div>
               </div>
             </div>
-            <span style={{ fontSize: '12px', backgroundColor: '#F0FDF4', color: '#166534', padding: '6px 14px', borderRadius: '20px', fontWeight: 500, border: '1px solid #BBF7D0' }}>
-              Ativo
-            </span>
+            <div style={{ display: 'flex', gap: '10px', alignItems: 'center', flexDirection: 'column' }}>
+              <span style={{ fontSize: '12px', backgroundColor: '#F0FDF4', color: '#166534', padding: '6px 14px', borderRadius: '20px', fontWeight: 500, border: '1px solid #BBF7D0' }}>
+                Ativo
+              </span>
+              <a href={`/editar/${f.id}`} style={{ fontSize: '12px', backgroundColor: '#EFF6FF', color: '#1E40AF', padding: '6px 14px', borderRadius: '20px', fontWeight: 500, border: '1px solid #BFDBFE', textDecoration: 'none', whiteSpace: 'nowrap' }}>
+                Editar cadastro
+              </a>
+            </div>
           </div>
         </div>
 

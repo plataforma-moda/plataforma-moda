@@ -277,10 +277,6 @@ export default function Cadastro() {
                       style={{ padding: '8px 16px', backgroundColor: '#0B1F3B', color: 'white', borderRadius: '8px', textDecoration: 'none', fontSize: '13px', fontWeight: 500 }}>
                       Ver meu perfil
                     </a>
-                    <a href={`/editar/${fornecedorExistenteId}`}
-                      style={{ padding: '8px 16px', backgroundColor: '#3B82F6', color: 'white', borderRadius: '8px', textDecoration: 'none', fontSize: '13px', fontWeight: 500 }}>
-                      Editar cadastro
-                    </a>
                   </div>
                 </div>
               )}
