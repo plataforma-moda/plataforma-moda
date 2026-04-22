@@ -163,7 +163,7 @@ export default function Matching() {
                   </div>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', flexShrink: 0 }}>
                     <a href={`/fornecedores/${f.id}`} style={{ padding: '8px 16px', border: '1px solid #1a3a5c', color: 'white', borderRadius: '8px', textDecoration: 'none', fontSize: '13px', fontWeight: 500, textAlign: 'center' }}>Ver perfil</a>
-                    <a href={`/cotação/${f.id}`} style={{ padding: '8px 16px', backgroundColor: '#3B82F6', color: 'white', borderRadius: '8px', textDecoration: 'none', fontSize: '13px', fontWeight: 500, textAlign: 'center' }}>Solicitar cotacao</a>
+                    <a href={`/cotacao/${f.id}`} style={{ padding: '8px 16px', backgroundColor: '#3B82F6', color: 'white', borderRadius: '8px', textDecoration: 'none', fontSize: '13px', fontWeight: 500, textAlign: 'center' }}>Solicitar cotacao</a>
                   </div>
                 </div>
               ))}

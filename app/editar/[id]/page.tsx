@@ -267,9 +267,8 @@ export default function Editar({ params }: any) {
 
       <div style={{ maxWidth: '720px', margin: '0 auto', padding: '40px 20px' }}>
 
-        <div style={{ backgroundColor: '#EFF6FF', border: '1px solid #BFDBFE', borderRadius: '12px', padding: '16px 20px', marginBottom: '24px', fontSize: '13px', color: '#1E40AF' }}>
-          Os campos CNPJ, Razao social e Telefone nao podem ser alterados pois constam na Receita Federal.
-        </div>
+        
+        
 
         <form onSubmit={handleSubmit}>
 

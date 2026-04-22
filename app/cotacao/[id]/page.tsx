@@ -82,7 +82,7 @@ export default function Cotacao({ params }: any) {
       <Navbar />
       <div style={{ maxWidth: '600px', margin: '0 auto', padding: '80px 20px', textAlign: 'center' }}>
         <div style={{ width: '72px', height: '72px', backgroundColor: '#F0FDF4', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 24px', fontSize: '32px' }}>OK</div>
-        <h1 style={{ fontSize: '26px', fontWeight: 700, color: '#1E3A5F', marginBottom: '12px' }}>Cotação enviada!</h1>
+        <h1 style={{ fontSize: '26px', fontWeight: 700, color: '#1E3A5F', marginBottom: '12px' }}>cotacao enviada!</h1>
         <p style={{ color: '#64748B', marginBottom: '8px' }}>Sua solicitação foi enviada para <strong>{fornecedor.nome}</strong>.</p>
         <p style={{ color: '#64748B', marginBottom: '32px' }}>Aguarde o contato da empresa em breve.</p>
         <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -151,7 +151,7 @@ export default function Cotacao({ params }: any) {
           {erro && <div style={{ padding: '12px', backgroundColor: '#FEF2F2', border: '1px solid #FECACA', borderRadius: '8px', marginBottom: '16px', color: '#DC2626', fontSize: '14px' }}>{erro}</div>}
 
           <button type="submit" disabled={enviando} style={{ width: '100%', padding: '16px', backgroundColor: enviando ? '#94A3B8' : '#1E3A5F', color: 'white', border: 'none', borderRadius: '8px', fontSize: '16px', fontWeight: 600, cursor: enviando ? 'not-allowed' : 'pointer', marginBottom: '40px' }}>
-            {enviando ? 'Enviando...' : 'Enviar solicitação de cotação'}
+            {enviando ? 'Enviando...' : 'Enviar solicitação de cotacao'}
           </button>
 
         </form>

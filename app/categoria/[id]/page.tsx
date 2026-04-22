@@ -204,7 +204,7 @@ export default function Categoria({ params }: any) {
                       </div>
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', flexShrink: 0 }}>
                         <a href={`/fornecedores/${f.id}`} style={{ padding: '8px 16px', border: '1px solid #E2E8F0', color: '#1E3A5F', borderRadius: '8px', textDecoration: 'none', fontSize: '13px', fontWeight: 500, textAlign: 'center' }}>Ver perfil</a>
-                        <a href={`/cotacao/${f.id}`} style={{ padding: '8px 16px', backgroundColor: '#1E3A5F', color: 'white', borderRadius: '8px', textDecoration: 'none', fontSize: '13px', fontWeight: 500, textAlign: 'center' }}>Solicitar cotação</a>
+                        <a href={`/cotacao/${f.id}`} style={{ padding: '8px 16px', backgroundColor: '#1E3A5F', color: 'white', borderRadius: '8px', textDecoration: 'none', fontSize: '13px', fontWeight: 500, textAlign: 'center' }}>Solicitar cotacao</a>
                       </div>
                     </div>
                   ))}
