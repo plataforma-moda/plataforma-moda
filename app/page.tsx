@@ -61,12 +61,12 @@ export default async function Home() {
       </section>
 
       {/* PROBLEMA */}
-      <section style={{ backgroundColor: '#0F2844', padding: '80px 40px' }}>
+      <section style={{ backgroundColor: '#ffffff', padding: '80px 40px' }}>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-          <h2 style={{ fontSize: '32px', fontWeight: 700, color: 'white', marginBottom: '20px' }}>
+          <h2 style={{ fontSize: '32px', fontWeight: 700, color: '#0B1F3B', marginBottom: '20px' }}>
             O setor é grande. Mas ainda opera de forma fragmentada.
           </h2>
-          <p style={{ color: '#93C5FD', marginBottom: '40px', lineHeight: 1.8, fontSize: '16px' }}>
+          <p style={{ color: '#555', marginBottom: '40px', lineHeight: 1.8, fontSize: '16px' }}>
             O setor têxtil e de confecção brasileiro é um dos mais complexos do mundo. São dezenas de elos interdependentes distribuídos por todo o território nacional.
           </p>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
@@ -76,7 +76,7 @@ export default async function Home() {
               'Dados dispersos e despadronizados',
               'Decisões baseadas em contatos informais',
             ].map((item, i) => (
-              <div key={i} style={{ backgroundColor: '#0B1F3B', padding: '24px', borderRadius: '12px', border: '1px solid #1a3a5c', fontSize: '15px', color: '#CBD5E1' }}>
+              <div key={i} style={{ backgroundColor: '#F9FAFB', padding: '24px', borderRadius: '12px', border: '1px solid #eee', fontSize: '15px', color: '#333' }}>
                 {item}
               </div>
             ))}
@@ -97,7 +97,7 @@ export default async function Home() {
       </section>
 
       {/* COMO FUNCIONA */}
-      <section style={{ backgroundColor: '#0F2844', padding: '80px 40px' }}>
+      <section style={{ backgroundColor: '#F9FAFB', padding: '80px 40px' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '32px', textAlign: 'center' }}>
           {[
             { titulo: 'Mapeamento', texto: 'Empresas com dados técnicos padronizados' },
@@ -106,8 +106,8 @@ export default async function Home() {
             { titulo: 'Escala', texto: 'A rede cresce e gera mais valor' },
           ].map((item, i) => (
             <div key={i}>
-              <h3 style={{ fontWeight: 600, fontSize: '16px', color: 'white', marginBottom: '8px' }}>{item.titulo}</h3>
-              <p style={{ fontSize: '14px', color: '#93C5FD', lineHeight: 1.6 }}>{item.texto}</p>
+              <h3 style={{ fontWeight: 600, fontSize: '16px', color: '#0B1F3B', marginBottom: '8px' }}>{item.titulo}</h3>
+              <p style={{ fontSize: '14px', color: '#555', lineHeight: 1.6 }}>{item.texto}</p>
             </div>
           ))}
         </div>
@@ -131,16 +131,8 @@ export default async function Home() {
                     <span style={{ fontWeight: 600, color: 'white', fontSize: '14px' }}>{cat.name}</span>
                   </div>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
-                    {cat.subcategories?.slice(0, 3).map((sub: any) => (
-                      <span key={sub.id} style={{ fontSize: '11px', backgroundColor: '#0B1F3B', color: '#93C5FD', padding: '2px 8px', borderRadius: '20px', border: '1px solid #1a3a5c' }}>
-                        {sub.name}
-                      </span>
-                    ))}
-                    {cat.subcategories?.length > 3 && (
-                      <span style={{ fontSize: '11px', backgroundColor: '#0B1F3B', color: '#64748B', padding: '2px 8px', borderRadius: '20px' }}>
-                        +{cat.subcategories.length - 3}
-                      </span>
-                    )}
+                    
+
                   </div>
                 </div>
               </a>
@@ -150,7 +142,7 @@ export default async function Home() {
       </section>
 
       {/* BENEFICIOS */}
-      <section style={{ backgroundColor: '#0F2844', padding: '80px 40px' }}>
+      <section style={{ backgroundColor: '#ffffff', padding: '80px 40px' }}>
         <div style={{ maxWidth: '1000px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '40px' }}>
           {[
             { titulo: 'Mais visibilidade', texto: 'Seja encontrado em todo o Brasil' },
@@ -159,8 +151,8 @@ export default async function Home() {
             { titulo: 'Eficiência operacional', texto: 'Menos tempo buscando, mais tempo produzindo' },
           ].map((item, i) => (
             <div key={i}>
-              <h3 style={{ fontSize: '18px', fontWeight: 600, color: 'white', marginBottom: '8px' }}>{item.titulo}</h3>
-              <p style={{ color: '#93C5FD', fontSize: '15px', lineHeight: 1.6 }}>{item.texto}</p>
+              <h3 style={{ fontSize: '18px', fontWeight: 600, color: '#0B1F3B', marginBottom: '8px' }}>{item.titulo}</h3>
+              <p style={{ color: '#666', fontSize: '15px', lineHeight: 1.6 }}>{item.texto}</p>
             </div>
           ))}
         </div>
@@ -172,19 +164,19 @@ export default async function Home() {
           <h2 style={{ fontSize: '32px', fontWeight: 700, color: 'white', marginBottom: '20px' }}>
             Não é um diretório. É uma base estruturada.
           </h2>
-          <p style={{ color: '#93C5FD', fontSize: '16px', lineHeight: 1.8 }}>
+          <p style={{ color: '#93C5FD', fontSize: '16px', lineHeight: 1.8, maxWidth: '600px', margin: '0 auto' }}>
             Dados organizados com critérios técnicos para apoiar decisões reais na cadeia produtiva da moda.
           </p>
         </div>
       </section>
 
       {/* MODELO */}
-      <section style={{ backgroundColor: '#0F2844', padding: '60px 40px', textAlign: 'center' }}>
+      <section style={{ backgroundColor: '#ffffff', padding: '60px 40px', textAlign: 'center' }}>
         <div style={{ maxWidth: '600px', margin: '0 auto' }}>
-          <h2 style={{ fontSize: '24px', fontWeight: 700, color: 'white', marginBottom: '16px' }}>
+          <h2 style={{ fontSize: '24px', fontWeight: 700, color: '#0B1F3B', marginBottom: '16px' }}>
             Acesso aberto. Visibilidade ampliada.
           </h2>
-          <p style={{ color: '#93C5FD', fontSize: '15px', lineHeight: 1.8 }}>
+          <p style={{ color: '#666', fontSize: '15px', lineHeight: 1.8 }}>
             O cadastro é aberto a todos. Empresas com planos pagos terão maior destaque, com critérios claros e públicos.
           </p>
         </div>

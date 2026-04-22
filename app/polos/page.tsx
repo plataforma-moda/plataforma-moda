@@ -1,4 +1,4 @@
-import { supabase } from '../../lib/supabase'
+﻿import { supabase } from '../../lib/supabase'
 
 type Polo = {
   id: number
@@ -12,7 +12,7 @@ type Polo = {
 
 export default async function Polos() {
   const { data: polos } = await supabase
-    .from('polos_têxteis')
+    .from('polos_texteis')
     .select('*')
     .order('regiao, nome')
 
@@ -20,9 +20,9 @@ export default async function Polos() {
 
   const coresPorRegiao: Record<string, { bg: string; border: string; badge: string; texto: string }> = {
     'Sudeste': { bg: '#0F2844', border: '#1a3a5c', badge: '#3B82F6', texto: '#93C5FD' },
-    'Sul': { bg: '#0a2a1a', border: '#0d4a2a', badge: '#16A34A', texto: '#86EFAC' },
-    'Nordeste': { bg: '#2a1a0a', border: '#4a2a0d', badge: '#D97706', texto: '#FCD34D' },
-    'Centro-Oeste': { bg: '#1a0a2a', border: '#3a0d4a', badge: '#7C3AED', texto: '#C4B5FD' },
+    'Sul': { bg: '#0F2844', border: '#1a3a5c', badge: '#0EA5E9', texto: '#7DD3FC' },
+    'Nordeste': { bg: '#0F2844', border: '#1a3a5c', badge: '#6366F1', texto: '#A5B4FC' },
+    'Centro-Oeste': { bg: '#0F2844', border: '#1a3a5c', badge: '#8B5CF6', texto: '#C4B5FD' },
   }
 
   return (
@@ -42,10 +42,10 @@ export default async function Polos() {
           Mapa produtivo
         </p>
         <h1 style={{ fontSize: '40px', fontWeight: 700, color: 'white', marginBottom: '16px', lineHeight: 1.2 }}>
-          Polos Têxteis do Brasil
+          Polos Texteis do Brasil
         </h1>
         <p style={{ fontSize: '16px', color: '#93C5FD', maxWidth: '600px', margin: '0 auto' }}>
-          Os principais centros produtivos da moda brasileira — da fibra ao varejo, distribuídos por todo o territorio nacional.
+          Os principais centros produtivos da moda brasileira - da fibra ao varejo, distribuidos por todo o territorio nacional.
         </p>
       </section>
 
@@ -57,7 +57,7 @@ export default async function Polos() {
             const total = polos?.filter(p => p.regiao === r).length || 0
             return (
               <div key={r} style={{ padding: '8px 20px', backgroundColor: cores.bg, border: `1px solid ${cores.border}`, borderRadius: '20px', fontSize: '13px', color: cores.texto, fontWeight: 500 }}>
-                {r} — {total} polo{total > 1 ? 's' : ''}
+                {r} - {total} polo{total > 1 ? 's' : ''}
               </div>
             )
           })}
@@ -127,7 +127,7 @@ export default async function Polos() {
 
       <footer style={{ backgroundColor: '#060F1E', padding: '40px', textAlign: 'center' }}>
         <div style={{ fontSize: '13px', color: '#64748B' }}>
-          2026 Sistema Nacional da Moda — Infraestrutura de dados da cadeia produtiva
+          2026 Sistema Nacional da Moda - Infraestrutura de dados da cadeia produtiva
         </div>
       </footer>
 
