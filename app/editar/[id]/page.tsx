@@ -58,7 +58,8 @@ export default function Editar({ params }: any) {
         const f = fornRes.data
         setCnpj(f.cnpj || '')
         setRazaoSocial(f.razao_social || '')
-        setForm(prev => ({ ...prev, telefone: f.telefone || '' }))
+        
+        
         setCategoryId(f.category_id?.toString() || '')
         setPoloId(f.polo_id?.toString() || '')
         setForm({
