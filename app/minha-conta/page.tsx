@@ -17,11 +17,13 @@ export default async function MinhaConta({
 
   const { msg } = await searchParams
 
-  const { data: fornecedor } = await supabase
+  const { data: fornecedores } = await supabase
     .from('fornecedores')
     .select('id, nome, email, cidade, estado, categoria_nome')
     .eq('user_id', user.id)
-    .single()
+    .limit(1)
+
+  const fornecedor = fornecedores?.[0] ?? null
 
   // Buscar subscription ativa
   let subscription = null
