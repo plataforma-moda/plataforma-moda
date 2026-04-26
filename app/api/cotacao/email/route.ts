@@ -138,7 +138,7 @@ function emailFornecedor(p: CotacaoPayload): string {
               <table width="100%" cellpadding="0" cellspacing="0">
                 <tr>
                   <td align="center">
-                    <a href="${APP_URL()}/minha-conta"
+                    <a href="${APP_URL()}"
                        style="display:inline-block;padding:14px 32px;background-color:#1E3A5F;color:white;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;">
                       Acessar Plataforma SNM
                     </a>
