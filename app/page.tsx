@@ -30,7 +30,13 @@ export default async function Home() {
 
       {/* NAVBAR */}
       <header style={{ borderBottom: '1px solid #1a3a5c', padding: '0 40px', height: '64px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'sticky', top: 0, backgroundColor: '#0B1F3B', zIndex: 100 }}>
-        <a href="/" style={{ fontWeight: 700, fontSize: '18px', color: 'white', textDecoration: 'none' }}>SNM</a>
+       <a href="/" style={{ textDecoration: 'none' }}>
+  <img 
+    src="/snmoda_logo_sem_simbolo.png" 
+    alt="SN Moda" 
+    style={{ height: '36px', width: 'auto' }} 
+  />
+</a>
         <nav style={{ display: 'flex', gap: '32px', alignItems: 'center' }}>
           <a href="/matching" style={{ fontSize: '14px', color: '#93C5FD', textDecoration: 'none' }}>Explorar</a>
           <a href="/cadastro" style={{ fontSize: '14px', color: '#93C5FD', textDecoration: 'none' }}>Cadastrar empresa</a>
