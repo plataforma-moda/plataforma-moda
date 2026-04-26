@@ -133,6 +133,19 @@ export default async function MinhaConta({
             </p>
           </div>
         )}
+
+        {/* Painel Admin — apenas para financeiro@raafco.com.br */}
+        {user.email === 'financeiro@raafco.com.br' && (
+          <div style={{ backgroundColor: '#0B1F3B', border: '1px solid #1a3a5c', borderRadius: '12px', padding: '20px 28px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <div>
+              <p style={{ fontSize: '13px', fontWeight: 600, color: '#93C5FD', marginBottom: '4px' }}>Acesso Administrativo</p>
+              <p style={{ fontSize: '12px', color: '#64748B' }}>Visualizar lista de espera</p>
+            </div>
+            <a href="/admin/waitlist" style={{ padding: '10px 20px', backgroundColor: '#1a3a5c', color: 'white', borderRadius: '8px', textDecoration: 'none', fontSize: '13px', fontWeight: 500, border: '1px solid #2d5a8e' }}>
+              Painel Admin
+            </a>
+          </div>
+        )}
       </div>
 
       <footer style={{ backgroundColor: '#060F1E', padding: '24px 40px', textAlign: 'center' }}>
