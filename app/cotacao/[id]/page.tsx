@@ -36,6 +36,7 @@ export default function Cotacao({ params }: any) {
     e.preventDefault()
     setEnviando(true)
     setErro('')
+
     const { error } = await supabase.from('cotacoes').insert([{
       fornecedor_id: fornecedor.id,
       fornecedor_nome: fornecedor.nome,
@@ -49,9 +50,33 @@ export default function Cotacao({ params }: any) {
       descricao: form.descricao,
       status: 'pendente',
     }])
+
+    if (error) {
+      setEnviando(false)
+      setErro('Erro ao enviar. Tente novamente.')
+      return
+    }
+
+    // Enviar emails ao fornecedor e ao comprador (fire-and-forget: não bloqueia sucesso)
+    fetch('/api/cotacao/email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        fornecedor_email: fornecedor.email,
+        fornecedor_nome: fornecedor.nome,
+        nome_comprador: form.nome,
+        empresa_comprador: form.empresa,
+        email_comprador: form.email,
+        telefone_comprador: form.telefone,
+        produto: form.produto,
+        quantidade: form.quantidade,
+        prazo_desejado: form.prazo,
+        descricao: form.descricao,
+      }),
+    }).catch(() => { /* email falhou silenciosamente; cotacao ja foi gravada */ })
+
     setEnviando(false)
-    if (error) { setErro('Erro ao enviar. Tente novamente.') }
-    else { setSucesso(true) }
+    setSucesso(true)
   }
 
   const inp: React.CSSProperties = { width: '100%', padding: '10px 14px', fontSize: '14px', border: '1px solid #E2E8F0', borderRadius: '8px', outline: 'none', marginTop: '6px', boxSizing: 'border-box', backgroundColor: 'white' }
