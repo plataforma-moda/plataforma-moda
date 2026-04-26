@@ -32,9 +32,9 @@ export default async function Home() {
       <header style={{ borderBottom: '1px solid #1a3a5c', padding: '0 40px', height: '64px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'sticky', top: 0, backgroundColor: '#0B1F3B', zIndex: 100 }}>
        <a href="/" style={{ textDecoration: 'none' }}>
   <img 
-    src="/snmoda_logo_sem_simbolo.svg" 
+    src="/snmoda_logo_sem_simbolo (1).svg" 
     alt="SN Moda" 
-    style={{ height: '48px', width: 'auto' }} 
+    style={{ height: '96px', width: 'auto' }} 
   />
 </a>
         <nav style={{ display: 'flex', gap: '32px', alignItems: 'center' }}>
