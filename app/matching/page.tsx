@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { supabase } from '../../lib/supabase'
+import { createClient } from '@/lib/supabase/client'
 
 const estados = ['AC','AL','AM','AP','BA','CE','DF','ES','GO','MA','MG','MS','MT','PA','PB','PE','PI','PR','RJ','RN','RO','RR','RS','SC','SE','SP','TO']
 
@@ -15,6 +15,7 @@ type F = {
 type Polo = { id: number; nome: string; estado: string }
 
 export default function Matching() {
+  const supabase = createClient()
   const [busca, setBusca] = useState('')
   const [estado, setEstado] = useState('')
   const [poloId, setPoloId] = useState('')

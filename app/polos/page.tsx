@@ -1,4 +1,4 @@
-﻿import { supabase } from '../../lib/supabase'
+﻿import { createClient } from '@/lib/supabase/server'
 
 type Polo = {
   id: number
@@ -11,6 +11,7 @@ type Polo = {
 }
 
 export default async function Polos() {
+  const supabase = await createClient()
   const { data: polos } = await supabase
     .from('polos_texteis')
     .select('*')

@@ -1,7 +1,7 @@
 'use client' // v2
 
 import { useState, useEffect } from 'react'
-import { supabase } from '../../../lib/supabase'
+import { createClient } from '@/lib/supabase/client'
 
 const estados = ['AC','AL','AM','AP','BA','CE','DF','ES','GO','MA','MG','MS','MT','PA','PB','PE','PI','PR','RJ','RN','RO','RR','RS','SC','SE','SP','TO']
 
@@ -10,11 +10,13 @@ type Subcategory = { id: number; name: string; category_id: number }
 type Specialization = { id: number; name: string; subcategory_id: number }
 
 export default function Editar({ params }: any) {
+  const supabase = createClient()
   const [categorias, setCategorias] = useState<Category[]>([])
   const [subcategorias, setSubcategorias] = useState<Subcategory[]>([])
   const [especializacoes, setEspecializacoes] = useState<Specialization[]>([])
   const [polos, setPolos] = useState<{id: number; nome: string; estado: string}[]>([])
   const [carregando, setCarregando] = useState(true)
+  const [semPermissao, setSemPermissao] = useState(false)
 
   const [categoryId, setCategoryId] = useState('')
   const [subcsSelecionadas, setSubcsSelecionadas] = useState<number[]>([])
@@ -41,6 +43,13 @@ export default function Editar({ params }: any) {
       const { id } = await params
       setFornecedorId(id)
 
+      // Check if user is authenticated and is the owner
+      const { data: { user } } = await supabase.auth.getUser()
+      if (!user) {
+        window.location.href = `/login?redirect=/editar/${id}`
+        return
+      }
+
       const [catsRes, subsRes, espsRes, polosRes, fornRes] = await Promise.all([
         supabase.from('categories').select('*').order('id'),
         supabase.from('subcategories').select('*').order('id'),
@@ -56,6 +65,12 @@ export default function Editar({ params }: any) {
 
       if (fornRes.data) {
         const f = fornRes.data
+        // Check ownership: user must be the owner of this fornecedor
+        if (f.user_id && f.user_id !== user.id) {
+          setSemPermissao(true)
+          setCarregando(false)
+          return
+        }
         setCnpj(f.cnpj || '')
         setRazaoSocial(f.razao_social || '')
         
@@ -236,6 +251,21 @@ export default function Editar({ params }: any) {
   if (carregando) return (
     <main style={{ fontFamily: 'Arial, sans-serif', backgroundColor: '#F8FAFC', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <p style={{ color: '#64748B' }}>Carregando...</p>
+    </main>
+  )
+
+  if (semPermissao) return (
+    <main style={{ fontFamily: 'Arial, sans-serif', backgroundColor: '#F8FAFC', minHeight: '100vh' }}>
+      <header style={{ borderBottom: '1px solid #1a3a5c', padding: '0 40px', height: '64px', display: 'flex', alignItems: 'center', backgroundColor: '#0B1F3B' }}>
+        <a href="/" style={{ fontWeight: 700, fontSize: '18px', color: 'white', textDecoration: 'none' }}>SNM</a>
+      </header>
+      <div style={{ maxWidth: '500px', margin: '0 auto', padding: '80px 20px', textAlign: 'center' }}>
+        <h1 style={{ fontSize: '24px', fontWeight: 700, color: '#DC2626', marginBottom: '12px' }}>Acesso negado</h1>
+        <p style={{ color: '#64748B', marginBottom: '32px' }}>Voce nao tem permissao para editar este cadastro. Apenas o proprietario pode fazer alteracoes.</p>
+        <a href="/" style={{ padding: '12px 24px', backgroundColor: '#0B1F3B', color: 'white', borderRadius: '8px', textDecoration: 'none', fontSize: '14px', fontWeight: 500 }}>
+          Voltar para home
+        </a>
+      </div>
     </main>
   )
 

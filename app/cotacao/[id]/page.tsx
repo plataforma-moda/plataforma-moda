@@ -1,9 +1,10 @@
 ﻿'use client'
 
 import { useState, useEffect } from 'react'
-import { supabase } from '../../../lib/supabase'
+import { createClient } from '@/lib/supabase/client'
 
 export default function Cotacao({ params }: any) {
+  const supabase = createClient()
   const [fornecedor, setFornecedor] = useState<any>(null)
   const [enviando, setEnviando] = useState(false)
   const [sucesso, setSucesso] = useState(false)

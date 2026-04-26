@@ -1,6 +1,7 @@
-import { supabase } from '../../lib/supabase'
+import { createClient } from '@/lib/supabase/server'
 
 export default async function Fornecedores() {
+  const supabase = await createClient()
   const { data: fornecedores, error } = await supabase
     .from('fornecedores')
     .select('*')

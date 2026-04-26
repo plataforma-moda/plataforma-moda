@@ -1,7 +1,7 @@
 ﻿'use client'
 
 import { useState, useEffect } from 'react'
-import { supabase } from '../../../lib/supabase'
+import { createClient } from '@/lib/supabase/client'
 
 type Category = { id: number; name: string }
 type Subcategory = { id: number; name: string; category_id: number }
@@ -14,6 +14,7 @@ type Fornecedor = {
 }
 
 export default function Categoria({ params }: any) {
+  const supabase = createClient()
   const [categoria, setCategoria] = useState<Category | null>(null)
   const [subcategorias, setSubcategorias] = useState<Subcategory[]>([])
   const [especializacoes, setEspecializacoes] = useState<Specialization[]>([])

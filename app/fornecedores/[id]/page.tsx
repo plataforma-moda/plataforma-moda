@@ -1,6 +1,7 @@
-import { supabase } from '../../../lib/supabase'
+import { createClient } from '@/lib/supabase/server'
 
 export default async function PerfilFornecedor({ params }: any) {
+  const supabase = await createClient()
   const { id } = await params
 
   const { data: f, error } = await supabase

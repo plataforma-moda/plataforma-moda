@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { supabase } from '../../lib/supabase'
+import { createClient } from '@/lib/supabase/client'
 
 const estados = ['AC','AL','AM','AP','BA','CE','DF','ES','GO','MA','MG','MS','MT','PA','PB','PE','PI','PR','RJ','RN','RO','RR','RS','SC','SE','SP','TO']
 
@@ -11,6 +11,7 @@ const segmentos = [
 ]
 
 export default function CadastroCliente() {
+  const supabase = createClient()
   const [form, setForm] = useState({
     nome: '', email: '', telefone: '', whatsapp: '',
     empresa: '', cnpj: '', estado: '', cidade: '',
@@ -19,6 +20,7 @@ export default function CadastroCliente() {
   const [enviando, setEnviando] = useState(false)
   const [sucesso, setSucesso] = useState(false)
   const [erro, setErro] = useState('')
+  const [termosAceitos, setTermosAceitos] = useState(false)
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
     const { name, value } = e.target
@@ -27,18 +29,29 @@ export default function CadastroCliente() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
+    if (!termosAceitos) { setErro('Voce precisa aceitar os Termos de Uso para continuar.'); return }
     setEnviando(true)
     setErro('')
-    const { error } = await supabase.from('clientes').insert([{
+    const { data, error } = await supabase.from('clientes').insert([{
       nome: form.nome, email: form.email, telefone: form.telefone,
       whatsapp: form.whatsapp, empresa: form.empresa, cnpj: form.cnpj,
       estado: form.estado, cidade: form.cidade,
       segmento_interesse: form.segmento_interesse,
-    }])
-    setEnviando(false)
+    }]).select()
     if (error) {
+      setEnviando(false)
       setErro(error.code === '23505' ? 'E-mail ja cadastrado.' : 'Erro ao cadastrar.')
     } else {
+      // Registrar aceite dos termos
+      const clienteId = data?.[0]?.id ?? null
+      await supabase.from('terms_acceptances').insert([{
+        user_id: null,
+        entity_type: 'cliente' as const,
+        entity_id: clienteId,
+        terms_version: '1.0',
+        user_agent: typeof navigator !== 'undefined' ? navigator.userAgent : null,
+      }])
+      setEnviando(false)
       setSucesso(true)
     }
   }
@@ -137,7 +150,29 @@ export default function CadastroCliente() {
 
           {erro && <div style={{ padding: '12px', backgroundColor: '#FEF2F2', border: '1px solid #FECACA', borderRadius: '8px', marginBottom: '16px', color: '#DC2626', fontSize: '14px' }}>{erro}</div>}
 
-          <button type="submit" disabled={enviando} style={{ width: '100%', padding: '16px', backgroundColor: enviando ? '#94A3B8' : '#0B1F3B', color: 'white', border: 'none', borderRadius: '8px', fontSize: '16px', fontWeight: 600, cursor: enviando ? 'not-allowed' : 'pointer', marginBottom: '40px' }}>
+          <div style={{ backgroundColor: 'white', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '20px', marginBottom: '20px' }}>
+            <label style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', cursor: 'pointer' }}>
+              <input
+                type="checkbox"
+                checked={termosAceitos}
+                onChange={e => setTermosAceitos(e.target.checked)}
+                style={{ width: '18px', height: '18px', accentColor: '#0B1F3B', flexShrink: 0, marginTop: '2px' }}
+              />
+              <span style={{ fontSize: '13px', color: '#374151', lineHeight: 1.6 }}>
+                Li e aceito os{' '}
+                <a href="/termos-cliente" target="_blank" style={{ color: '#3B82F6', textDecoration: 'underline' }}>
+                  Termos de Uso para Clientes
+                </a>{' '}
+                e a{' '}
+                <a href="/privacidade" target="_blank" style={{ color: '#3B82F6', textDecoration: 'underline' }}>
+                  Política de Privacidade
+                </a>{' '}
+                do Sistema Nacional da Moda. <strong>*</strong>
+              </span>
+            </label>
+          </div>
+
+          <button type="submit" disabled={enviando || !termosAceitos} style={{ width: '100%', padding: '16px', backgroundColor: enviando || !termosAceitos ? '#94A3B8' : '#0B1F3B', color: 'white', border: 'none', borderRadius: '8px', fontSize: '16px', fontWeight: 600, cursor: enviando || !termosAceitos ? 'not-allowed' : 'pointer', marginBottom: '40px' }}>
             {enviando ? 'Criando conta...' : 'Criar minha conta no SNM'}
           </button>
 
@@ -145,7 +180,12 @@ export default function CadastroCliente() {
       </div>
 
       <footer style={{ backgroundColor: '#0F2238', padding: '24px 40px', textAlign: 'center' }}>
-        <div style={{ color: '#64748B', fontSize: '13px' }}>SNM - Sistema Nacional da Moda 2026</div>
+        <div style={{ color: '#64748B', fontSize: '13px', marginBottom: '10px' }}>SNM - Sistema Nacional da Moda 2026</div>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '24px', flexWrap: 'wrap' }}>
+          <a href="/termos-fornecedor" style={{ color: '#94A3B8', fontSize: '12px', textDecoration: 'none' }}>Termos Fornecedor</a>
+          <a href="/termos-cliente" style={{ color: '#94A3B8', fontSize: '12px', textDecoration: 'none' }}>Termos Cliente</a>
+          <a href="/privacidade" style={{ color: '#94A3B8', fontSize: '12px', textDecoration: 'none' }}>Política de Privacidade</a>
+        </div>
       </footer>
 
     </main>
