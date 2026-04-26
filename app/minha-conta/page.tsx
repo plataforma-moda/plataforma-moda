@@ -3,13 +3,19 @@ import { redirect } from 'next/navigation'
 import { getPlanById, type PlanId } from '@/lib/plans'
 import SubscriptionPortal from './SubscriptionPortal'
 
-export default async function MinhaConta() {
+export default async function MinhaConta({
+  searchParams,
+}: {
+  searchParams: Promise<{ msg?: string }>
+}) {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
 
   if (!user) {
     redirect('/login')
   }
+
+  const { msg } = await searchParams
 
   const { data: fornecedor } = await supabase
     .from('fornecedores')
@@ -56,6 +62,14 @@ export default async function MinhaConta() {
         <h1 style={{ fontSize: '28px', fontWeight: 700, color: 'white', marginBottom: '8px' }}>Minha conta</h1>
         <p style={{ color: '#93C5FD', fontSize: '14px' }}>{user.email}</p>
       </section>
+
+      {msg === 'ja-cadastrado' && (
+        <div style={{ maxWidth: '680px', margin: '20px auto 0', padding: '0 20px' }}>
+          <div style={{ padding: '14px 18px', backgroundColor: '#EFF6FF', border: '1px solid #BFDBFE', borderRadius: '8px', fontSize: '14px', color: '#1E40AF' }}>
+            Voce ja possui um cadastro de fornecedor vinculado a esta conta.
+          </div>
+        </div>
+      )}
 
       <div style={{ maxWidth: '680px', margin: '0 auto', padding: '40px 20px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
 

@@ -120,7 +120,20 @@ export default function Cadastro() {
         return
       }
 
-      // 2. Logged in: try to restore draft from localStorage
+      // 2. Check for active supplier — redirect if already registered
+      const { data: ativoData } = await supabase
+        .from('fornecedores')
+        .select('id')
+        .eq('user_id', user.id)
+        .eq('status', 'ativo')
+        .limit(1)
+
+      if (ativoData && ativoData.length > 0) {
+        window.location.href = '/minha-conta?msg=ja-cadastrado'
+        return
+      }
+
+      // 3. Logged in: try to restore draft from localStorage
       try {
         const saved = localStorage.getItem(DRAFT_KEY)
         if (saved) {
@@ -140,7 +153,7 @@ export default function Cadastro() {
         }
       } catch { /* ignore parse errors */ }
 
-      // 3. Fallback to Supabase rascunho
+      // 4. Fallback to Supabase rascunho
       try {
         const { data } = await supabase
           .from('fornecedores')
@@ -178,6 +191,26 @@ export default function Cadastro() {
           const resumeStep = r.cidade && r.estado ? 3 : r.nome ? 2 : 1
           setStep(resumeStep)
         } else {
+          // 5. No rascunho — check for email-based claim
+          if (user.email) {
+            try {
+              const { data: claimData } = await supabase
+                .from('fornecedores')
+                .select('id')
+                .eq('email', user.email)
+                .is('user_id', null)
+                .limit(1)
+
+              if (claimData && claimData.length > 0) {
+                await supabase
+                  .from('fornecedores')
+                  .update({ user_id: user.id })
+                  .eq('id', claimData[0].id)
+                window.location.href = '/minha-conta?msg=ja-cadastrado'
+                return
+              }
+            } catch { /* ignore */ }
+          }
           setStep(1)
         }
       } catch { /* ignore */ }
