@@ -31,11 +31,11 @@ export default async function Home() {
       {/* NAVBAR */}
       <header style={{ borderBottom: '1px solid #1a3a5c', padding: '0 40px', height: '64px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'sticky', top: 0, backgroundColor: '#0B1F3B', zIndex: 100 }}>
        <a href="/" style={{ textDecoration: 'none' }}>
-  <img 
-    src="/snmoda_logo_sem_simbolo (1).svg" 
-    alt="SN Moda" 
-    style={{ height: '96px', width: 'auto' }} 
-  />
+  <span style={{ fontFamily: 'Inter, Arial Black, Arial, sans-serif', fontSize: '28px', fontWeight: 700 }}>
+    <span style={{ color: 'white' }}>SN</span>
+    <span style={{ background: 'linear-gradient(180deg, #F0D98A 0%, #E5C45A 35%, #BFA46F 65%, #9A7D3A 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Moda</span>
+  </span>
+  <span style={{ fontSize: '8px', letterSpacing: '0.12em', color: '#93C5FD', fontWeight: 500 }}>SISTEMA NACIONAL DA MODA</span>
 </a>
         <nav style={{ display: 'flex', gap: '32px', alignItems: 'center' }}>
           <a href="/matching" style={{ fontSize: '14px', color: '#93C5FD', textDecoration: 'none' }}>Explorar</a>
