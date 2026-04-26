@@ -35,7 +35,7 @@ export default async function Home() {
     <span style={{ color: 'white' }}>SN</span>
     <span style={{ background: 'linear-gradient(180deg, #F0D98A 0%, #E5C45A 35%, #BFA46F 65%, #9A7D3A 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Moda</span>
   </span>
-  <span style={{ fontSize: '8px', letterSpacing: '0.12em', color: '#93C5FD', fontWeight: 500 }}>SISTEMA NACIONAL DA MODA</span>
+  
 </a>
         <nav style={{ display: 'flex', gap: '32px', alignItems: 'center' }}>
           <a href="/matching" style={{ fontSize: '14px', color: '#93C5FD', textDecoration: 'none' }}>Explorar</a>
