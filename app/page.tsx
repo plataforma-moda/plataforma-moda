@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { createClient } from '@/lib/supabase/server'
 import { PLANS } from '@/lib/plans'
+import MobileNav from './MobileNav'
 
 export const metadata: Metadata = {
   title: 'SN Moda — A maior rede B2B do setor têxtil brasileiro',
@@ -213,7 +214,7 @@ export default async function Home() {
       <main style={{ fontFamily: 'var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', backgroundColor: '#0B1F3B', color: 'white', overflowX: 'hidden' }}>
 
         {/* ── NAVBAR ── */}
-        <header style={{ borderBottom: '1px solid rgba(255,255,255,0.07)', padding: '0 40px', height: '64px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'sticky', top: 0, backgroundColor: 'rgba(11,31,59,0.95)', backdropFilter: 'blur(12px)', zIndex: 100 }}>
+        <header className="site-header" style={{ borderBottom: '1px solid rgba(255,255,255,0.07)', padding: '0 40px', height: '64px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'sticky', top: 0, backgroundColor: 'rgba(11,31,59,0.95)', backdropFilter: 'blur(12px)', zIndex: 100 }}>
           <a href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '2px' }}>
             <span style={{ fontFamily: 'inherit', fontSize: '26px', fontWeight: 800, letterSpacing: '-0.5px' }}>
               <span style={{ color: 'white' }}>SN</span>
@@ -230,18 +231,19 @@ export default async function Home() {
 
           <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
             {user ? (
-              <a href="/minha-conta" style={{ fontSize: '14px', color: 'white', textDecoration: 'none', backgroundColor: '#3B82F6', padding: '8px 18px', borderRadius: '8px', fontWeight: 600 }}>Minha conta</a>
+              <a href="/minha-conta" className="nav-mobile-hide" style={{ fontSize: '14px', color: 'white', textDecoration: 'none', backgroundColor: '#3B82F6', padding: '8px 18px', borderRadius: '8px', fontWeight: 600 }}>Minha conta</a>
             ) : (
               <>
-                <a href="/login" style={{ fontSize: '14px', color: '#93C5FD', textDecoration: 'none', padding: '8px 16px', fontWeight: 500 }}>Entrar</a>
-                <a href="/cadastro" style={{ fontSize: '14px', color: 'white', textDecoration: 'none', backgroundColor: '#3B82F6', padding: '8px 18px', borderRadius: '8px', fontWeight: 600, whiteSpace: 'nowrap' }}>Cadastre grátis</a>
+                <a href="/login" className="nav-mobile-hide" style={{ fontSize: '14px', color: '#93C5FD', textDecoration: 'none', padding: '8px 16px', fontWeight: 500 }}>Entrar</a>
+                <a href="/cadastro" className="nav-mobile-hide" style={{ fontSize: '14px', color: 'white', textDecoration: 'none', backgroundColor: '#3B82F6', padding: '8px 18px', borderRadius: '8px', fontWeight: 600, whiteSpace: 'nowrap' }}>Cadastre grátis</a>
               </>
             )}
+            <MobileNav isLoggedIn={!!user} />
           </div>
         </header>
 
         {/* ── HERO ── */}
-        <section style={{ padding: '80px 24px 60px', textAlign: 'center', background: 'radial-gradient(ellipse 80% 60% at 50% -10%, rgba(59,130,246,0.15) 0%, transparent 70%), #0B1F3B', minHeight: '88vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
+        <section className="hero-section-wrap" style={{ padding: '80px 24px 60px', textAlign: 'center', background: 'radial-gradient(ellipse 80% 60% at 50% -10%, rgba(59,130,246,0.15) 0%, transparent 70%), #0B1F3B', minHeight: '88vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
           {/* Badge */}
           <div className="hero-animate" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', backgroundColor: 'rgba(59,130,246,0.12)', border: '1px solid rgba(59,130,246,0.3)', borderRadius: '100px', padding: '6px 16px', marginBottom: '28px' }}>
             <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#22C55E', display: 'inline-block', boxShadow: '0 0 8px #22C55E' }}></span>
@@ -345,7 +347,7 @@ export default async function Home() {
               </div>
 
               {/* Visual card */}
-              <div style={{ background: 'linear-gradient(135deg, #0B1F3B 0%, #1E3A5F 100%)', borderRadius: '20px', padding: '36px', color: 'white' }}>
+              <div className="supplier-visual-card" style={{ background: 'linear-gradient(135deg, #0B1F3B 0%, #1E3A5F 100%)', borderRadius: '20px', padding: '36px', color: 'white' }}>
                 <div style={{ fontSize: '13px', color: '#60A5FA', fontWeight: 600, marginBottom: '20px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                   Perfil de fornecedor
                 </div>
@@ -387,7 +389,7 @@ export default async function Home() {
           <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
             <div className="benefits-cols" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'center' }}>
               {/* Visual card */}
-              <div style={{ background: '#0B1F3B', borderRadius: '20px', padding: '36px', color: 'white', order: 0 }}>
+              <div className="buyer-visual-card" style={{ background: '#0B1F3B', borderRadius: '20px', padding: '36px', color: 'white', order: 0 }}>
                 <div style={{ fontSize: '13px', color: '#60A5FA', fontWeight: 600, marginBottom: '20px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                   Busca de fornecedores
                 </div>
@@ -630,7 +632,7 @@ export default async function Home() {
         </section>
 
         {/* ── FOOTER ── */}
-        <footer style={{ backgroundColor: '#060F1E', padding: '56px 24px 32px', color: '#94A3B8' }}>
+        <footer className="page-footer" style={{ backgroundColor: '#060F1E', padding: '56px 24px 32px', color: '#94A3B8' }}>
           <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
             <div className="footer-grid" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: '40px', marginBottom: '48px' }}>
               {/* Brand */}

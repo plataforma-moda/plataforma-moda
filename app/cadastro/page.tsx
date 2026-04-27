@@ -657,13 +657,13 @@ export default function Cadastro() {
     <main style={{ fontFamily: 'Arial, sans-serif', backgroundColor: '#F8FAFC', minHeight: '100vh' }}>
 
       {/* Header */}
-      <header style={{ borderBottom: '1px solid #1a3a5c', padding: '0 40px', height: '64px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#0B1F3B' }}>
+      <header className="simple-header" style={{ borderBottom: '1px solid #1a3a5c', padding: '0 40px', height: '64px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#0B1F3B' }}>
         <a href="/" style={{ fontWeight: 700, fontSize: '18px', color: 'white', textDecoration: 'none' }}>SNM</a>
         <a href="/matching" style={{ color: '#93C5FD', fontSize: '13px', textDecoration: 'none' }}>Buscar fornecedor</a>
       </header>
 
       {/* Hero */}
-      <section style={{ backgroundColor: '#0B1F3B', padding: '28px 40px', textAlign: 'center' }}>
+      <section className="auth-hero" style={{ backgroundColor: '#0B1F3B', padding: '28px 40px', textAlign: 'center' }}>
         <h1 style={{ fontSize: '26px', fontWeight: 700, color: 'white', marginBottom: '6px' }}>Cadastre sua empresa no SNM</h1>
         <p style={{ color: '#93C5FD', fontSize: '14px', margin: 0 }}>Apareça para compradores de todo o Brasil — cadastro gratuito em 3 minutos</p>
       </section>
@@ -844,7 +844,7 @@ export default function Cadastro() {
                   )}
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
+                <div className="form-grid-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
                   <div>
                     <label style={lbl}>Nome fantasia <strong style={req}>*</strong></label>
                     <input name="nome" value={form.nome} onChange={handleChange} placeholder="Ex: Tecidos Silva" style={inp} />
@@ -855,7 +855,7 @@ export default function Cadastro() {
                   </div>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px', marginBottom: '16px' }}>
+                <div className="form-grid-3" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px', marginBottom: '16px' }}>
                   <div>
                     <label style={lbl}>Telefone <strong style={req}>*</strong></label>
                     <input name="telefone" value={form.telefone} onChange={handleChange} placeholder="(11) 0000-0000" style={inp} />
@@ -884,7 +884,7 @@ export default function Cadastro() {
               <div style={sec}>
                 <h2 style={tit}>Localização</h2>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
+                <div className="form-grid-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
                   <div>
                     <label style={lbl}>CEP <span style={optLabel}>(opcional — preenche endereço)</span></label>
                     <input name="cep" value={form.cep} onChange={e => { handleChange(e); buscarCep(e.target.value) }} placeholder="00000-000" style={inp} />
@@ -908,7 +908,7 @@ export default function Cadastro() {
                   <input name="endereco" value={form.endereco} onChange={handleChange} placeholder="Ex: Rua das Flores" style={inp} />
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '16px', marginBottom: '16px' }}>
+                <div className="form-grid-1-2" style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '16px', marginBottom: '16px' }}>
                   <div>
                     <label style={lbl}>Número <span style={optLabel}>(opcional)</span></label>
                     <input name="numero" value={form.numero} onChange={handleChange} placeholder="Ex: 123" style={inp} />
@@ -962,7 +962,7 @@ export default function Cadastro() {
                     <div style={{ fontSize: '13px', fontWeight: 600, color: '#0B1F3B', marginBottom: '10px' }}>
                       Subcategorias — marque todas que se aplicam:
                     </div>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
+                    <div className="checkbox-grid-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
                       {subsDisponiveis.map(s => (
                         <label key={s.id} style={{
                           display: 'flex', alignItems: 'center', gap: '10px',
@@ -1021,7 +1021,7 @@ export default function Cadastro() {
 
               <div style={sec}>
                 <h2 style={tit}>Capacidade produtiva <span style={optLabel}>(opcional)</span></h2>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px' }}>
+                <div className="form-grid-3" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px' }}>
                   <div>
                     <label style={lbl}>Capacidade mensal</label>
                     <input name="capacidade_produtiva" value={form.capacidade_produtiva} onChange={handleChange} placeholder="Ex: 5.000 peças/mês" style={inp} />
@@ -1146,7 +1146,7 @@ export default function Cadastro() {
       </div>
 
       {/* Footer */}
-      <footer style={{ backgroundColor: '#060F1E', padding: '24px 40px', textAlign: 'center' }}>
+      <footer className="auth-footer" style={{ backgroundColor: '#060F1E', padding: '24px 40px', textAlign: 'center' }}>
         <div style={{ fontSize: '13px', color: '#64748B', marginBottom: '10px' }}>2026 Sistema Nacional da Moda</div>
         <div style={{ display: 'flex', justifyContent: 'center', gap: '24px', flexWrap: 'wrap' }}>
           <a href="/termos-fornecedor" style={{ color: '#94A3B8', fontSize: '12px', textDecoration: 'none' }}>Termos Fornecedor</a>

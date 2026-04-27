@@ -81,17 +81,17 @@ export default function RedefinirSenha() {
   return (
     <main style={{ fontFamily: 'Arial, sans-serif', backgroundColor: '#F8FAFC', minHeight: '100vh' }}>
 
-      <header style={{ borderBottom: '1px solid #1a3a5c', padding: '0 40px', height: '64px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#0B1F3B' }}>
+      <header className="simple-header" style={{ borderBottom: '1px solid #1a3a5c', padding: '0 40px', height: '64px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#0B1F3B' }}>
         <a href="/" style={{ fontWeight: 700, fontSize: '18px', color: 'white', textDecoration: 'none' }}>SNM</a>
       </header>
 
-      <section style={{ backgroundColor: '#0B1F3B', padding: '32px 40px', textAlign: 'center' }}>
+      <section className="auth-hero" style={{ backgroundColor: '#0B1F3B', padding: '32px 40px', textAlign: 'center' }}>
         <h1 style={{ fontSize: '28px', fontWeight: 700, color: 'white', marginBottom: '8px' }}>Redefinir senha</h1>
         <p style={{ color: '#93C5FD', fontSize: '14px' }}>Escolha uma nova senha para sua conta</p>
       </section>
 
-      <div style={{ maxWidth: '440px', margin: '0 auto', padding: '40px 20px' }}>
-        <div style={{ backgroundColor: 'white', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '32px' }}>
+      <div className="auth-body" style={{ maxWidth: '440px', margin: '0 auto', padding: '40px 20px' }}>
+        <div className="auth-card" style={{ backgroundColor: 'white', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '32px' }}>
 
           {sucesso ? (
             <div style={{ textAlign: 'center' }}>
@@ -157,7 +157,7 @@ export default function RedefinirSenha() {
         </div>
       </div>
 
-      <footer style={{ backgroundColor: '#060F1E', padding: '24px 40px', textAlign: 'center' }}>
+      <footer className="auth-footer" style={{ backgroundColor: '#060F1E', padding: '24px 40px', textAlign: 'center' }}>
         <div style={{ fontSize: '13px', color: '#64748B' }}>2026 Sistema Nacional da Moda</div>
       </footer>
 

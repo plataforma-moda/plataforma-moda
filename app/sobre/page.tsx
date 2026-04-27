@@ -2,7 +2,7 @@ export default function Sobre() {
   return (
     <main style={{ fontFamily: 'Arial, sans-serif', backgroundColor: '#F8FAFC', minHeight: '100vh' }}>
 
-      <nav style={{ backgroundColor: '#0B1F3B', padding: '0 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '64px' }}>
+      <nav className="simple-header" style={{ backgroundColor: '#0B1F3B', padding: '0 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '64px' }}>
         <a href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
           <div style={{ width: '32px', height: '32px', backgroundColor: '#3B82F6', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, color: 'white', fontSize: '14px' }}>S</div>
           <div>
@@ -46,7 +46,7 @@ export default function Sobre() {
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '24px' }}>
+        <div className="card-grid-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '24px' }}>
 
           <div style={{ backgroundColor: 'white', border: '1px solid #E2E8F0', borderRadius: '16px', padding: '32px' }}>
             <div style={{ width: '44px', height: '44px', backgroundColor: '#EFF6FF', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px', marginBottom: '16px' }}>
@@ -95,7 +95,7 @@ export default function Sobre() {
             <div style={{ width: '4px', height: '40px', backgroundColor: '#0B1F3B', borderRadius: '2px' }}></div>
             <h2 style={{ fontSize: '22px', fontWeight: 700, color: '#0B1F3B' }}>Valores</h2>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+          <div className="card-grid-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
             {[
               { icone: '📐', titulo: 'Rigor técnico', texto: 'Dados estruturados, padronizados e verificáveis, construidos com critério industrial.' },
               { icone: '👁️', titulo: 'Transparência', texto: 'Visibilidade para todos os elos da cadeia, do menor fornecedor ao grande distribuidor.' },

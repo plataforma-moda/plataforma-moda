@@ -24,3 +24,431 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* ────────────────────────────────────────────────────────────────────────────
+   MOBILE RESPONSIVENESS
+   All pages use inline CSSProperties; we override layout-only props here
+   via className hooks added to structural elements.
+   768px = tablet, 480px = small phone
+──────────────────────────────────────────────────────────────────────────── */
+
+/* ── Shared header ── */
+.site-header {
+  padding: 0 40px;
+}
+@media (max-width: 768px) {
+  .site-header {
+    padding: 0 16px !important;
+    position: relative;
+  }
+  .site-header-nav {
+    display: none !important;
+  }
+  .site-header-nav.open {
+    display: flex !important;
+    flex-direction: column;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: #0B1F3B;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 16px;
+    z-index: 200;
+    gap: 8px;
+  }
+  .hamburger-btn {
+    display: flex !important;
+  }
+  /* Hide desktop CTA buttons when hamburger is present */
+  .nav-mobile-hide {
+    display: none !important;
+  }
+}
+
+/* ── Shared simple header (auth pages) ── */
+@media (max-width: 768px) {
+  .simple-header {
+    padding: 0 16px !important;
+  }
+}
+
+/* ── Auth pages ── */
+@media (max-width: 768px) {
+  .auth-hero {
+    padding: 24px 16px !important;
+  }
+  .auth-body {
+    padding: 24px 16px !important;
+  }
+  .auth-card {
+    padding: 24px 20px !important;
+  }
+  .auth-footer {
+    padding: 24px 16px !important;
+  }
+}
+
+/* ── General page wrappers with 40px padding ── */
+@media (max-width: 768px) {
+  .page-hero {
+    padding: 40px 16px !important;
+  }
+  .page-content {
+    padding: 32px 16px !important;
+  }
+  .page-section {
+    padding: 48px 16px !important;
+  }
+  .page-footer {
+    padding: 24px 16px !important;
+  }
+  .page-nav {
+    padding: 0 16px !important;
+  }
+}
+
+/* ── Scrollable tables (admin/waitlist, cotacao) ── */
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.table-scroll table {
+  min-width: 560px;
+}
+
+/* ── Touch targets ── */
+@media (max-width: 768px) {
+  a, button, [role="button"], label[style*="cursor: pointer"] {
+    min-height: 44px;
+  }
+}
+
+/* ── Landing page grid overrides ── */
+/* hero-animate classes already defined inline; we add mobile overrides here */
+@media (max-width: 768px) {
+  .hero-section-wrap {
+    padding: 48px 16px 40px !important;
+    min-height: auto !important;
+  }
+  .benefits-cols {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  .supplier-visual-card {
+    display: none;
+  }
+  .buyer-visual-card {
+    display: none;
+  }
+}
+
+/* ── Cadastro wizard ── */
+@media (max-width: 768px) {
+  .wizard-progress {
+    padding: 16px !important;
+  }
+  .wizard-step-label {
+    font-size: 9px !important;
+  }
+  .wizard-form-area {
+    padding: 20px 16px !important;
+  }
+  .form-grid-2 {
+    grid-template-columns: 1fr !important;
+  }
+  .form-grid-3 {
+    grid-template-columns: 1fr !important;
+  }
+  .form-grid-1-2 {
+    grid-template-columns: 1fr !important;
+  }
+  .form-section {
+    padding: 16px !important;
+  }
+}
+
+/* ── Subcategoria / especialização checkbox grids ── */
+@media (max-width: 480px) {
+  .checkbox-grid-2 {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ── Fornecedores list page ── */
+@media (max-width: 768px) {
+  .supplier-filters {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+  .supplier-filters select,
+  .supplier-filters input {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+  .supplier-card {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+  .supplier-card-action {
+    width: 100% !important;
+    text-align: center !important;
+  }
+  .supplier-card-action a {
+    display: block !important;
+    width: 100% !important;
+    text-align: center !important;
+    box-sizing: border-box;
+  }
+}
+
+/* ── Fornecedor profile [id] ── */
+@media (max-width: 768px) {
+  .profile-header-inner {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  .profile-status-col {
+    flex-direction: row !important;
+    gap: 8px !important;
+  }
+  .profile-detail-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .profile-content {
+    padding: 20px 16px !important;
+  }
+}
+
+/* ── Matching page ── */
+@media (max-width: 768px) {
+  .matching-search-form {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  .matching-search-form input,
+  .matching-search-form select,
+  .matching-search-form button {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+  .matching-polo-row {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  .matching-polo-row select,
+  .matching-polo-row button {
+    width: 100% !important;
+  }
+  .match-result-card {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+  .match-result-actions {
+    flex-direction: row !important;
+    width: 100% !important;
+  }
+  .match-result-actions a {
+    flex: 1 !important;
+    text-align: center !important;
+  }
+  .matching-hero {
+    padding: 40px 16px !important;
+  }
+}
+
+/* ── Cotação page ── */
+@media (max-width: 768px) {
+  .cotacao-header-card {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  .cotacao-form-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ── Editar page ── */
+@media (max-width: 768px) {
+  .editar-form-grid-2 {
+    grid-template-columns: 1fr !important;
+  }
+  .editar-form-grid-3 {
+    grid-template-columns: 1fr !important;
+  }
+  .editar-form-grid-1-2 {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ── Planos page ── */
+@media (max-width: 768px) {
+  .plans-grid {
+    grid-template-columns: 1fr !important;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .plans-hero {
+    padding: 32px 16px !important;
+  }
+  .plans-content {
+    padding: 32px 16px !important;
+  }
+  .launch-gate {
+    padding: 32px 16px !important;
+  }
+  .launch-waitlist-form {
+    flex-direction: column !important;
+  }
+  .launch-waitlist-form input,
+  .launch-waitlist-form button {
+    width: 100% !important;
+  }
+}
+
+/* ── Sobre page ── */
+@media (max-width: 768px) {
+  .sobre-grid-2 {
+    grid-template-columns: 1fr !important;
+  }
+  .sobre-values-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .sobre-cta-buttons {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  .sobre-cta-buttons a {
+    width: 100% !important;
+    max-width: 320px !important;
+    text-align: center !important;
+    box-sizing: border-box;
+  }
+  .sobre-hero {
+    padding: 40px 16px !important;
+  }
+  .sobre-content {
+    padding: 40px 16px !important;
+  }
+}
+
+/* ── Polos page ── */
+@media (max-width: 768px) {
+  .polos-grid-3 {
+    grid-template-columns: 1fr !important;
+  }
+  .polos-hero {
+    padding: 40px 16px !important;
+  }
+  .polos-section {
+    padding: 16px 16px 48px !important;
+  }
+  .polos-cta {
+    padding: 40px 16px !important;
+  }
+  .polos-region-badges {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  .polos-region-badges > div {
+    width: 100% !important;
+    text-align: center !important;
+  }
+}
+
+/* ── Minha-conta ── */
+@media (max-width: 768px) {
+  .conta-hero {
+    padding: 24px 16px !important;
+  }
+  .conta-content {
+    padding: 24px 16px !important;
+  }
+  .conta-card {
+    padding: 20px 16px !important;
+  }
+  .conta-card-actions {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+  .conta-card-actions a {
+    width: 100% !important;
+    text-align: center !important;
+    box-sizing: border-box;
+  }
+  .conta-admin-row {
+    flex-direction: column !important;
+    gap: 12px !important;
+    align-items: flex-start !important;
+  }
+  .conta-admin-row a {
+    width: 100% !important;
+    text-align: center !important;
+  }
+}
+
+/* ── Generic responsive grids (form-row, card-grid, pricing-grid) ── */
+@media (max-width: 480px) {
+  .form-row {
+    grid-template-columns: 1fr !important;
+  }
+  .form-row-3 {
+    grid-template-columns: 1fr !important;
+  }
+  .card-grid-2 {
+    grid-template-columns: 1fr !important;
+  }
+  .card-grid-3 {
+    grid-template-columns: 1fr !important;
+  }
+  .pricing-grid {
+    grid-template-columns: 1fr !important;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* ── Legal pages (termos, privacidade) ── */
+@media (max-width: 768px) {
+  .legal-hero {
+    padding: 32px 16px !important;
+  }
+  .legal-content {
+    padding: 32px 16px !important;
+  }
+  .legal-section {
+    padding: 24px 16px !important;
+  }
+  .legal-card {
+    padding: 24px 16px !important;
+  }
+}
+
+/* ── Planos sucesso ── */
+@media (max-width: 768px) {
+  .sucesso-content {
+    padding: 48px 16px !important;
+  }
+  .sucesso-actions {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  .sucesso-actions a {
+    width: 100% !important;
+    max-width: 320px !important;
+    text-align: center !important;
+    box-sizing: border-box;
+  }
+}
+
+/* ── Admin waitlist ── */
+@media (max-width: 768px) {
+  .admin-hero {
+    padding: 24px 16px !important;
+  }
+  .admin-content {
+    padding: 24px 16px !important;
+  }
+}

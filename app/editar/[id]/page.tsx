@@ -310,7 +310,7 @@ export default function Editar({ params }: any) {
               <label style={lbl}>CNPJ (nao editavel)</label>
               <input value={cnpj} disabled style={inpDisabled} />
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
+            <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
               <div>
                 <label style={lbl}>Razao social (nao editavel)</label>
                 <input value={razaoSocial} disabled style={inpDisabled} />
@@ -373,7 +373,7 @@ export default function Editar({ params }: any) {
 
           <div style={sec}>
             <h2 style={tit}>3. Localizacao</h2>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
+            <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
               <div>
                 <label style={lbl}>CEP</label>
                 <input name="cep" value={form.cep} onChange={e => { handleChange(e); buscarCep(e.target.value) }} placeholder="00000-000" style={inp} />
@@ -394,7 +394,7 @@ export default function Editar({ params }: any) {
               <label style={lbl}>Endereco</label>
               <input name="endereco" value={form.endereco} onChange={handleChange} placeholder="Ex: Rua das Flores" style={inp} />
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '16px', marginBottom: '16px' }}>
+            <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '16px', marginBottom: '16px' }}>
               <div><label style={lbl}>Numero</label><input name="numero" value={form.numero} onChange={handleChange} placeholder="Ex: 123" style={inp} /></div>
               <div><label style={lbl}>Complemento</label><input name="complemento" value={form.complemento} onChange={handleChange} placeholder="Ex: Apto 42" style={inp} /></div>
             </div>
@@ -413,7 +413,7 @@ export default function Editar({ params }: any) {
 
           <div style={sec}>
             <h2 style={tit}>4. Contato</h2>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px', marginBottom: '16px' }}>
+            <div className="form-row form-row-3" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px', marginBottom: '16px' }}>
               <div><label style={lbl}>Telefone</label><input name="telefone" value={form.telefone} onChange={handleChange} placeholder="(11) 0000-0000" style={inp} /></div>
               <div><label style={lbl}>Celular</label><input name="celular" value={form.celular} onChange={handleChange} placeholder="(11) 00000-0000" style={inp} /></div>
               <div><label style={lbl}>WhatsApp</label><input name="whatsapp" value={form.whatsapp} onChange={handleChange} placeholder="(11) 00000-0000" style={inp} /></div>
@@ -423,7 +423,7 @@ export default function Editar({ params }: any) {
 
           <div style={sec}>
             <h2 style={tit}>5. Capacidade produtiva</h2>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px' }}>
+            <div className="form-row form-row-3" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px' }}>
               <div><label style={lbl}>Capacidade mensal</label><input name="capacidade_produtiva" value={form.capacidade_produtiva} onChange={handleChange} placeholder="Ex: 5.000 pecas/mes" style={inp} /></div>
               <div><label style={lbl}>MOQ minimo</label><input name="moq" value={form.moq} onChange={handleChange} placeholder="Ex: 100 pecas" style={inp} /></div>
               <div><label style={lbl}>Prazo medio (dias)</label><input name="prazo_medio_dias" value={form.prazo_medio_dias} onChange={handleChange} placeholder="Ex: 30" style={inp} /></div>

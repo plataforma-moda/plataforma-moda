@@ -65,7 +65,7 @@ export default function Matching() {
   return (
     <main style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', backgroundColor: '#0B1F3B', minHeight: '100vh' }}>
 
-      <header style={{ borderBottom: '1px solid #1a3a5c', padding: '0 40px', height: '64px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'sticky', top: 0, backgroundColor: '#0B1F3B', zIndex: 100 }}>
+      <header className="simple-header" style={{ borderBottom: '1px solid #1a3a5c', padding: '0 40px', height: '64px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'sticky', top: 0, backgroundColor: '#0B1F3B', zIndex: 100 }}>
         <a href="/" style={{ fontWeight: 700, fontSize: '18px', color: 'white', textDecoration: 'none' }}>SNM</a>
         <nav style={{ display: 'flex', gap: '32px', alignItems: 'center' }}>
           <a href="/polos" style={{ fontSize: '14px', color: '#93C5FD', textDecoration: 'none' }}>Polos Têxteis</a>
@@ -74,14 +74,14 @@ export default function Matching() {
         </nav>
       </header>
 
-      <section style={{ backgroundColor: '#0B1F3B', padding: '60px 40px', textAlign: 'center' }}>
+      <section className="matching-hero" style={{ backgroundColor: '#0B1F3B', padding: '60px 40px', textAlign: 'center' }}>
         <h1 style={{ fontSize: '36px', fontWeight: 700, color: 'white', marginBottom: '8px' }}>Encontre o fornecedor ideal</h1>
         <p style={{ color: '#93C5FD', fontSize: '15px', marginBottom: '40px' }}>
           Busque por produto, material, serviço ou polo têxtil
         </p>
 
         <form onSubmit={handleSubmit} style={{ maxWidth: '800px', margin: '0 auto' }}>
-          <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', justifyContent: 'center', marginBottom: '12px' }}>
+          <div className="matching-search-form" style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', justifyContent: 'center', marginBottom: '12px' }}>
             <input
               value={busca}
               onChange={e => setBusca(e.target.value)}
@@ -99,7 +99,7 @@ export default function Matching() {
             </button>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
+          <div className="matching-polo-row" style={{ display: 'flex', alignItems: 'center', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
             <span style={{ fontSize: '13px', color: '#64748B' }}>ou buscar por polo:</span>
             <select value={poloId} onChange={e => setPoloId(e.target.value)}
               style={{ ...inp, minWidth: '200px', fontSize: '13px' }}>
@@ -145,7 +145,7 @@ export default function Matching() {
             </div>
             <div style={{ display: 'grid', gap: '16px' }}>
               {resultados.map(f => (
-                <div key={f.id} style={{ backgroundColor: '#0F2844', border: '1px solid #1a3a5c', borderRadius: '12px', padding: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '16px' }}>
+                <div key={f.id} className="match-result-card" style={{ backgroundColor: '#0F2844', border: '1px solid #1a3a5c', borderRadius: '12px', padding: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '16px' }}>
                   <div style={{ display: 'flex', gap: '14px', alignItems: 'center', flex: 1 }}>
                     <div style={{ width: '52px', height: '52px', backgroundColor: '#0B1F3B', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px', flexShrink: 0 }}>🏭</div>
                     <div>
@@ -162,7 +162,7 @@ export default function Matching() {
                       </div>
                     </div>
                   </div>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', flexShrink: 0 }}>
+                  <div className="match-result-actions" style={{ display: 'flex', flexDirection: 'column', gap: '8px', flexShrink: 0 }}>
                     <a href={`/fornecedores/${f.id}`} style={{ padding: '8px 16px', border: '1px solid #1a3a5c', color: 'white', borderRadius: '8px', textDecoration: 'none', fontSize: '13px', fontWeight: 500, textAlign: 'center' }}>Ver perfil</a>
                     <a href={`/cotacao/${f.id}`} style={{ padding: '8px 16px', backgroundColor: '#3B82F6', color: 'white', borderRadius: '8px', textDecoration: 'none', fontSize: '13px', fontWeight: 500, textAlign: 'center' }}>Solicitar cotacao</a>
                   </div>

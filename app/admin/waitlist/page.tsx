@@ -37,7 +37,7 @@ export default async function AdminWaitlist() {
     },
     header: {
       borderBottom: '1px solid #1a3a5c',
-      padding: '0 40px',
+      padding: '0 16px',
       height: '64px',
       display: 'flex',
       alignItems: 'center',
@@ -60,7 +60,7 @@ export default async function AdminWaitlist() {
     },
     hero: {
       backgroundColor: '#0B1F3B',
-      padding: '32px 40px',
+      padding: '32px 16px',
       textAlign: 'center',
     },
     heroTitle: {
@@ -148,7 +148,7 @@ export default async function AdminWaitlist() {
     },
     footer: {
       backgroundColor: '#060F1E',
-      padding: '24px 40px',
+      padding: '24px 16px',
       textAlign: 'center',
     },
     footerText: {
@@ -183,7 +183,7 @@ export default async function AdminWaitlist() {
           </span>
         </div>
 
-        <div style={styles.tableCard}>
+        <div className="table-scroll" style={styles.tableCard}>
           <table style={styles.table}>
             <thead style={styles.thead}>
               <tr>

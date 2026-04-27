@@ -328,7 +328,7 @@ export default function Planos() {
           </div>
         )}
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px', marginBottom: '32px' }}>
+        <div className="pricing-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px', marginBottom: '32px' }}>
           {PLANS.map((plan) => {
             const price = interval === 'yearly' ? plan.priceYearly : plan.priceMonthly
             const priceMonthEquivalent = interval === 'yearly' ? plan.priceYearly / 12 : plan.priceMonthly

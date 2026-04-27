@@ -51,7 +51,7 @@ export default async function MinhaConta({
   return (
     <main style={{ fontFamily: 'Arial, sans-serif', backgroundColor: '#F8FAFC', minHeight: '100vh' }}>
 
-      <header style={{ borderBottom: '1px solid #1a3a5c', padding: '0 40px', height: '64px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#0B1F3B' }}>
+      <header className="simple-header" style={{ borderBottom: '1px solid #1a3a5c', padding: '0 40px', height: '64px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#0B1F3B' }}>
         <a href="/" style={{ fontWeight: 700, fontSize: '18px', color: 'white', textDecoration: 'none' }}>SNM</a>
         <form action={handleLogout}>
           <button type="submit" style={{ background: 'none', border: '1px solid #93C5FD', color: '#93C5FD', padding: '6px 16px', borderRadius: '6px', fontSize: '13px', cursor: 'pointer' }}>
@@ -60,7 +60,7 @@ export default async function MinhaConta({
         </form>
       </header>
 
-      <section style={{ backgroundColor: '#0B1F3B', padding: '32px 40px', textAlign: 'center' }}>
+      <section className="conta-hero" style={{ backgroundColor: '#0B1F3B', padding: '32px 40px', textAlign: 'center' }}>
         <h1 style={{ fontSize: '28px', fontWeight: 700, color: 'white', marginBottom: '8px' }}>Minha conta</h1>
         <p style={{ color: '#93C5FD', fontSize: '14px' }}>{user.email}</p>
       </section>
@@ -73,11 +73,11 @@ export default async function MinhaConta({
         </div>
       )}
 
-      <div style={{ maxWidth: '680px', margin: '0 auto', padding: '40px 20px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+      <div className="conta-content" style={{ maxWidth: '680px', margin: '0 auto', padding: '40px 20px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
 
         {/* Dados do fornecedor */}
         {fornecedor ? (
-          <div style={{ backgroundColor: 'white', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '32px' }}>
+          <div className="conta-card" style={{ backgroundColor: 'white', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '32px' }}>
             <h2 style={{ fontSize: '18px', fontWeight: 600, color: '#0B1F3B', marginBottom: '16px' }}>Seu cadastro de fornecedor</h2>
             <div style={{ marginBottom: '12px' }}>
               <span style={{ fontSize: '13px', color: '#64748B' }}>Empresa: </span>
@@ -95,7 +95,7 @@ export default async function MinhaConta({
                 <span style={{ fontSize: '14px', color: '#1A202C' }}>{fornecedor.cidade}{fornecedor.estado ? ` — ${fornecedor.estado}` : ''}</span>
               </div>
             )}
-            <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+            <div className="conta-card-actions" style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
               <a href={`/editar/${fornecedor.id}`} style={{ padding: '10px 20px', backgroundColor: '#0B1F3B', color: 'white', borderRadius: '8px', textDecoration: 'none', fontSize: '14px', fontWeight: 500 }}>
                 Editar cadastro
               </a>
@@ -136,7 +136,7 @@ export default async function MinhaConta({
 
         {/* Painel Admin — apenas para financeiro@raafco.com.br */}
         {user.email === 'financeiro@raafco.com.br' && (
-          <div style={{ backgroundColor: '#0B1F3B', border: '1px solid #1a3a5c', borderRadius: '12px', padding: '20px 28px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <div className="conta-admin-row" style={{ backgroundColor: '#0B1F3B', border: '1px solid #1a3a5c', borderRadius: '12px', padding: '20px 28px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <div>
               <p style={{ fontSize: '13px', fontWeight: 600, color: '#93C5FD', marginBottom: '4px' }}>Acesso Administrativo</p>
               <p style={{ fontSize: '12px', color: '#64748B' }}>Visualizar lista de espera</p>
@@ -148,7 +148,7 @@ export default async function MinhaConta({
         )}
       </div>
 
-      <footer style={{ backgroundColor: '#060F1E', padding: '24px 40px', textAlign: 'center' }}>
+      <footer className="auth-footer" style={{ backgroundColor: '#060F1E', padding: '24px 40px', textAlign: 'center' }}>
         <div style={{ fontSize: '13px', color: '#64748B' }}>2026 Sistema Nacional da Moda</div>
       </footer>
     </main>

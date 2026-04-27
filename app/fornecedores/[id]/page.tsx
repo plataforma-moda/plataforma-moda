@@ -23,7 +23,7 @@ export default async function PerfilFornecedor({ params }: any) {
     <main style={{ fontFamily: 'Arial, sans-serif', backgroundColor: '#F8FAFC', minHeight: '100vh' }}>
 
       {/* Navbar */}
-      <nav style={{ backgroundColor: '#1E3A5F', padding: '0 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '64px' }}>
+      <nav className="page-nav" style={{ backgroundColor: '#1E3A5F', padding: '0 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '64px' }}>
         <a href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
           <div style={{ width: '32px', height: '32px', backgroundColor: '#3B82F6', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, color: 'white', fontSize: '14px' }}>S</div>
           <div>
@@ -36,7 +36,7 @@ export default async function PerfilFornecedor({ params }: any) {
         </a>
       </nav>
 
-      <div style={{ maxWidth: '900px', margin: '0 auto', padding: '40px' }}>
+      <div className="profile-content" style={{ maxWidth: '900px', margin: '0 auto', padding: '40px' }}>
 
         {/* Breadcrumb */}
         <div style={{ marginBottom: '24px', fontSize: '13px', color: '#64748B' }}>
@@ -49,7 +49,7 @@ export default async function PerfilFornecedor({ params }: any) {
 
         {/* Header do perfil */}
         <div style={{ backgroundColor: 'white', border: '1px solid #E2E8F0', borderRadius: '16px', padding: '32px', marginBottom: '20px' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '16px' }}>
+          <div className="profile-header-inner" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '16px' }}>
             <div style={{ display: 'flex', gap: '20px', alignItems: 'flex-start' }}>
               <div style={{ width: '72px', height: '72px', backgroundColor: '#EFF6FF', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '32px', flexShrink: 0 }}>
                 🏭
@@ -95,7 +95,7 @@ export default async function PerfilFornecedor({ params }: any) {
           </div>
         )}
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '20px' }}>
+        <div className="profile-detail-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '20px' }}>
 
           {/* Localização */}
           <div style={{ backgroundColor: 'white', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '24px' }}>
@@ -145,7 +145,7 @@ export default async function PerfilFornecedor({ params }: any) {
       </div>
 
       {/* Footer */}
-      <footer style={{ backgroundColor: '#0F2238', padding: '24px 40px', textAlign: 'center', marginTop: '40px' }}>
+      <footer className="page-footer" style={{ backgroundColor: '#0F2238', padding: '24px 40px', textAlign: 'center', marginTop: '40px' }}>
         <div style={{ color: '#64748B', fontSize: '13px' }}>SNM - Sistema Nacional da Moda 2026</div>
       </footer>
 

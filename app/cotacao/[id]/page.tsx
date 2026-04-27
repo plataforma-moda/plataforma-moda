@@ -124,7 +124,7 @@ export default function Cotacao({ params }: any) {
   )
 
   return (
-    <main style={{ fontFamily: 'Arial, sans-serif', backgroundColor: '#F8FAFC', minHeight: '100vh' }}>
+    <main className="cotacao-page" style={{ fontFamily: 'Arial, sans-serif', backgroundColor: '#F8FAFC', minHeight: '100vh' }}>
       <Navbar />
 
       <div style={{ maxWidth: '700px', margin: '0 auto', padding: '40px 20px' }}>
@@ -146,11 +146,11 @@ export default function Cotacao({ params }: any) {
 
           <div style={sec}>
             <h2 style={tit}>1. Seus dados</h2>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
+            <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
               <div><label style={lbl}>Nome completo *</label><input name="nome" value={form.nome} onChange={handleChange} required placeholder="Seu nome" style={inp} /></div>
               <div><label style={lbl}>Empresa</label><input name="empresa" value={form.empresa} onChange={handleChange} placeholder="Nome da sua empresa" style={inp} /></div>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+            <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
               <div><label style={lbl}>E-mail *</label><input name="email" type="email" value={form.email} onChange={handleChange} required placeholder="seu@email.com" style={inp} /></div>
               <div><label style={lbl}>Telefone / WhatsApp *</label><input name="telefone" value={form.telefone} onChange={handleChange} required placeholder="(11) 00000-0000" style={inp} /></div>
             </div>
@@ -162,7 +162,7 @@ export default function Cotacao({ params }: any) {
               <label style={lbl}>Produto ou serviço desejado *</label>
               <input name="produto" value={form.produto} onChange={handleChange} required placeholder="Ex: 500 camisetas polo brancas bordadas" style={inp} />
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
+            <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
               <div><label style={lbl}>Quantidade</label><input name="quantidade" value={form.quantidade} onChange={handleChange} placeholder="Ex: 500 peças" style={inp} /></div>
               <div><label style={lbl}>Prazo desejado</label><input name="prazo" value={form.prazo} onChange={handleChange} placeholder="Ex: 30 dias" style={inp} /></div>
             </div>
