@@ -169,6 +169,11 @@ export default async function AdminWaitlist() {
         <p style={styles.heroSub}>Emails cadastrados na lista de espera</p>
       </section>
 
+      <nav style={{ backgroundColor: '#0B1F3B', borderTop: '1px solid #1a3a5c', padding: '0 16px', display: 'flex', gap: 0, justifyContent: 'center' }}>
+        <a href="/admin/waitlist" style={{ fontSize: '13px', color: 'white', textDecoration: 'none', padding: '10px 20px', display: 'inline-block', borderBottom: '2px solid #3B82F6', fontWeight: 600 }}>Waitlist</a>
+        <a href="/admin/fornecedores" style={{ fontSize: '13px', color: '#93C5FD', textDecoration: 'none', padding: '10px 20px', display: 'inline-block', borderBottom: '2px solid transparent' }}>Fornecedores</a>
+      </nav>
+
       <div style={styles.container}>
         {error && (
           <div style={styles.errorMsg}>

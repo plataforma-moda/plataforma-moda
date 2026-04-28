@@ -136,14 +136,17 @@ export default async function MinhaConta({
 
         {/* Painel Admin — apenas para financeiro@raafco.com.br */}
         {user.email === 'financeiro@raafco.com.br' && (
-          <div className="conta-admin-row" style={{ backgroundColor: '#0B1F3B', border: '1px solid #1a3a5c', borderRadius: '12px', padding: '20px 28px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <div>
-              <p style={{ fontSize: '13px', fontWeight: 600, color: '#93C5FD', marginBottom: '4px' }}>Acesso Administrativo</p>
-              <p style={{ fontSize: '12px', color: '#64748B' }}>Visualizar lista de espera</p>
+          <div className="conta-admin-row" style={{ backgroundColor: '#0B1F3B', border: '1px solid #1a3a5c', borderRadius: '12px', padding: '20px 28px' }}>
+            <p style={{ fontSize: '13px', fontWeight: 600, color: '#93C5FD', marginBottom: '4px' }}>Acesso Administrativo</p>
+            <p style={{ fontSize: '12px', color: '#64748B', marginBottom: '16px' }}>Paineis de gerenciamento da plataforma</p>
+            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+              <a href="/admin/waitlist" style={{ padding: '9px 18px', backgroundColor: '#1a3a5c', color: 'white', borderRadius: '8px', textDecoration: 'none', fontSize: '13px', fontWeight: 500, border: '1px solid #2d5a8e' }}>
+                Waitlist
+              </a>
+              <a href="/admin/fornecedores" style={{ padding: '9px 18px', backgroundColor: '#1a3a5c', color: 'white', borderRadius: '8px', textDecoration: 'none', fontSize: '13px', fontWeight: 500, border: '1px solid #2d5a8e' }}>
+                Fornecedores
+              </a>
             </div>
-            <a href="/admin/waitlist" style={{ padding: '10px 20px', backgroundColor: '#1a3a5c', color: 'white', borderRadius: '8px', textDecoration: 'none', fontSize: '13px', fontWeight: 500, border: '1px solid #2d5a8e' }}>
-              Painel Admin
-            </a>
           </div>
         )}
       </div>
