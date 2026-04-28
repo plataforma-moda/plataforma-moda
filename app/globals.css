@@ -36,13 +36,14 @@ body {
 .site-header {
   padding: 0 40px;
 }
+/* Mobile nav dropdown: hidden by default on all screen sizes */
+.site-header-nav {
+  display: none;
+}
 @media (max-width: 768px) {
   .site-header {
     padding: 0 16px !important;
     position: relative;
-  }
-  .site-header-nav {
-    display: none !important;
   }
   .site-header-nav.open {
     display: flex !important;

@@ -475,12 +475,19 @@ export default function Cadastro() {
     setErro('')
 
     const { data: { user } } = await supabase.auth.getUser()
+    if (!user) {
+      setErro('Você precisa estar logado para cadastrar. Faça login e tente novamente.')
+      setEnviando(false)
+      window.location.href = '/login?redirect=/cadastro'
+      return
+    }
+
     const cat = categorias.find(c => c.id === Number(categoryId))
     const subPrincipal = subcategorias.find(s => s.id === subcsSelecionadas[0])
     const espPrincipal = especializacoes.find(e => e.id === espsSelecionadas[0])
 
     const payload = {
-      user_id: user?.id || null,
+      user_id: user.id,
       nome: form.nome,
       razao_social: form.razao_social || null,
       cnpj: form.cnpj || null,
@@ -540,7 +547,7 @@ export default function Cadastro() {
     }
 
     await supabase.from('terms_acceptances').insert([{
-      user_id: user?.id || null,
+      user_id: user.id,
       entity_type: 'fornecedor' as const,
       entity_id: fornecedorId,
       terms_version: '1.0',
