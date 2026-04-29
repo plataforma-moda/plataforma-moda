@@ -1,11 +1,22 @@
 import { NextRequest } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
+import { checkRateLimit, getClientIp } from '@/lib/rate-limit'
 
 export const dynamic = 'force-dynamic'
 
 // GET /api/billing/subscription?fornecedor_id=xxx
 // Retorna plano ativo do fornecedor
 export async function GET(request: NextRequest) {
+  // Rate limit: 5 requests per minute per IP
+  const ip = getClientIp(request)
+  const rl = checkRateLimit(ip, 'billing', 5)
+  if (rl.limited) {
+    return Response.json(
+      { error: 'Muitas tentativas. Tente novamente em instantes.' },
+      { status: 429, headers: { 'Retry-After': '60' } }
+    )
+  }
+
   try {
     const { searchParams } = request.nextUrl
     const fornecedorId = searchParams.get('fornecedor_id')

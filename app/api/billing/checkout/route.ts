@@ -2,10 +2,21 @@ import { NextRequest } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { getPreferenceClient } from '@/lib/mercadopago'
 import { PLANS, getPlanById, type PlanId } from '@/lib/plans'
+import { checkRateLimit, getClientIp } from '@/lib/rate-limit'
 
 export const dynamic = 'force-dynamic'
 
 export async function POST(request: NextRequest) {
+  // Rate limit: 5 requests per minute per IP
+  const ip = getClientIp(request)
+  const rl = checkRateLimit(ip, 'billing', 5)
+  if (rl.limited) {
+    return Response.json(
+      { error: 'Muitas tentativas. Tente novamente em instantes.' },
+      { status: 429, headers: { 'Retry-After': '60' } }
+    )
+  }
+
   try {
     const body = await request.json()
     const { plan_id, fornecedor_id, interval = 'monthly' } = body as {

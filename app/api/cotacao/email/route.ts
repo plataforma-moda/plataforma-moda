@@ -1,5 +1,6 @@
 import { NextRequest } from 'next/server'
 import { Resend } from 'resend'
+import { checkRateLimit, getClientIp } from '@/lib/rate-limit'
 
 export const dynamic = 'force-dynamic'
 
@@ -287,6 +288,16 @@ function emailComprador(p: CotacaoPayload): string {
 }
 
 export async function POST(request: NextRequest) {
+  // Rate limit: 10 requests per minute per IP
+  const ip = getClientIp(request)
+  const rl = checkRateLimit(ip, 'cotacao', 10)
+  if (rl.limited) {
+    return Response.json(
+      { error: 'Muitas tentativas. Tente novamente em instantes.' },
+      { status: 429, headers: { 'Retry-After': '60' } }
+    )
+  }
+
   try {
     const body = await request.json() as CotacaoPayload
 

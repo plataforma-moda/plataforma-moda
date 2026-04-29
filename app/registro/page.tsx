@@ -1,16 +1,29 @@
 'use client'
 
-import { useState } from 'react'
-import { createClient } from '@/lib/supabase/client'
+import { useState, useEffect, useRef } from 'react'
+
+const SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY
 
 export default function Registro() {
-  const supabase = createClient()
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
   const [confirmarSenha, setConfirmarSenha] = useState('')
   const [erro, setErro] = useState('')
   const [carregando, setCarregando] = useState(false)
   const [sucesso, setSucesso] = useState(false)
+  const turnstileRef = useRef<HTMLDivElement>(null)
+
+  // Load Turnstile script once if site key is configured
+  useEffect(() => {
+    if (!SITE_KEY) return
+    if (document.getElementById('cf-turnstile-script')) return
+    const script = document.createElement('script')
+    script.id = 'cf-turnstile-script'
+    script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js'
+    script.async = true
+    script.defer = true
+    document.body.appendChild(script)
+  }, [])
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -26,20 +39,33 @@ export default function Registro() {
       return
     }
 
+    // Read Turnstile token if widget is present
+    let turnstileToken: string | undefined
+    if (SITE_KEY && turnstileRef.current) {
+      const tokenInput = turnstileRef.current.querySelector<HTMLInputElement>('[name="cf-turnstile-response"]')
+      turnstileToken = tokenInput?.value || undefined
+      if (!turnstileToken) {
+        setErro('Complete a verificacao de seguranca.')
+        return
+      }
+    }
+
     setCarregando(true)
 
-    const { error } = await supabase.auth.signUp({
-      email,
-      password: senha,
+    const res = await fetch('/api/auth/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password: senha, turnstileToken }),
     })
 
     setCarregando(false)
 
-    if (error) {
-      if (error.message.includes('already registered')) {
-        setErro('Este e-mail ja esta cadastrado. Tente fazer login.')
-      } else {
-        setErro('Erro ao criar conta. Tente novamente.')
+    if (!res.ok) {
+      const data = await res.json() as { error?: string }
+      setErro(data.error ?? 'Erro ao criar conta. Tente novamente.')
+      // Reset Turnstile widget on failure
+      if (SITE_KEY && typeof window !== 'undefined' && (window as Window & { turnstile?: { reset: () => void } }).turnstile) {
+        (window as Window & { turnstile?: { reset: () => void } }).turnstile?.reset()
       }
       return
     }
@@ -118,6 +144,16 @@ export default function Registro() {
                 required placeholder="Repita a senha" style={inp} minLength={6}
               />
             </div>
+
+            {/* Cloudflare Turnstile widget — only rendered when site key is set */}
+            {SITE_KEY && (
+              <div
+                ref={turnstileRef}
+                className="cf-turnstile"
+                data-sitekey={SITE_KEY}
+                style={{ marginBottom: '20px' }}
+              />
+            )}
 
             {erro && (
               <div style={{ padding: '12px', backgroundColor: '#FEF2F2', border: '1px solid #FECACA', borderRadius: '8px', marginBottom: '16px', color: '#DC2626', fontSize: '14px' }}>
